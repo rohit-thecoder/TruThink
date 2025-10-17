@@ -1,8 +1,28 @@
+/* ===============================
+   🌐 GLOBAL CSS – finance website
+   =============================== */
+
+   
 @import "tailwindcss";
 
+
+
+
+ 
+
+/* 2️⃣ Root Variables (Colors + Fonts) */
 :root {
-  --background: #ffffff;
+   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #1D73BF;   /* Azure Blue */
+  --color-secondary: #38B6FF; /* Light Blue */
+  --color-accent: #FDC36C;    /* Pastel Orange */
+  --color-bg: #FFFFFF;        /* White */
+  --color-heading: #004AAD;   /* Cobalt Blue */
+  --color-text: #111111;      /* Black/Body text */
+  
+  
+  --font-sans: var(--font-phantom-sans), system-ui, sans-serif;
 }
 
 @theme inline {
@@ -12,15 +32,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-text);
+}
+body {
+  font-family: var(--font-phantom-sans), system-ui, sans-serif;
 }

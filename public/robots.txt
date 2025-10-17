@@ -1,0 +1,5 @@
+# robots.txt for Truthink Consulting
+User-agent: *
+Disallow:
+
+Sitemap: https://truthinkconsulting.in/sitemap.xml
