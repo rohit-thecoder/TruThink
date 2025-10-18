@@ -48,6 +48,7 @@ const cards = [
 
 export default function ScrollingCards() {
   return (
+    <section>
     <div className="overflow-hidden w-full bg-white py-16 relative">
       <motion.div
         className="flex gap-8"
@@ -82,5 +83,6 @@ export default function ScrollingCards() {
         ))}
       </motion.div>
     </div>
+    </section>
   );
 }

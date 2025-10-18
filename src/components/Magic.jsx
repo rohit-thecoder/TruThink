@@ -57,6 +57,7 @@ export default function MagicTiles() {
   }, []);
 
   return (
+    <section>
     <div className="relative w-full h-screen bg-gray-900 overflow-hidden flex justify-center items-center">
       {/* Magic Wand */}
       <div
@@ -93,5 +94,6 @@ export default function MagicTiles() {
         ))}
       </div>
     </div>
+    </section>
   );
 }
