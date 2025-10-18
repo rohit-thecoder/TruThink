@@ -1,9 +1,21 @@
+import CardEffect from '@/components/CardEffect';
+import CardStack from '@/components/CardStack';
+import CoursesGrid from '@/components/CoursesGrid';
+import HoverCarousel from '@/components/HoverCarousel';
+import MagicTiles from '@/components/Magic';
+import ScrollingCards from '@/components/ScrollingCards';
 import React from 'react'
 
 export default function page() {
   return (
     <div>
       <section className="bg-[var(--color-secondary)]">
+        <CardEffect/>
+        <CardStack/>
+        <CoursesGrid/>
+        <HoverCarousel/>
+        <MagicTiles/>
+        <ScrollingCards/>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center py-12 px-6 gap-6 font-sans">
           {/*Left Side */}
           <div className="w-full md:w-7/12  mt-20">

@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import localFont from 'next/font/local';
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 
 
 
@@ -131,10 +133,16 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <JsonLd data={jsonLd} />
 
-      <body
-        className={`font sans ${phantomSans.variable} antialiased `}
-      >
-        {children}
+      <body className={`font sans ${phantomSans.variable} antialiased `}>
+        
+          <Navbar />
+        
+
+          {children} 
+
+        
+          <Footer />
+        
       </body>
     </html>
   );
