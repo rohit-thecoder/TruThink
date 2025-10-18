@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope');
+
+.hoverCarousel {
+  display: flex;
+  align-items: flex-end;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.carouselItem {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, filter 0.5s ease, flex 0.5s ease;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  border-radius: 0.5rem;
+}
+
+/* Hovered item */
+.active {
+  flex: 3;
+  z-index: 20;
+  transform: scale(1.05) rotateY(3deg) rotateX(2deg);
+}
+
+/* Darken other items */
+.dimmed {
+  filter: brightness(50%);
+}
+
+/* Hover zone */
+.hoverZone {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.hoverZone i {
+  flex: 1;
+}
