@@ -14,12 +14,14 @@
 :root {
    --background: #ffffff;
   --foreground: #171717;
-  --color-primary: #1D73BF;   /* Azure Blue */
-  --color-secondary: #38B6FF; /* Light Blue */
-  --color-accent: #FDC36C;    /* Pastel Orange */
+  --color-primary: #003B70;   /* Azure Blue */
+  --color-secondary: #97CEFF; /* Light Blue */
+  --color-orange: #F6921E;    /* Pastel Orange */
   --color-bg: #FFFFFF;        /* White */
   --color-heading: #004AAD;   /* Cobalt Blue */
   --color-text: #111111;      /* Black/Body text */
+  --color-border: #D9D9D9;   /* Light Gray Border */
+  --color-black: #1E1E1E;
   
   
   --font-sans: var(--font-phantom-sans), system-ui, sans-serif;
@@ -44,5 +46,42 @@ body {
   color: var(--color-text);
 }
 body {
-  font-family: var(--font-phantom-sans), system-ui, sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.color-secondary-bg {
+  background-color: var(--color-secondary);
+}
+
+.text-color {
+  color: var(--color-primary);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+.bg-border{
+  border-color: var(--color-border);
+}
+
+.color-orange {
+  background-color: var(--color-orange);
+}
+
+
+.transition-transform {
+  transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+
+@keyframes arrowMove {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-arrowMove {
+  animation: arrowMove 0.6s linear infinite;
 }

@@ -1,4 +1,6 @@
-import { Geist, Geist_Mono } from "next/font/google";
+
+import { Lato } from "next/font/google";
+
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import localFont from 'next/font/local';
@@ -76,6 +78,19 @@ const phantomSans = localFont({
   display: "swap",
 });
 
+const lato = Lato({
+  subsets: ["latin"],
+  weight: [
+    "100", // Thin
+    "300", // Light
+    "400", // Regular
+    "700", // Bold
+    "900", // Black
+  ],
+  variable: "--font-lato",
+  display: "swap",
+});
+
 
 
 export const metadata = {
@@ -130,19 +145,15 @@ export const jsonLd = {
 export default function RootLayout({ children }) {
 
   return (
-    <html lang="en">
+    <html lang="en" className={lato.variable}>
       <JsonLd data={jsonLd} />
 
-      <body className={`font sans ${phantomSans.variable} antialiased `}>
-        
-          <Navbar />
-        
+      <body className={`font sans ${lato.variable} antialiased `}>
+        <Navbar />
 
-          {children} 
+        {children}
 
-        
-          <Footer />
-        
+        <Footer />
       </body>
     </html>
   );
