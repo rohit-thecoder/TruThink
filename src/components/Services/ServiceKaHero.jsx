@@ -6,7 +6,7 @@ import CtaButton from '../CtaButton';
 const ServiceKaHero = () => {
   return (
     <section className=" bg-white px-[clamp(1rem,2vw,3rem)] py-[clamp(1.5rem,2vw,3.5rem)]">
-      <div className="w-full  md:h-[90vh] flex flex-col md:flex-row  items-center  md:items-start gap-[clamp(1.5rem,2vw,3.5rem)] md:gap-0  bg-[#F1F9FF] rounded-2xl border-4 border-amber-500">
+      <div className="w-full  md:h-[90vh] flex flex-col md:flex-row  items-center  md:items-start gap-[clamp(1.5rem,2vw,3.5rem)] md:gap-0  bg-[#F1F9FF] rounded-2xl ">
         {/* Text Content  */}
         <div className="flex flex-col w-full flex-1 gap-[clamp(1.5rem,2vw,3.5rem)] py-[clamp(2rem,5vw,10rem)] px-[clamp(1rem,2vw,3rem)]">
           <h1 className="text-black text-[clamp(1.75rem,4vw,3rem)] font-regular">
