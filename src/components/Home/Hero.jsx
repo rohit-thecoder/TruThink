@@ -14,13 +14,20 @@ export default function Hero() {
       </div>
 
       <h1 className="text-7xl font-medium text-center text-color mx-[10%]">
-        The #1 Firm Startups Rely on for Accounting, CFO and Tax
+        Simplify Finance, Amplify Success
       </h1>
 
-      <p className="mx-[25%] text-center text-color">
-        Clean Books. Strategic Guidance. Industry Specific Expertise. Born out
-        of a VC fund, we are the startup accounting firm most founders &
-        operators rely on for quality bookkeeping, fractional CFO & tax.
+      <p className="mx-[10%] text-center text-color">
+        To be the trusted partner that founders turn to for clarity, confidence,
+        and direction helping them build businesses that are not just
+        financially sound, but also resilient, impactful, and future-ready. Our
+        mission is to empower entrepreneurs by removing the stress of financial
+        uncertainty and creating space for them to focus on innovation and
+        growth. We aim to combine empathy with expertise — listening deeply,
+        understanding unique challenges, and guiding founders with honesty and
+        clarity at every stage of their journey. Through trust, transparency,
+        and long-term partnership, we aspire to make building a business a
+        smoother, more confident experience for every founder we work with.
       </p>
 
       <button className="color-secondary-bg py-4 px-12 rounded-full font-bold">

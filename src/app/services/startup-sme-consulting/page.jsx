@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd';
 import ServiceComparision from '@/components/Services/ServiceComparision';
+import ServiceFaqs from '@/components/Services/ServiceFaqs';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -87,6 +88,30 @@ const truThinkPoints = [
   "Modern, automated finance stack",
 ];
 
+const faqs = [
+  {
+    question: "How is Truthink different from a regular accounting firm?",
+    answer:
+      " Most firms just record numbers — we turn them into insights. Our team acts like your extended finance arm, helping you make smarter business decisions, not just stay compliant.",
+  },
+  {
+    question: "I’ve just started up. Is it too early to work with Truthink?",
+    answer:
+      "Not at all. In fact, that’s when we add the most value. We help you set up your company, basic systems, and finance stack right from day one so you don’t have to redo things later.",
+  },
+  {
+    question: "Do you offer Virtual CFO services for startups and SMEs?",
+    answer:
+      " Yes, that’s one of our core offerings. We act as your Virtual CFO — managing finances, investor reporting, and strategic planning — so you get senior-level financial expertise without hiring full-time.",
+  },
+  {
+    question: "How fast can you onboard a new client?",
+    answer:
+      "We move quickly — our data transition and setup process usually takes a few days, not weeks. You’ll start seeing clean reports and insights almost immediately.",
+  },
+
+];
+
 
 export default function page() {
 
@@ -104,6 +129,7 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
+      <ServiceFaqs info ={faqs}/>
     </div>
   );
 }

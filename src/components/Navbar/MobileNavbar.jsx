@@ -1,21 +1,23 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
-import { menuItems } from "./menuData";
+import Link from "next/link";
+import Image from "next/image";
+import { menuItems } from "./menuItems";
 
 export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b shadow-md px-4 py-3 flex justify-between items-center">
-      <Image alt="Logo" src="/Truthink logo0.png" width={120} height={60} />
-      <button onClick={() => setOpen(!open)} className="text-2xl">
-        ☰
-      </button>
+    <nav className="md:hidden fixed top-0 w-full bg-white shadow-lg z-50">
+      <div className="flex justify-between items-center px-6 py-3 border-b border-gray-200">
+        <Image alt="Logo" src="/Truthink logo0.png" width={130} height={80} />
+        <button onClick={() => setOpen(!open)} className="text-3xl">
+          ☰
+        </button>
+      </div>
 
       {open && (
-        <div className="absolute top-[70px] left-0 w-full bg-white shadow-md border-t border-gray-200">
+        <div className="w-full bg-white shadow-md border-t border-gray-200">
           <ul className="flex flex-col space-y-3 p-4 text-center text-lg font-medium">
             {menuItems.map((menu, i) => (
               <li key={i}>

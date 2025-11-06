@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd';
 import ServiceComparision from '@/components/Services/ServiceComparision';
+import ServiceFaqs from '@/components/Services/ServiceFaqs';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -80,6 +81,34 @@ const truThinkPoints = [
   "Tailored processes that match your systems and culture",
 ];
 
+const faqs = [
+  {
+    question: " What kind of companies use your AP & AR services?",
+    answer:
+      "We work with startups, SMEs, and global firms looking to outsource their finance back-office. Whether you’re scaling fast or optimizing costs, our team adapts to your needs.",
+  },
+  {
+    question: "How does outsourcing AP & AR actually work?",
+    answer:
+      "We integrate with your existing tools or in case there is no existing tool, we will implement a new AP tool for you. Our team handles daily transactions — mailbox management, invoices accounting, vendor management — while you get regular reports and visibility into every number.",
+  },
+  {
+    question: "Can you handle global clients and multiple currencies?",
+    answer:
+      " Yes. We manage clients across countries and currencies, ensuring compliance with local tax and reporting requirements.",
+  },
+  {
+    question: "How fast can you onboard and start?",
+    answer:
+      "Usually within a week. We set up your processes, migrate data securely, and begin operations without interrupting your ongoing work.",
+  },
+  {
+    question: "Is bookkeeping part of the package?",
+    answer:
+      "It can be. Many clients bundle bookkeeping with AP & AR outsourcing for a complete, streamlined finance back-office.",
+  },
+];
+
 
 export default function page() {
   return (
@@ -95,6 +124,7 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
+      <ServiceFaqs info={faqs} />
     </div>
   );
 }

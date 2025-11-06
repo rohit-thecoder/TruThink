@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd';
 import ServiceComparision from '@/components/Services/ServiceComparision';
+import ServiceFaqs from '@/components/Services/ServiceFaqs';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -82,6 +83,28 @@ const truThinkPoints = [
   "See tax as an opportunity to optimize profitability",
 ];
 
+const faqs = [
+  {
+    question: "What types of taxes do you manage?",
+    answer:
+      "We handle all direct and indirect taxes including Income Tax, GST, TDS, Advance Tax, and International Tax for businesses, founders, and startups.",
+  },
+  {
+    question: "Can you help us with compliance beyond taxation?",
+    answer:
+      "Absolutely. We manage your entire statutory and regulatory compliance — ROC filings, FEMA reporting, board resolutions, and more — so nothing slips through the cracks.",
+  },
+  {
+    question: "Do you represent clients before tax authorities?",
+    answer:
+      "Yes. Our experts handle assessments, audits, and representations before tax departments and regulatory bodies with thorough preparation and professional expertise.",
+  },
+  {
+    question: "How do you ensure timely compliance?",
+    answer: "We use automated reminders, cloud-based trackers, and structured processes to ensure every filing is done accurately and ahead of deadlines.",
+  },
+];
+
 
 
 export default function page() {
@@ -98,6 +121,7 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
+      <ServiceFaqs info={faqs} />
     </div>
   );
 }

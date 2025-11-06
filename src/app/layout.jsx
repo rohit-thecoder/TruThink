@@ -7,6 +7,9 @@ import localFont from 'next/font/local';
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 
+import DesktopNavbar from "@/components/Navbar/DesktopNavbar";
+import MobileNavbar from "@/components/Navbar/MobileNavbar";
+
 
 
 // src/app/layout.jsx में
@@ -149,7 +152,8 @@ export default function RootLayout({ children }) {
       <JsonLd data={jsonLd} />
 
       <body className={`font sans ${lato.variable} antialiased `}>
-        <Navbar />
+        <DesktopNavbar/>
+        <MobileNavbar/>
 
         {children}
 

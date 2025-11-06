@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd';
 import ServiceComparision from '@/components/Services/ServiceComparision';
+import ServiceFaqs from '@/components/Services/ServiceFaqs';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -86,6 +87,30 @@ const truThinkPoints = [
   "Fast turnaround with collaborative, transparent reviews",
 ];
 
+const faqs = [
+  {
+    question: "What kind of financial models do you prepare?",
+    answer:
+      "We prepare detailed models for startups, SMEs, and corporates — including revenue projections, cost analysis, cash flow forecasting, investor pitch models, and project reports.",
+  },
+  {
+    question: "Can you help us make sense of our financial model?",
+    answer:
+      "100%. We don’t just build models — we walk you through what the numbers mean, how to read them, and how small changes can impact your runway or valuation.",
+  },
+  {
+    question: "Can you help startups with valuation during fundraising?",
+    answer:
+      "Absolutely. We perform startup valuations for fundraising, share issuances, or investor negotiations — ensuring transparency and credibility in every transaction.",
+  },
+  {
+    question: "We’re not fundraising yet. Should we still get valued?",
+    answer:
+      "Definitely. Knowing your company’s worth helps in setting goals, planning equity, and negotiating better when the time comes. Many founders use it as a reality check before they go to the market.",
+  },
+
+];
+
 export default function page() {
   return (
     <div>
@@ -100,6 +125,7 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
+      <ServiceFaqs info={faqs} />
     </div>
   );
 }
