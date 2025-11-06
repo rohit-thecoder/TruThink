@@ -1,0 +1,120 @@
+  <div className="group">
+              <button className="  px-4 py-6 rounded-lg hover:bg-blue-100 transition-colors duration-200 ">
+                <span>Services</span>
+              </button>
+              {/* Dropdown  */} {/*Hidden*/}
+              <div className="absolute overflow-y-auto hidden scrollbar-hide top-full mt-0 w-[50%] h-[90vh] rounded-4xl bg-[#2271B8] shadow-lg border border-gray-200 group-hover:block hover:block transition-all duration-300 px-[clamp(2rem,2vw,3rem)] py-[clamp(2rem,3vw,4rem)]">
+                <div className="flex flex-col text-gray-700">
+                  <h2 className="text-[#C9E5FF] text-[clamp(1rem,2vw,2rem)] ">
+                    SERVICES
+                  </h2>
+
+                  <Link
+                    href="/services/startup-sme-consulting"
+                    className="block px-4 py-8 hover:bg-blue-50 transition-colors "
+                  >
+                    <div className="flex justify-between">
+                      <div className="flex flex-col flex-4 gap-2">
+                        <h4 className="text-[#C9E5FF] text-[clamp(1.1rem,2vw,1.32rem)">
+                          Startup & SME Consulting
+                        </h4>
+                        <p className="text-white text-[clamp(1rem,2vw,1.1rem)]">
+                          Helping startups and small businesses grow with
+                          strategy, planning, and operational guidance.
+                        </p>
+                      </div>
+                      <div className="pt-2 flex-1 ">
+                        <Image
+                          alt="Startup SME Consulting"
+                          src="/Arrow 6.png"
+                          width={51}
+                          height={0}
+                          className=""
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                  <hr className="text-white" />
+
+                  <Link
+                    href="/services/modelling-valuation"
+                    className="block px-4 py-4 hover:bg-blue-50 transition-colors "
+                  >
+                    <div className="flex justify-between">
+                      <div className="flex flex-col">
+                        <h4 className="text-[#C9E5FF] text-[clamp(1.1rem,2vw,1.32rem)]">
+                          Modelling and Valuation
+                        </h4>
+                        <p className="text-white text-[clamp(1rem,2vw,1.1rem)]">
+                          Creating financial models and valuing businesses for
+                          investment, growth, or decision-making purposes.
+                        </p>
+                      </div>
+                      <div className="pt-2">
+                        <Image
+                          src="/Arrow 6.png"
+                          alt="arrow"
+                          width={51}
+                          height={0}
+                          className=""
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                  <hr className="text-white" />
+
+                  <Link
+                    href="/services/taxation-compliances"
+                    className="block px-4 py-8 hover:bg-blue-50 transition-colors "
+                  >
+                    <div className="flex justify-between">
+                      <div className="flex flex-col">
+                        <h4 className="text-[#C9E5FF] text-[clamp(1.1rem,2vw,1.32rem)">
+                          Taxation and Compilances
+                        </h4>
+                        <p className="text-white text-[clamp(1rem,2vw,1.1rem)]">
+                          Managing taxes and ensuring regulatory compilance for
+                          businesses efficently and accurately.
+                        </p>
+                      </div>
+                      <div className="pt-2">
+                        <Image
+                          src="/Arrow 6.png"
+                          alt="Arrow2"
+                          width={51}
+                          height={0}
+                          className=""
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                  <hr className="text-white" />
+
+                  <Link
+                    href="/services/ap-ar-management"
+                    className="block px-4 py-8 hover:bg-blue-50 transition-colors "
+                  >
+                    <div className="flex justify-between">
+                      <div className="flex flex-col">
+                        <h4 className="text-[#C9E5FF] text-[clamp(1.1rem,2vw,1.32rem)">
+                          AP and AR Management
+                        </h4>
+                        <p className="text-white text-[clamp(1rem,2vw,1.1rem)]">
+                          Handling accounts payable and receivable to maintain
+                          smooth cash flow and financial health.
+                        </p>
+                      </div>
+                      <div className="pt-2">
+                        <Image
+                          src="/Arrow 6.png"
+                          alt="arrow3"
+                          width={51}
+                          height={0}
+                          className=""
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>

@@ -3,14 +3,14 @@ import React from 'react'
 import { motion } from "framer-motion";
 import ServiceCard from './ServiceCard';
 
-const SubServices = ({services}) => {
+const SubServices = ({services, heading}) => {
   return (
     <section className="bg-white px-[clamp(1rem,2vw,3rem)] py-[clamp(3rem,10vw,5rem)] text-black0">
-      <h2 className="text-center text-[clamp(2rem,4vw,3.5rem)] font-bold mb-[clamp(2rem,4vw,4rem)]">
-        Our Startup & SME Consulting Services
+      <h2 className="text-center text-[clamp(2rem,4vw,3.5rem)] font-medium mb-[clamp(2rem,4vw,4rem)]">
+        {heading}
       </h2>
       <p></p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center justify-items-center items-stretch md:mx-[clamp(3rem,5vw,6rem)] md:my-[clamp(2rem,2vw,4rem)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center justify-items-center items-stretch md:mx-[clamp(3rem,5vw,6rem)] md:my-[clamp(2rem,2vw,4rem)]">
         {services.map((service, index) => (
           <motion.div
             key={index}
@@ -26,8 +26,8 @@ const SubServices = ({services}) => {
           >
             <ServiceCard
               key={index}
-              title={service.title}
-              description={service.description}
+              title={service?.title}
+              description={service?.description}
             />
           </motion.div>
         ))}

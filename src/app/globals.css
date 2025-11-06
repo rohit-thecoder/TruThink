@@ -90,3 +90,37 @@ body {
 .animate-arrowMove {
   animation: arrowMove 0.6s linear infinite;
 }
+
+
+
+
+
+/* 👇 Scrollbar Hide Utility Class */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide {
+  scroll-behavior: smooth;
+}
+
+
+/* Default Scrollar in y axis band kr diya hai  */
+/* ✅ Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ✅ Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* =============================== */
+   

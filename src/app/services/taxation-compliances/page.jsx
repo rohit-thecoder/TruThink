@@ -1,4 +1,7 @@
 import JsonLd from '@/components/JsonLd';
+import ServiceComparision from '@/components/Services/ServiceComparision';
+import ServiceKaHero from '@/components/Services/ServiceKaHero';
+import SubServices from '@/components/Services/SubServices';
 import React from 'react'
 
 export const metadata = {
@@ -37,14 +40,64 @@ export const jsonLd = {
   },
 };
 
+const HeroData = {
+  title: `Simplifying Tax & Compliance for Growing Businesses
+`,
+  description: ` Tax and regulatory complexities can slow down even the best-run businesses. At Truthink, we handle everything from tax planning to statutory compliance — so you can focus on growth while staying 100% compliant and audit-ready at all times.
+`,
+  src: "https://images.pexels.com/photos/34358325/pexels-photo-34358325.jpeg",
+};
+
+const servicesData = [
+  {
+    title: "Direct & Indirect Tax Management",
+    description: `Taxes don’t have to be stressful. We manage your complete tax lifecycle — from accurate filings and reconciliations to advance tax planning. Whether it’s Income Tax, GST, or TDS, we ensure compliance while optimizing your tax outflow through smart structuring and planning.
+`,
+  },
+  {
+    title: "Regulatory & Statutory Compliance",
+    description: `Missed filings or incorrect documentation can lead to penalties and unwanted scrutiny. Our experts keep your business aligned with Companies Act, FEMA, and other regulatory requirements — ensuring every return, report, and resolution is filed right and on time.
+`,
+  },
+  {
+    title: "Assessment, Representation & Advisory",
+    description: `Facing a notice or audit? We represent you before tax authorities with confidence and clarity. From responding to queries to defending your position, we take care of the process end-to-end while you stay focused on operations.
+`,
+  },
+];
+
+const otherFirmPoints = [
+  "Work reactively — file only when deadlines arrive",
+  "Focus only on compliance filings",
+  "Use manual spreadsheets and outdated systems",
+  "Clients chase updates",
+  "See tax as an obligation",
+];
+
+const truThinkPoints = [
+  "Plan proactively to minimize taxes and avoid last-minute stress",
+  "Combine compliance with strategic tax planning",
+  "Use automated tools for filing, tracking, and reminders",
+  "Clients stay informed through transparent dashboards and regular updates",
+  "See tax as an opportunity to optimize profitability",
+];
+
+
 
 export default function page() {
   return (
     <div>
-      
-        <JsonLd data={jsonLd} />
-      
-      <h1>Taxation Compilances</h1>
+      <JsonLd data={jsonLd} />
+
+      <ServiceKaHero info={HeroData} />
+      <SubServices
+        services={servicesData}
+        heading="Our Taxation & Compliance Services"
+      />
+      <ServiceComparision
+        leftPoints={otherFirmPoints}
+        rightPoints={truThinkPoints}
+      />
     </div>
   );
 }
