@@ -1,16 +1,26 @@
 "use client";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
-const CtaButton = ({ text = "BOOK A CALL", href = "#", className="" }) => {
+
+const CtaButton = ({ text = "BOOK A CALL", href = "#" }) => {
+   const [widthFull, setWidthFull] = useState(false);
+
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center justify-center gap-3 w-fit bg-[#2271B8] pr-6 rounded-2xl overflow-hidden transition-transform duration-300 ${className}`}
+      onMouseEnter={() => setWidthFull(true)}
+      onMouseLeave={() => setWidthFull(false)}
+      className={`group inline-flex items-center justify-center bg-[#2271B8] gap-3 w-fit  pr-6 rounded-full overflow-hidden 
+        `}
     >
       {/* Text area */}
-      <span className="bg-[#97CEFF99] px-6 py-3 rounded-2xl text-white text-sm md:text-lg font-medium">
+      <span
+        className={`px-6    py-3 rounded-full text-white text-sm md:text-lg font-medium transition-all duration-300  ${
+          widthFull ? "bg-[#2271B8]" : " bg-[#97CEFF99]"
+        }`}
+      >
         {text}
       </span>
 

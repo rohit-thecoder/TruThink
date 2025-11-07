@@ -41,7 +41,7 @@ export default function MobileNavbar() {
 
       {/* Overlay (separate from navbar) */}
       <div
-        className={`fixed inset-0 bg-white/90 transition-all duration-300 ease-in-out overflow-y-auto z-10 ${
+        className={`md:hidden fixed inset-0 bg-white/90 transition-all duration-300 ease-in-out overflow-y-auto z-10 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -57,7 +57,7 @@ export default function MobileNavbar() {
               {!menu.dropdown ? (
                 <Link
                   href={menu.href}
-                  className="block py-3 text-center hover:text-[#f6921e] transition-colors duration-200"
+                  className="block py-3 text-start hover:text-[#f6921e] transition-colors duration-200"
                   onClick={() => setOpen(false)}
                 >
                   {menu.title}
@@ -66,10 +66,10 @@ export default function MobileNavbar() {
                 <div>
                   <button
                     onClick={() => toggleDropdown(i)}
-                    className="flex justify-between items-start w-full py-3 text-center hover:text-[#f6921e] transition-colors duration-200"
+                    className="flex flex-between items-start w-full py-3 text-start hover:text-[#f6921e] transition-colors duration-200"
                   >
-                    <span className="mx-auto">{menu.title}</span>
-                    <span className="text-[#f6921e] text-lg ml-2">
+                    <span className="">{menu.title}</span>
+                    <span className="text-[#f6921e] text-lg ml-2 text-end">
                       {activeDropdown === i ? <FaTimes /> : <FaPlus />}
                     </span>
                   </button>
@@ -81,7 +81,7 @@ export default function MobileNavbar() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="flex flex-col items-center gap-2 py-2 text-gray-600">
+                    <div className="flex flex-col items-start gap-2 py-2 text-gray-600">
                       {menu.dropdown.map((item, j) => (
                         <Link
                           key={j}
