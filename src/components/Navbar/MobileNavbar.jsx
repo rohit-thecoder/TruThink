@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaPlus, FaTimes } from "react-icons/fa";
@@ -9,39 +9,51 @@ export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
+  // useEffect(() => {
+  //   if(open) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   }
+  // }, [open])
+
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   return (
-    <nav className="md:hidden fixed top-0 left-0 w-full z-20">
-      {/* Top Navbar Bar */}
-      <div className=" flex justify-between items-center px-6 py-3 bg-white border-b border-gray-200">
-        <Image alt="Logo" src="/Truthink logo0.png" width={130} height={80} />
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-3xl text-[#003B70] focus:outline-none"
-        >
-          {open ? <FaTimes /> : "☰"}
-        </button>
-      </div>
+    <>
+      {/* Navbar always on top */}
+      <nav className="md:hidden fixed top-0 left-0 w-full z-50">
+        <div className="flex justify-between items-center px-6 py-3 bg-white border-b border-gray-200">
+          <Image alt="Logo" src="/Truthink logo0.png" width={130} height={80} />
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-3xl text-[#003B70] focus:outline-none"
+          >
+            {open ? <FaTimes /> : "☰"}
+          </button>
+        </div>
+      </nav>
 
-      {/* Fullscreen overlay with slide animation */}
+      {/* Overlay (separate from navbar) */}
       <div
-        className={`fixed inset-0 bg-white transition-all duration-50 ease-in-out overflow-hidden ${
+        className={`fixed inset-0 bg-white/90 transition-all duration-300 ease-in-out overflow-y-auto z-10 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Animated menu container */}
         <ul
-          className={`flex flex-col items-center gap-6 text-lg font-medium text-gray-800 mt-24 transform transition-transform duration-700 ${
-            open ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
+          className={`flex flex-col justify-center items-start gap-6 text-lg font-medium text-gray-800 mt-24 transform transition-transform duration-700 ${
+            open ? " opacity-100" : " opacity-0"
           }`}
         >
           {menuItems.map((menu, i) => (
-            <li key={i} className="w-full px-6">
+            <li key={i} className="w-full px-6 ">
               {!menu.dropdown ? (
                 <Link
                   href={menu.href}
@@ -54,7 +66,7 @@ export default function MobileNavbar() {
                 <div>
                   <button
                     onClick={() => toggleDropdown(i)}
-                    className="flex justify-between items-center w-full py-3 text-center hover:text-[#f6921e] transition-colors duration-200"
+                    className="flex justify-between items-start w-full py-3 text-center hover:text-[#f6921e] transition-colors duration-200"
                   >
                     <span className="mx-auto">{menu.title}</span>
                     <span className="text-[#f6921e] text-lg ml-2">
@@ -62,7 +74,6 @@ export default function MobileNavbar() {
                     </span>
                   </button>
 
-                  {/* Dropdown items with smooth animation */}
                   <div
                     className={`overflow-hidden transition-all duration-500 ${
                       activeDropdown === i
@@ -79,6 +90,9 @@ export default function MobileNavbar() {
                           onClick={() => setOpen(false)}
                         >
                           {item.title}
+                          {j < menu.dropdown.length - 1 && (
+                            <hr className="text-white mt-4" />
+                          )}
                         </Link>
                       ))}
                     </div>
@@ -100,6 +114,6 @@ export default function MobileNavbar() {
           </li>
         </ul>
       </div>
-    </nav>
+    </>
   );
 }

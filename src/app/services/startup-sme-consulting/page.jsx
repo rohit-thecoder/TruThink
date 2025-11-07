@@ -1,4 +1,11 @@
 import JsonLd from '@/components/JsonLd';
+import Service1 from '@/components/Services/Service1';
+import Service2 from '@/components/Services/Service2';
+import Service3 from '@/components/Services/Service3';
+import Service4 from '@/components/Services/Service4';
+import Service5 from '@/components/Services/Service5';
+import Service6 from '@/components/Services/service6';
+import Service7 from '@/components/Services/Service7';
 import ServiceComparision from '@/components/Services/ServiceComparision';
 import ServiceFaqs from '@/components/Services/ServiceFaqs';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
@@ -119,6 +126,14 @@ export default function page() {
   return (
     <div>
       <JsonLd data={jsonLd} />
+
+      <Service1/>
+      <Service2/>
+      <Service3/>
+      <Service4/>
+      <Service5/>
+      <Service6/>
+      <Service7/>
 
       <ServiceKaHero info={HeroData} />
       <SubServices

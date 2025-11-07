@@ -18,10 +18,10 @@ export default function DesktopNavbar() {
     <nav className="hidden md:block">
       <div className="flex justify-center ">
         <div
-          className={`fixed z-50 mx-auto px-[clamp(1rem,4vw,6rem)] flex justify-between items-center transition-all duration-200 ${
+          className={`fixed z-50 mx-auto px-[clamp(1rem,4vw,6rem)] flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.4, 0, 0.2, 1)] ${
             isScrolled
-              ? "w-full top-0 rounded-none  bg-white border-1 border-[#003B70]"
-              : "w-[90%] top-10 rounded-2xl  bg-white border-2 border-[#003B70]"
+              ? "w-full top-0 rounded-none  bg-white/90"
+              : "w-[90%] top-10 rounded-2xl  bg-white "
           }`}
         >
           <Image
@@ -59,7 +59,6 @@ export default function DesktopNavbar() {
                     >
                       {menu.title}
                     </button>
-
 
                     {openDropdown === i && (
                       <div

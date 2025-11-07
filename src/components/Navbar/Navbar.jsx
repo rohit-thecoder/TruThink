@@ -114,8 +114,8 @@ export default function Navbar() {
         <div
           className={`fixed z-50 bg-amber-400 mx-auto px-[clamp(1rem,4vw,6rem)] flex justify-between items-center  transition-all duration-200  ${
             isScrolled
-              ? "w-full top-0 rounded-none shadow-lg bg-white border-1 border-[#003B70]"
-              : "w-[90%] top-10 rounded-2xl shadow-md bg-white border-2 border-[#003B70]"
+              ? "w-full top-0 rounded-none shadow-lg bg-white"
+              : "w-[90%] top-10 rounded-2xl shadow-md bg-white "
           } `}
         >
           <Image
