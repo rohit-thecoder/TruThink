@@ -1,7 +1,7 @@
 // components/WhyPreferUs.jsx
 "use client";
 
-import { CheckCircleIcon } from "@heroicons/react/24/solid"; // optional icons
+
 
 export default function Service5() {
   const features = [
