@@ -57,7 +57,7 @@ const HeroData = {
             Whether you’re just validating your business model or scaling to new
             markets, our experts help you stay investor-ready, compliant, and
             financially confident every step of the way.`,
-  src: "https://images.pexels.com/photos/34358325/pexels-photo-34358325.jpeg",
+  src: "https://images.pexels.com/photos/864994/pexels-photo-864994.jpeg",
 };
 
 
@@ -128,14 +128,15 @@ export default function page() {
       <JsonLd data={jsonLd} />
 
       <ServiceKaHero info={HeroData} />
-      <Service4 />
-      <Service5 />
-      <Service6 />
-      <Service7 />
       <SubServices
         services={servicesData}
         heading="Our Startup & SME Consulting Services"
       />
+      <Service4 />
+      <Service5 />
+      <Service6 />
+      <Service7 />
+
       <ServiceComparision
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}

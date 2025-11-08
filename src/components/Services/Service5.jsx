@@ -13,7 +13,7 @@ export default function Service5() {
   ];
 
   return (
-    <section className="bg-white py-16 px-4 sm:px-8 lg:px-12">
+    <section className=" py-16 px-4 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5">

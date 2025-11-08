@@ -48,7 +48,7 @@ const HeroData = {
 `,
   description: `Every strategic move — be it fundraising, expansion, or acquisition — starts with clear financial understanding. We build robust financial models and perform accurate valuations that help you see your business’s true worth and make confident, data-driven decisions.
 `,
-  src: "https://images.pexels.com/photos/34358325/pexels-photo-34358325.jpeg",
+  src: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg",
 };
 
 const servicesData = [

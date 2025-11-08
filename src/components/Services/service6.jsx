@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Service6() {
   return (
-    <section className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <section className=" py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight">

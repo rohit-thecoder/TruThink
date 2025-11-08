@@ -46,7 +46,7 @@ const HeroData = {
 `,
   description: ` Tax and regulatory complexities can slow down even the best-run businesses. At Truthink, we handle everything from tax planning to statutory compliance — so you can focus on growth while staying 100% compliant and audit-ready at all times.
 `,
-  src: "https://images.pexels.com/photos/34358325/pexels-photo-34358325.jpeg",
+  src: "https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg",
 };
 
 const servicesData = [

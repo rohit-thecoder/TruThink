@@ -34,13 +34,13 @@ export default function Service4() {
       {/* RIGHT SECTION */}
       <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
         {/* Peach background container */}
-        <div className="bg-[#FFF7EF] p-8 rounded-3xl w-full max-w-lg">
+        <div className=" p-8 rounded-3xl w-full max-w-lg">
           {/* --- AAPKI IMAGE YAHAN AAYEGI --- */}
           {/* 'src' ko apni 3-circle PNG image ke path se replace karein */}
           <Image
-            src="/images/S4.png" // Example: "/images/my-chart.png"
+            src="https://images.pexels.com/photos/8145261/pexels-photo-8145261.jpeg" // Example: "/images/my-chart.png"
             alt="Graphite vs other accounting firms chart"
-            width={500}
+            width={700}
             height={500}
             className="w-full h-auto"
           />

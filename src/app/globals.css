@@ -12,7 +12,7 @@
 
 /* 2️⃣ Root Variables (Colors + Fonts) */
 :root {
-   --background: #ffffff;
+   --background: #97ceff;
   --foreground: #171717;
   --color-primary: #003B70;   /* Azure Blue */
   --color-secondary: #97CEFF; /* Light Blue */
@@ -21,7 +21,7 @@
   --color-heading: #004AAD;   /* Cobalt Blue */
   --color-text: #111111;      /* Black/Body text */
   --color-border: #D9D9D9;   /* Light Gray Border */
-  --color-black: #1E1E1E;
+  --color-black: #211e1c;
   --color-bg-blue: #D8EDFF; /* Light Blue Background */
   
   

@@ -148,10 +148,10 @@ export default function DesktopNavbar() {
 
             <Link
               href="/contact"
-              className={`mx-4 rounded-lg bg-blue-300 hover:bg-blue-200 transition-all duration-200 ${
+              className={`mx-4 rounded-lg bg-blue-300 hover:bg-white transition-all duration-200 ${
                 isScrolled
                   ? "py-2 px-5 text-[clamp(0.9rem,2vw,1.1rem)]"
-                  : "py-4 px-7 text-[clamp(1rem,2vw,1.3rem)]"
+                  : "py-3 px-6 text-[clamp(1rem,2vw,1.3rem)]"
               }`}
             >
               Contact Us

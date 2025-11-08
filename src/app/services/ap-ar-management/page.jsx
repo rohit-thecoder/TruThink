@@ -45,7 +45,7 @@ const HeroData = {
 `,
   description: ` Chasing invoices, clearing payments, managing ledgers — it can get messy. We take charge of your AP & AR functions, making sure your books stay clean, your vendors happy, and your cash flowing — without the chaos.
 `,
-  src: "https://images.pexels.com/photos/34358325/pexels-photo-34358325.jpeg",
+  src: "https://images.pexels.com/photos/3183172/pexels-photo-3183172.jpeg",
 };
 
 const servicesData = [

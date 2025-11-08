@@ -5,7 +5,7 @@ import ServiceCard from './ServiceCard';
 
 const SubServices = ({services, heading}) => {
   return (
-    <section className="bg-white px-5 2xl:px-0 py-16 md:py-32  xl:mx-[clamp(0px,5vw,160px)]  text-black0">
+    <section className=" px-5 2xl:px-0 py-16 md:py-32  xl:mx-[clamp(0px,5vw,160px)]  text-black0">
       <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-medium text-black0 leading-tight mb-[clamp(2rem,4vw,4rem)]">
         {heading}
       </h2>
