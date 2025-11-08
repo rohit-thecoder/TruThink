@@ -3,10 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { menuItems } from "./menuItems"; // 👈 common data import
+import { usePathname, useRouter } from "next/navigation";
 
 export default function DesktopNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [clickedLink, setClickedLink] = useState(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -14,7 +18,20 @@ export default function DesktopNavbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setOpenDropdown(null);
+    setClickedLink(null);
+  }, [pathname]);
+
+  const handleNavigation = async (href) => {
+    if (pathname !== href) {
+      setClickedLink(href);
+      await router.push(href);
+    }
+  };
+
   return (
+    
     <nav className="hidden md:block">
       <div className="flex justify-center ">
         <div
@@ -38,7 +55,15 @@ export default function DesktopNavbar() {
                 {!menu.dropdown ? (
                   <Link
                     href={menu.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(menu.href);
+                    }}
                     className={`px-4 rounded-lg hover:bg-blue-100 transition-all duration-200 ${
+                      pathname === menu.href || clickedLink === menu.href
+                        ? "text-[#f6921e]"
+                        : "text-gray-800 hover:text-[#f6921e]"
+                    } ${
                       isScrolled
                         ? "py-4 text-[clamp(0.3rem,1.8vw,1.2rem)]"
                         : "py-6 text-[clamp(0.3rem,1.8vw,1.3rem)]"
@@ -52,6 +77,10 @@ export default function DesktopNavbar() {
                       onMouseEnter={() => setOpenDropdown(i)}
                       onMouseLeave={() => setOpenDropdown(null)}
                       className={`px-4 rounded-lg hover:bg-blue-100 transition-all duration-200 ${
+                        pathname === menu.href || clickedLink === menu.href
+                          ? "text-[#f6921e]"
+                          : "text-gray-800 hover:text-[#f6921e]"
+                      } ${
                         isScrolled
                           ? "py-3 text-[clamp(0.3rem,1.8vw,1.2rem)]"
                           : "py-6 text-[clamp(0.3rem,1.8vw,1.3rem)]"
@@ -75,8 +104,16 @@ export default function DesktopNavbar() {
                           <Link
                             key={j}
                             href={item.href}
-                            onClick={() => setOpenDropdown(null)}
-                            className="block px-4 pt-8 hover:bg-blue-50 transition-colors"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleNavigation(item.href);
+                            }}
+                            className={`block px-4 pt-8 hover:bg-blue-50 transition-colors  ${
+                              pathname === item.href ||
+                              clickedLink === item.href
+                                ? "text-[#f6921e]"
+                                : "text-white hover:text-[#f6921e]"
+                            }`}
                           >
                             <div className="flex justify-between">
                               <div className="flex flex-col gap-2 flex-4">
@@ -110,7 +147,7 @@ export default function DesktopNavbar() {
             ))}
 
             <Link
-              href="#"
+              href="/contact"
               className={`mx-4 rounded-lg bg-blue-300 hover:bg-blue-200 transition-all duration-200 ${
                 isScrolled
                   ? "py-2 px-5 text-[clamp(0.9rem,2vw,1.1rem)]"

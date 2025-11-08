@@ -5,12 +5,12 @@ import ServiceCard from './ServiceCard';
 
 const SubServices = ({services, heading}) => {
   return (
-    <section className="bg-white mx-[clamp(1rem,5vw,5rem)] py-[clamp(3rem,10vw,5rem)] text-black0">
+    <section className="bg-white px-5 2xl:px-0 py-16 md:py-32  xl:mx-[clamp(0px,5vw,160px)]  text-black0">
       <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-medium text-black0 leading-tight mb-[clamp(2rem,4vw,4rem)]">
         {heading}
       </h2>
       <p></p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center justify-items-center items-stretch md:mx-[clamp(3rem,5vw,6rem)] md:my-[clamp(2rem,2vw,4rem)]">
+      <div className="grid grid-cols-1 md:grid-cols-3  gap-8  items-stretch w-full">
         {services.map((service, index) => (
           <motion.div
             key={index}

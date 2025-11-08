@@ -12,12 +12,12 @@ const CtaButton = ({ text = "BOOK A CALL", href = "#" }) => {
       href={href}
       onMouseEnter={() => setWidthFull(true)}
       onMouseLeave={() => setWidthFull(false)}
-      className={`group inline-flex items-center justify-center bg-[#2271B8] gap-3 w-fit  pr-6 rounded-full overflow-hidden 
+      className={`group inline-flex items-center justify-center bg-[#2271B8] gap-3 w-full  pr-6 rounded-full overflow-hidden 
         `}
     >
       {/* Text area */}
       <span
-        className={`px-6    py-3 rounded-full text-white text-sm md:text-lg font-medium transition-all duration-300  ${
+        className={`px-6   py-3 rounded-full text-white text-sm md:text-lg font-semibold transition-all duration-300  ${
           widthFull ? "bg-[#2271B8]" : " bg-[#97CEFF99]"
         }`}
       >

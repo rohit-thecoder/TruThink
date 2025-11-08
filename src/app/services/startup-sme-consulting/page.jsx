@@ -127,15 +127,11 @@ export default function page() {
     <div>
       <JsonLd data={jsonLd} />
 
-      <Service1/>
-      <Service2/>
-      <Service3/>
-      <Service4/>
-      <Service5/>
-      <Service6/>
-      <Service7/>
-
       <ServiceKaHero info={HeroData} />
+      <Service4 />
+      <Service5 />
+      <Service6 />
+      <Service7 />
       <SubServices
         services={servicesData}
         heading="Our Startup & SME Consulting Services"
@@ -144,7 +140,7 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
-      <ServiceFaqs info ={faqs}/>
+      <ServiceFaqs info={faqs} />
     </div>
   );
 }
