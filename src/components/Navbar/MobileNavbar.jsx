@@ -94,7 +94,7 @@ export default function MobileNavbar() {
                 <>
                   <Link
                     href={menu.href}
-                    className={`block py-3 text-start  transition-colors duration-200 ${
+                    className={`block py-6 text-start  transition-colors duration-200 ${
                       pathname === menu.href || clickedLink === menu.href
                         ? "text-[#f6921e]"
                         : "text-gray-800 "
