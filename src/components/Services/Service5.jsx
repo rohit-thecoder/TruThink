@@ -17,12 +17,12 @@ export default function Service5() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#2271B8] leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black0 leading-tight">
             Why Startups Prefer Us
           </h2>
           <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed">
             Simple: Our track record and talent. We are your long-term startup
-            accounting partner, backed by a US-based team that handles only a
+            accounting partner, backed by a Indian-based team that handles only a
             few clients at a time. That means you get high-touch service, deep
             understanding of your business, and a partner that feels truly
             in-house.

@@ -33,7 +33,7 @@ export default function DesktopNavbar() {
   return (
     
     <nav className="hidden md:block">
-      <div className="flex justify-center ">
+      <div className="flex justify-center max-w-7xl mx-auto ">
         <div
           className={`fixed z-50 mx-auto px-[clamp(1rem,4vw,6rem)] flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.4, 0, 0.2, 1)] ${
             isScrolled

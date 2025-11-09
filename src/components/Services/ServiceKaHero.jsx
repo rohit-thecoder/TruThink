@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const ServiceKaHero = ({info}) => {
   return (
-    <section className="  px-5 py-16 md:pl-5 md:py-32  xl:ml-[clamp(0px,5vw,160px)]  mt-[clamp(0.5rem,5vw,1rem)]">
+    <section className="  flex justify-center px-5 py-16 md:pl-5 md:py-32  xl:ml-[clamp(0px,5vw,160px)]  mt-[clamp(0.5rem,5vw,1rem)]">
       <Image
         src="/pngtree_13534322.png"
         height={2000}
@@ -19,7 +19,7 @@ const ServiceKaHero = ({info}) => {
  opacity-30 md:opacity-50"
       />
 
-      <div className="w-full  md:h-[75vh] flex flex-col gap-0 md:gap-20 md:flex-row  items-center justify-center  md:items-start    rounded-2xl ">
+      <div className="w-full max-w-7xl  md:h-[75vh] flex flex-col gap-0 md:gap-20 md:flex-row  items-center justify-center  md:items-start    rounded-2xl ">
         {/* Text Content  */}
         <div className="flex flex-col text-black0 items-center md:items-start w-full flex-3 gap-[clamp(1.5rem,2vw,3.5rem)] py-[clamp(2rem,5vw,10rem)] px-[clamp(1rem,2vw,3rem)]">
           <h1 className="text-black0 z-2 text-[36px] md:text-[45px] font-medium text-center md:text-start">

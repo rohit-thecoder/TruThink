@@ -133,10 +133,10 @@ export default function page() {
       <Service5 />
       <Service6 />
 
-      <ServiceComparision
+      {/* <ServiceComparision
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
-      />
+      /> */}
       
       <ServiceFaqs1 info={faqs} />
     </div>

@@ -1,6 +1,9 @@
 import JsonLd from '@/components/JsonLd';
+import Service4 from '@/components/Services/Service4';
+import Service5 from '@/components/Services/Service5';
+import Service6 from '@/components/Services/service6';
 import ServiceComparision from '@/components/Services/ServiceComparision';
-import ServiceFaqs from '@/components/Services/ServiceFaqs';
+import ServiceFaqs1 from '@/components/Services/ServiceFaqs1';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -120,11 +123,14 @@ export default function page() {
         services={servicesData}
         heading="Our Startup & SME Consulting Services"
       />
-      <ServiceComparision
+      {/* <ServiceComparision
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
-      />
-      <ServiceFaqs info={faqs} />
+      /> */}
+      <Service4/>
+      <Service5/>
+      <Service6/>
+      <ServiceFaqs1 info={faqs} />
     </div>
   );
 }

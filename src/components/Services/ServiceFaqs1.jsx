@@ -16,9 +16,9 @@ export default function ServiceFaqs1({info= []}) {
   };
 
   return (
-    <section className="px-[clamp(1rem,5vw,5rem)] py-[clamp(2rem,10vw,5rem)]">
+    <section className=" px-2 md:px-[clamp(1rem,10vw,10rem)] py-[clamp(2rem,10vw,5rem)]">
       <div className="flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-8 py-2">
-        <h2 className="w-fit text-2xl sm:text-4xl font-light text-white bg-[#2271B8] text-center mb-10 px-8 sm:px-6 md:px-8 py-2 rounded-full">
+        <h2 className="w-fit  text-2xl sm:text-4xl font-light text-white bg-[#2271B8] text-center mb-10 px-8 sm:px-6 md:px-8 py-2 rounded-full">
           FAQs
         </h2>
         <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-black0 text-center mb-10 px-8 sm:px-6 md:px-8 py-2">
@@ -26,7 +26,7 @@ export default function ServiceFaqs1({info= []}) {
         </h3>
 
         {/* FAQ Accordion Container */}
-        <div className="bg-[#F1F9FF] rounded-3xl p-6 md:p-10 shadow-sm">
+        <div className="bg-[#fffdf7] rounded-3xl p-6 md:p-10 shadow-sm">
           {/* 3. Divide-y se har item ke beech mein line aa jayegi */}
           <div className="divide-y divide-blue-300">
             {info.map((faq, index) => (
