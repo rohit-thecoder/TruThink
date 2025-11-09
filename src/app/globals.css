@@ -157,3 +157,11 @@ body {
   z-index: 9999;
   animation: loaderAnim 1.2s ease-in-out infinite;
 }
+
+.marker {
+  background: linear-gradient(120deg, #fff6a9 0%, #ffe484 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: 0 70%;
+}
+

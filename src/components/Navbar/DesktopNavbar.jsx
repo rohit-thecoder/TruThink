@@ -11,6 +11,7 @@ export default function DesktopNavbar() {
   const [clickedLink, setClickedLink] = useState(null);
   const pathname = usePathname();
   const router = useRouter();
+   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -21,21 +22,25 @@ export default function DesktopNavbar() {
   useEffect(() => {
     setOpenDropdown(null);
     setClickedLink(null);
+    setLoading(false);
   }, [pathname]);
 
   const handleNavigation = async (href) => {
     if (pathname !== href) {
       setClickedLink(href);
+       setLoading(true);
       await router.push(href);
     }
   };
 
   return (
-    
     <nav className="hidden md:block">
+      {loading && (
+        <div className="fixed top-0 left-0 w-full h-[3px] bg-[#f6921e] animate-loaderAnim z-[9999]" />
+      )}
       <div className="flex justify-center max-w-7xl mx-auto ">
         <div
-          className={`fixed z-50 mx-auto px-[clamp(1rem,4vw,6rem)] flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.4, 0, 0.2, 1)] ${
+          className={`fixed z-50 max-w-8xl mx-auto px-[clamp(1rem,4vw,6rem)] flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.4, 0, 0.2, 1)] ${
             isScrolled
               ? "w-full top-0 rounded-none  bg-white/90"
               : "w-[90%] top-10 rounded-2xl  bg-white "

@@ -13,28 +13,29 @@ export default function Service5() {
   ];
 
   return (
-    <section className=" py-16 px-4 sm:px-8 lg:px-12">
+    <section className=" py-16 px-10 sm:px-8 lg:px-12 bg-[#5ea0ef]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
-        <div className="lg:col-span-5">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black0 leading-tight">
+        <div className="lg:col-span-5 ">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black0 leading-tight  ">
             Why Startups Prefer Us
           </h2>
-          <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed">
+
+          <p className="mt-6 text-lg sm:text-lg text-[#0f172a] leading-relaxed">
             Simple: Our track record and talent. We are your long-term startup
-            accounting partner, backed by a Indian-based team that handles only a
-            few clients at a time. That means you get high-touch service, deep
+            accounting partner, backed by a Indian-based team that handles only
+            a few clients at a time. That means you get high-touch service, deep
             understanding of your business, and a partner that feels truly
             in-house.
           </p>
 
-          <p className="mt-4 text-base sm:text-lg text-gray-700 leading-relaxed">
+          <p className="mt-4 text-lg sm:text-lg text-[#0f172a] leading-relaxed">
             Here are a few key reasons why hundreds of startups trust us.
           </p>
         </div>
 
         {/* --- CENTER TIMELINE COLUMN --- */}
-        <div className="lg:col-span-2 relative flex justify-center py-10">
+        <div className="lg:col-span-2 relative flex justify-center py-10 text-[#211e1c]">
           <div className="relative">
             {/* Vertical Line */}
             <div className="absolute left-[10px] top-0 bottom-0 w-[2px] bg-[#7BBEF8]"></div>
@@ -54,8 +55,10 @@ export default function Service5() {
                   ></span>
                   {/* Text */}
                   <span
-                    className={`ml-10 text-base sm:text-lg font-medium ${
-                      feature.active ? "text-[#1C64F2]" : "text-gray-800"
+                    className={`ml-10 text-lg   ${
+                      feature.active
+                        ? "text-[#ffffff] font-bold sm:text-2xl"
+                        : "text-[211e1c] font-medium sm:text-xl"
                     }`}
                   >
                     {feature.name}
