@@ -2,15 +2,16 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import ServiceCard from './ServiceCard';
+import CtaButton from '../CtaButton';
 
 const SubServices = ({services, heading}) => {
   return (
     <section className=" px-5 2xl:px-0 py-16 md:py-32  xl:mx-[clamp(0px,5vw,160px)]  text-black0">
-      <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-medium text-black0 leading-tight mb-[clamp(2rem,4vw,4rem)]">
+      <h2 className="text-center text-4xl sm:text-4xl md:text-5xl font-medium text-black0 leading-tight mb-[clamp(2rem,4vw,4rem)]">
         {heading}
       </h2>
       <p></p>
-      <div className="grid grid-cols-1 md:grid-cols-3  gap-8  items-stretch w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3  gap-8  w-full">
         {services.map((service, index) => (
           <motion.div
             key={index}
@@ -31,6 +32,9 @@ const SubServices = ({services, heading}) => {
             />
           </motion.div>
         ))}
+      </div>
+      <div className='flex justify-center mt-12 md:mt-20'>
+        <CtaButton className="" />
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import CardEffect from '../CardEffect'
 
 export default function Hero() {
   return (
-    <div className="flex flex-col items-center justify-around h-auto bg-white  gap-10  px-[clamp(1rem,5vw,5rem)] py-[clamp(2rem,10vw,5rem)] mt-[clamp(1.5rem,10vw,5rem)]">
+    <div className="flex flex-col items-center justify-around h-auto   gap-10  px-[clamp(1rem,5vw,5rem)] py-[clamp(2rem,10vw,5rem)] mt-[clamp(1.5rem,10vw,5rem)]">
       <div className="flex flex-row justify-center items-center color-secondary-bg px-2 py-4 pr-4 h-10 rounded-xl md:rounded-3xl gap-4">
         <div className="flex flex-row justify-center items-center bg-white py-2 px-2 rounded-2xl gap-2">
           {/* Concentratic circle */}

@@ -4,32 +4,8 @@
 
 import { useState } from "react";
 
-// 1. Sample FAQ data (Aap ise baad mein badal sakte hain)
-const faqs = [
-  {
-    question:
-      "When is the best time to start working with an accounting/finance firm like Graphite?",
-    answer:
-      "In reality, the second you start developing your product and spending money is when you need to start keeping clean books. There are always inflection points (for example a company raising money and investors needing them to provide clean financials, or a bank requiring GAAP compliant financials in order to provide a loan) where you don’t want to be scrambling to get those things together.",
-  },
-  {
-    question: "What is GAAP and why does it matter for my startup?",
-    answer:
-      "GAAP (Generally Accepted Accounting Principles) is a common set of accounting rules and standards. Following GAAP ensures your financial statements are consistent, comparable, and reliable. This is crucial when you seek funding from investors or apply for loans, as they expect financials that are accurate and easy to understand.",
-  },
-  {
-    question: "How much do your startup accounting services cost?",
-    answer:
-      "Our pricing is tailored to the specific needs and stage of your startup. We offer flexible packages that can scale with your business, from basic bookkeeping to a fully outsourced finance department. Contact us for a proposal, and we can provide a clear quote based on your requirements.",
-  },
-  {
-    question: "What's the difference between bookkeeping and accounting?",
-    answer:
-      "Think of bookkeeping as the daily recording of financial transactions (logging invoices, paying bills). Accounting is the bigger picture—it involves interpreting that data, preparing financial statements, analyzing your financial health, and providing strategic advice to help your business grow.",
-  },
-];
 
-export default function Service7() {
+export default function ServiceFaqs1({info= []}) {
   // 2. State to track which FAQ is open
   const [openFaqIndex, setOpenFaqIndex] = useState(0); // Pehla wala default mein khula hai
 
@@ -53,7 +29,7 @@ export default function Service7() {
         <div className="bg-[#F1F9FF] rounded-3xl p-6 md:p-10 shadow-sm">
           {/* 3. Divide-y se har item ke beech mein line aa jayegi */}
           <div className="divide-y divide-blue-300">
-            {faqs.map((faq, index) => (
+            {info.map((faq, index) => (
               <div
                 key={index}
                 className="py-6 first:pt-0 last:pb-0" // Pehle aur aakhri item se extra padding hatayi

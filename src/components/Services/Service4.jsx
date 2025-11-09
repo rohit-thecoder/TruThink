@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image"; // Image component ko import karna na bhoolein
+import CtaButton from "../CtaButton";
 
 export default function Service4() {
   return (
@@ -8,7 +9,7 @@ export default function Service4() {
       // Note: Maine responsive layout ke liye fixed style (width/height) hata diya hai
     >
       {/* LEFT SECTION */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center">
+      <div className="w-full md:w-1/2 flex flex-3 flex-col justify-center">
         <h2 className="text-4xl md:text-6xl font-light text-gray-900 mb-6 leading-tight">
           One of the only true scalable & hands-on startup accounting firms
         </h2>
@@ -21,18 +22,11 @@ export default function Service4() {
         </p>
 
         {/* BUTTON (Style same hai, bas text badla hai) */}
-        <button className="group flex items-center rounded-full overflow-hidden shadow-md cursor-pointer text-sm font-medium w-fit">
-          <span className="bg-[#5EA0EF] text-white px-6 py-3 rounded-l-full">
-            GET IN TOUCH
-          </span>
-          <span className="bg-[#1C64F2] text-white p-[13px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 rounded-r-full">
-            <ArrowRight className="w-5 h-5" />
-          </span>
-        </button>
+       <CtaButton/>
       </div>
 
       {/* RIGHT SECTION */}
-      <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
+      <div className="hidden w-full md:w-1/2 mt-10 md:mt-0 md:flex flex-2 justify-center">
         {/* Peach background container */}
         <div className=" p-8 rounded-3xl w-full max-w-lg">
           {/* --- AAPKI IMAGE YAHAN AAYEGI --- */}

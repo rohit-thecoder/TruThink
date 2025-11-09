@@ -1,13 +1,10 @@
 import JsonLd from '@/components/JsonLd';
-import Service1 from '@/components/Services/Service1';
-import Service2 from '@/components/Services/Service2';
-import Service3 from '@/components/Services/Service3';
 import Service4 from '@/components/Services/Service4';
 import Service5 from '@/components/Services/Service5';
 import Service6 from '@/components/Services/service6';
 import Service7 from '@/components/Services/Service7';
 import ServiceComparision from '@/components/Services/ServiceComparision';
-import ServiceFaqs from '@/components/Services/ServiceFaqs';
+import ServiceFaqs1 from '@/components/Services/ServiceFaqs1';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -135,13 +132,13 @@ export default function page() {
       <Service4 />
       <Service5 />
       <Service6 />
-      <Service7 />
 
       <ServiceComparision
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
-      <ServiceFaqs info={faqs} />
+      
+      <ServiceFaqs1 info={faqs} />
     </div>
   );
 }

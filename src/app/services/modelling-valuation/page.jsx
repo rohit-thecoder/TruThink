@@ -1,6 +1,6 @@
 import JsonLd from '@/components/JsonLd';
 import ServiceComparision from '@/components/Services/ServiceComparision';
-import ServiceFaqs from '@/components/Services/ServiceFaqs';
+import ServiceFaqs1 from '@/components/Services/ServiceFaqs1';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
 import SubServices from '@/components/Services/SubServices';
 import React from 'react'
@@ -125,7 +125,7 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       />
-      <ServiceFaqs info={faqs} />
+      <ServiceFaqs1 info={faqs} />
     </div>
   );
 }

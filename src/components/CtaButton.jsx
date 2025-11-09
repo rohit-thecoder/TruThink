@@ -1,30 +1,19 @@
-"use client";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import React, { useState } from "react";
+
 import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 
-const CtaButton = ({ text = "BOOK A CALL", href = "#" }) => {
-   const [widthFull, setWidthFull] = useState(false);
+const CtaButton = () => {
+   
 
   return (
-    <Link
-      href={href}
-      onMouseEnter={() => setWidthFull(true)}
-      onMouseLeave={() => setWidthFull(false)}
-      className={`group inline-flex items-center justify-center bg-orange-400 gap-3 w-fit  pr-6 rounded-full overflow-hidden 
-        `}
-    >
-      {/* Text area */}
-      <span
-        className={`px-6   py-3 rounded-full text-white text-sm md:text-lg font-semibold transition-all duration-300  bg-orange-500
-        }`}
-      >
-        {text}
-      </span>
-
-      {/* Arrow */}
-      <HiOutlineArrowNarrowRight className="w-9 h-9 text-white transition-transform duration-300 group-hover:translate-x-2" />
+    <Link href="/contact">
+      <button className="relative group z-2 bg-[#ff7a00] hover:bg-[#e56700] text-white font-semibold uppercase px-8 py-3 rounded-lg  transition-all duration-300 flex items-center justify-center overflow-hidden">
+        <span className="translate-x-[-10px] md:translate-x-[-0px] transition-all duration-300  group-hover:translate-x-[-8px]">
+          REQUEST FOR PROPOSAL
+        </span>
+        <FaArrowRightLong className="absolute opacity-100 md:opacity-0 translate-x-[100px] md:translate-x-[0px] group-hover:opacity-100 group-hover:translate-x-[100px] transition-all duration-300" />
+      </button>
     </Link>
   );
 };

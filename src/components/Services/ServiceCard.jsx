@@ -1,27 +1,40 @@
+"use client"
 import React from "react";
 import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
+import Image from "next/image";
 
 
 const ServiceCard = ({ title, description, href="#" }) => {
   return (
-    <div className="bg-[#f1f9ff] px-7 py-12 flex flex-col flex-grow justify-between text-black0 shadow-md rounded-xl md:rounded-2xl w-full text-center hover:shadow-lg transition-shadow duration-300 h-full gap-6 ">
+    <div className="bg-[#5ea0ef] px-7 py-12 flex flex-col  items-start min-h-[300px] relative text-black0 shadow-md rounded-xl md:rounded-2xl w-full text-center hover:shadow-lg transition-shadow duration-300 h-full gap-6 ">
+      <Image
+        src="/—Pngtree—grid diary_5623144.png"
+        height={500}
+        width={500}
+        alt="Grid overlay"
+        className="absolute top-0 right-0 w-full md:w-full h-1/2 md:h-full object-cover  
+              [mask-image:linear-gradient(to_bottom,black_0%,transparent),linear-gradient(to_left,black_0%,transparent)] 
+              [mask-composite:intersect] [-webkit-mask-composite:destination-in]
+       opacity-30 md:opacity-60"
+      />
       {/* Top Section */}
-      <div className="">
-        <h3 className="text-[32px] sm:text-4xl font-semibold text-black0 text-start ">
+      <div className="relative">
+        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-[#0f172a] text-start md:min-h-[100px]">
           {title}
         </h3>
       </div>
       {/* Bottom White Section */}
 
-      <p className="text-[18px] text-[#4b5563] leading-relaxed mb-10 flex-grow  text-start">
+      <p className="relative z-2 self-start text-[18px] text-[#1e293b] leading-relaxed md:min-h-[200px]  text-start">
         {description}
       </p>
       {/* ✅ Navigation Button */}
-      <Link
-        href={href}
-        className="bg-[#2271B8] text-white font-medium px-6 py-3 mt-auto rounded-full text-[clamp(1.1rem,2vw,1.3rem)] hover:bg-[#6db9ff] transition-all duration-300"
-      >
-        Request for Proposal
+      <Link href="/contact" className="block mt-auto">
+        <button className="group relative z-2  mt-auto text-[f97316] font-semibold uppercase  rounded-lg transition-all duration-300 flex items-center gap-2 ">
+          {title}
+          <FaArrowRightLong className="transition-transform duration-800 ease-in-out group-hover:translate-x-9 " />
+        </button>
       </Link>
     </div>
   );
