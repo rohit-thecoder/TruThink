@@ -17,10 +17,11 @@ export default function Service5() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5 ">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black0 leading-tight  ">
-            Why Startups Prefer Us
-          </h2>
-
+          <div className="">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black0 leading-tight  ">
+              Why {" "} <span className="bg-[#ec3750] p-2 rounded-xl inline-block -rotate-1">Startups</span> {" "} Prefer  Us
+            </h2>
+          </div>
           <p className="mt-6 text-lg sm:text-lg text-[#0f172a] leading-relaxed">
             Simple: Our track record and talent. We are your long-term startup
             accounting partner, backed by a Indian-based team that handles only
@@ -73,9 +74,9 @@ export default function Service5() {
         <div className="lg:col-span-5">
           <div className="bg-[#FFFBF7] rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-300">
             <p className="text-gray-800 text-lg leading-relaxed mb-6">
-              “We support you from seed to exit — no need to switch firms as you
+              We support you from seed to exit — no need to switch firms as you
               grow. From day one bookkeeping to CFO-level financial strategy, we
-              scale alongside your startup.”
+              scale alongside your startup.
             </p>
 
             {/* --- Image Placeholder (Replace with Next/Image) --- */}

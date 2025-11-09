@@ -46,12 +46,14 @@ export default function DesktopNavbar() {
               : "w-[90%] top-10 rounded-2xl  bg-white "
           }`}
         >
-          <Image
-            alt="Logo"
-            src="/Truthink logo0.png"
-            width={isScrolled ? 120 : 150}
-            height={isScrolled ? 80 : 100}
-          />
+          <Link href="/" className="cursor-pointer">
+            <Image
+              alt="Logo"
+              src="/Truthink logo0.png"
+              width={isScrolled ? 120 : 150}
+              height={isScrolled ? 80 : 100}
+            />
+          </Link>
 
           {/* Menu */}
           <div className="flex xl:ml-[clamp(0rem,15vw,15rem)] items-center">
@@ -97,7 +99,7 @@ export default function DesktopNavbar() {
                     {openDropdown === i && (
                       <div
                         className={`absolute overflow-y-auto top-full mt-0 h-[80vh] rounded-4xl bg-[#2271B8] shadow-lg 
-                            border border-gray-200 transition-all duration-300 px-[clamp(2rem,2vw,3rem)] py-[clamp(1rem,1vw,2rem)]
+                            border border-gray-200 transition-all duration-300 px-[clamp(2rem,2vw,3rem)] py-[clamp(1rem,3vw,5rem)]
                              ${isScrolled ? "w-[28vw]" : "w-[35vw]"}`}
                         onMouseEnter={() => setOpenDropdown(i)}
                         onMouseLeave={() => setOpenDropdown(null)}

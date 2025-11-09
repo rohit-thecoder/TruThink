@@ -41,10 +41,12 @@ export const jsonLd = {
 export default function page() {
   return (
     <div>
-      
-        <JsonLd data={jsonLd} />
-      
-      <h1>VALUATION CALCULATOR</h1>
+      <JsonLd data={jsonLd} />
+
+      <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
+        Our Valuation calculator page is currently under construction. We will be live
+        soon{" "}
+      </h1>
     </div>
   );
 }

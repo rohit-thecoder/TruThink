@@ -15,7 +15,7 @@ export default function Service6() {
     transform -translate-x-1/2 -translate-y-1/2
     w-full h-full
     object-cover opacity-40
-    [mask-image:radial-gradient(circle,black_0%,rgba(0,0,0,0.3)_0%,transparent_50%)]
+    [mask-image:radial-gradient(circle,black_0%,rgba(0,0,0,0.2)_0%,transparent_50%)]
     [-webkit-mask-image:radial-gradient(circle,black_0%,rgba(0,0,0,0.2)_0%,transparent_50%)]
   "
       />
