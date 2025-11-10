@@ -19,7 +19,7 @@ export default function Service5() {
         <div className="lg:col-span-5 ">
           <div className="">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black0 leading-tight  ">
-              Why {" "} <span className="bg-[#ec3750] p-2 rounded-xl inline-block -rotate-1">Startups</span> {" "} Prefer  Us
+              Why {" "} <span className="bg-[#ec3750] text-white p-2 rounded-xl inline-block -rotate-1">Startups</span> {" "} Prefer  Us
             </h2>
           </div>
           <p className="mt-6 text-lg sm:text-lg text-[#0f172a] leading-relaxed">
