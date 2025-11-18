@@ -86,6 +86,15 @@ const truThinkPoints = [
   "See tax as an opportunity to optimize profitability",
 ];
 
+const features = [
+  { name: "Plan proactively to minimize taxes and avoid last-minute stress", active: true },
+  { name: "Combine compiance with strategic tax planning", active: false },
+  { name: "Use automated tools for filing, tracking, and reminders", active: false },
+  { name: "Clients stay informed through transparent dashboards and regular updates", active: false },
+  { name: "See tax as an opportunity to optimize profitability", active: false },
+];
+
+
 const faqs = [
   {
     question: "What types of taxes do you manage?",
@@ -126,7 +135,7 @@ export default function page() {
       /> */}
       <Service4 />
 
-      <Service5 />
+      <Service5 features={features} />
       <Service6 />
       <ServiceFaqs1 info={faqs} />
     </div>

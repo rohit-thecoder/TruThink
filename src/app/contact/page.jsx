@@ -1,3 +1,5 @@
+import Contact1 from '@/components/Contact/Contact1';
+import Contact2 from '@/components/Contact/Contact2';
 import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
@@ -39,13 +41,11 @@ export default function page() {
       <JsonLd data={jsonLd} />
 
       <div>
-        {/* <Service1/> */}
-
-        {/* <Hero />
-      <HomeSlider /> */}
+      {/* <Contact1/>
+      <Contact2/>
         <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
           Our Contactpage is currently under construction. We will be live soon{" "}
-        </h1>
+        </h1> */}
       </div>
     </div>
   );

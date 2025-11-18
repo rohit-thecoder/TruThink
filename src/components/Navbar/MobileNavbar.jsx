@@ -77,7 +77,7 @@ export default function MobileNavbar() {
 
       {/* Overlay (separate from navbar) */}
       <div
-        className={`md:hidden fixed inset-0 bg-white transition-all duration-300 ease-in-out overflow-y-auto z-10 ${
+        className={`md:hidden fixed inset-0 bg-white transition-all duration-300 ease-in-out overflow-y-auto z-11 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

@@ -21,9 +21,9 @@ export default function ServiceFaqs1({info= []}) {
         <h2 className="w-fit  text-2xl sm:text-4xl font-light text-white bg-[#2271B8] text-center mb-10 px-8 sm:px-6 md:px-8 py-2 rounded-full">
           FAQs
         </h2>
-        <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-black0 text-center mb-10 px-8 sm:px-6 md:px-8 py-2">
+        {/* <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-black0 text-center mb-10 px-8 sm:px-6 md:px-8 py-2">
           Answers to your questions
-        </h3>
+        </h3> */}
 
         {/* FAQ Accordion Container */}
         <div className="bg-[#fffdf7] rounded-3xl p-6 md:p-10 shadow-sm">

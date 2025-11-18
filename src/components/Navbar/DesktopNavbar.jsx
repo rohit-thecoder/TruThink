@@ -83,7 +83,7 @@ export default function DesktopNavbar() {
                     <button
                       onMouseEnter={() => setOpenDropdown(i)}
                       onMouseLeave={() => setOpenDropdown(null)}
-                      className={`px-4 rounded-lg hover:bg-blue-100 transition-all duration-200 ${
+                      className={`px-4 cursor-pointer rounded-lg hover:bg-blue-100 transition-all duration-200 ${
                         pathname === menu.href || clickedLink === menu.href
                           ? "text-[#f6921e]"
                           : "text-gray-800 hover:text-[#f6921e]"

@@ -20,20 +20,20 @@ const ServiceCard = ({ title, description, href="#" }) => {
       />
       {/* Top Section */}
       <div className="relative">
-        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-[#0f172a] text-start md:min-h-[100px]">
+        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-white text-start md:min-h-[100px]">
           {title}
         </h3>
       </div>
       {/* Bottom White Section */}
 
-      <p className="relative z-2 self-start text-[18px] text-[#1e293b] leading-relaxed md:min-h-[200px]  text-start">
+      <p className="relative z-2 self-start text-[18px] text-slate-100 leading-relaxed md:min-h-[200px]  text-start">
         {description}
       </p>
       {/* ✅ Navigation Button */}
       <Link href="/contact" className="block mt-auto">
-        <button className="group relative z-2  mt-auto text-[f97316] font-semibold uppercase  rounded-lg transition-all duration-300 flex items-center gap-2 ">
+        <button className="group relative z-2 cursor-pointer  mt-auto text-white font-semibold uppercase  rounded-lg transition-all duration-300 flex items-center gap-2 ">
           {title}
-          <FaArrowRightLong className="transition-transform duration-800 ease-in-out group-hover:translate-x-9 " />
+          <FaArrowRightLong className="transition-transform duration-800 text-white ease-in-out group-hover:translate-x-9 " />
         </button>
       </Link>
     </div>
@@ -41,3 +41,4 @@ const ServiceCard = ({ title, description, href="#" }) => {
 };
 
 export default ServiceCard;
+// text-[#0f172a]  text-[#1e293b] 

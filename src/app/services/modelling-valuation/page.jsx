@@ -89,6 +89,15 @@ const truThinkPoints = [
   "Fast turnaround with collaborative, transparent reviews",
 ];
 
+const features = [
+  { name: "Build dynamic, scenario-based financial models tailored to your bussiness", active: true },
+  { name: "Provide strategic valuations that support funding and decision-making", active: false },
+  { name: "Translate data into insights that investors understand", active: false },
+  { name: "Custom-built models for each bussiness stage and industry", active: true },
+  { name: "Fast turnaround with collaborative, transparent reviews", active: false },
+];
+
+
 const faqs = [
   {
     question: "What kind of financial models do you prepare?",
@@ -128,7 +137,7 @@ export default function page() {
         rightPoints={truThinkPoints}
       /> */}
       <Service4/>
-      <Service5/>
+      <Service5 features={features}/>
       <Service6/>
       <ServiceFaqs1 info={faqs} />
     </div>

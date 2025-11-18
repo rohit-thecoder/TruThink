@@ -3,18 +3,11 @@
 
 
 
-export default function Service5() {
-  const features = [
-    { name: "Scalable financial systems", active: true },
-    { name: "Dedicated startup accountants", active: false },
-    { name: "Data-driven CFO insights", active: false },
-    { name: "End-to-end automation", active: false },
-    { name: "24/7 support & transparent pricing", active: false },
-  ];
-
+export default function Service5({features}) {
+  
   return (
-    <section className=" py-16 px-10 sm:px-8 lg:px-12 bg-[#5ea0ef]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+    <section className=" py-16 px-10 my-20 sm:px-8 lg:px-5 bg-[#5ea0ef]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-14 gap-26 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5 ">
           <div className="">
@@ -36,7 +29,7 @@ export default function Service5() {
         </div>
 
         {/* --- CENTER TIMELINE COLUMN --- */}
-        <div className="lg:col-span-2 relative flex justify-center py-10 text-[#211e1c]">
+        <div className="lg:col-span-4 relative flex justify-center py-10 text-[#211e1c]">
           <div className="relative">
             {/* Vertical Line */}
             <div className="absolute left-[10px] top-0 bottom-0 w-[2px] bg-[#7BBEF8]"></div>

@@ -64,7 +64,7 @@ const servicesData = [
   },
   {
     title: "Finance Stack Consulting",
-    description: `our finance tools should talk to each other, not create chaos. We help you pick and set up the right tech stack — accounting, billing, payroll, dashboards — all integrated and startup-ready. Get clean, automated numbers every month without manual struggle.`,
+    description: `Our finance tools should talk to each other, not create chaos. We help you pick and set up the right tech stack — accounting, billing, payroll, dashboards — all integrated and startup-ready. Get clean, automated numbers every month without manual struggle.`,
   },
   {
     title: "Fractional CFO",
@@ -114,6 +114,15 @@ const faqs = [
 
 ];
 
+const features = [
+  { name: "Value-based Pricing", active: true },
+  { name: "Fast and seamless data onboarding", active: false },
+  { name: "Deliver insights that drive decisions", active: false },
+  { name: "Act as a direct growth partner", active: false },
+  { name: "Modern, automated finance stack", active: false },
+];
+
+
 
 export default function page() {
 
@@ -128,7 +137,7 @@ export default function page() {
         heading="Our Startup & SME Consulting Services"
       />
       <Service4 />
-      <Service5 />
+      <Service5 features={features}/>
       <Service6 />
 
       {/* <ServiceComparision

@@ -1,4 +1,8 @@
 import Hero from '@/components/Home/Hero';
+import Home2 from '@/components/Home/Home2';
+import Home3 from '@/components/Home/Home3';
+import Home4 from '@/components/Home/Home4';
+import Home5 from '@/components/Home/Home5';
 import HomeSlider from '@/components/Home/HomeSlider';
 import React from 'react'
 
@@ -30,10 +34,13 @@ export default function page() {
   return (
     <div>
       {/* <Service1/> */}
+
+      <Home2/>
+      <Home3/>
+      <Home4/>
+      <Home5/>
       
-      {/* <Hero />
-      <HomeSlider /> */}
-      <h1 className='py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl '>Our homepage is currently under construction. We will be live soon </h1>
+      {/* <h1 className='py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl '>Our homepage is currently under construction. We will be live soon </h1> */}
     </div>
   );
 }

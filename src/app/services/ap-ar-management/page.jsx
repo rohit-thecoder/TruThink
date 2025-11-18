@@ -58,7 +58,7 @@ const servicesData = [
   },
   {
     title: "Finance Stack Consulting",
-    description: `our finance tools should talk to each other, not create chaos. We help you pick and set up the right tech stack — accounting, billing, payroll, dashboards — all integrated and startup-ready. Get clean, automated numbers every month without manual struggle.`,
+    description: `Our finance tools should talk to each other, not create chaos. We help you pick and set up the right tech stack — accounting, billing, payroll, dashboards — all integrated and startup-ready. Get clean, automated numbers every month without manual struggle.`,
   },
   {
     title: "Fractional CFO",
@@ -82,6 +82,15 @@ const truThinkPoints = [
   "Real-time dashboards and reconciliations",
   "Tailored processes that match your systems and culture",
 ];
+
+const features = [
+  { name: "Value-based Pricing", active: true },
+  { name: "Fast and seamless data onboarding", active: false },
+  { name: "Proactive AR tracking and reporting", active: false },
+  { name: "Real-time dashboards and reconciliations", active: false },
+  { name: "Tailored processes that match your systems and culture", active: false },
+];
+
 
 const faqs = [
   {
@@ -126,9 +135,9 @@ export default function page() {
         leftPoints={otherFirmPoints}
         rightPoints={truThinkPoints}
       /> */}
-      <Service4/>
-      <Service5/>
-      <Service6/>
+      <Service4 />
+      <Service5 features={features} />
+      <Service6 />
       <ServiceFaqs1 info={faqs} />
     </div>
   );

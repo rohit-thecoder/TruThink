@@ -4,20 +4,20 @@ import CardEffect from '../CardEffect'
 export default function Hero() {
   return (
     <div className="flex flex-col items-center justify-around h-auto   gap-10  px-[clamp(1rem,5vw,5rem)] py-[clamp(2rem,10vw,5rem)] mt-[clamp(1.5rem,10vw,5rem)]">
-      <div className="flex flex-row justify-center items-center color-secondary-bg px-2 py-4 pr-4 h-10 rounded-xl md:rounded-3xl gap-4">
-        <div className="flex flex-row justify-center items-center bg-white py-2 px-2 rounded-2xl gap-2">
+      <div className="flex flex-row justify-center items-center color-secondary-bg px-[2px] py-[3px] md:px-2 md:py-4 pr-4 h-5 md:h-10 rounded-xl md:rounded-3xl gap-[10px]">
+        <div className="flex flex-row justify-center items-center bg-white py-[2px] md:py-2 px-2 rounded-2xl gap-2">
           {/* Concentratic circle */}
-          <div className="w-4 h-4 rounded-full bg-blue-500 border-4 border-blue-200"></div>
-          <h3 className="text-xs font-bold">COINEST</h3>
+          <div className="w-2 h-2 md:w-4 md:h-4 rounded-full bg-blue-500 border-4 border-blue-200"></div>
+          <h3 className="text-[6px] md:text-[12px] font-bold">COINEST</h3>
         </div>
-        <h3 className="text-sm font-bold">Smarter Money Management</h3>
+        <h3 className=" text-[7px] md:text-[14px]  font-bold">Smarter Money Management</h3>
       </div>
 
-      <h1 className="text-7xl font-medium text-center text-color mx-[10%]">
+      <h1 className="text-[36px] md:text-[64px]  font-medium text-center text-color mx-[10%]">
         Simplify Finance, Amplify Success
       </h1>
 
-      <p className="mx-[10%] text-center text-color">
+      <p className="mx-[10%] text-center text-color text-[14px]">
         To be the trusted partner that founders turn to for clarity, confidence,
         and direction helping them build businesses that are not just
         financially sound, but also resilient, impactful, and future-ready. Our
