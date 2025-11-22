@@ -6,7 +6,7 @@ import IndustryCta from "../IndustryCta";
 
 const SubIndustries = ({ industries, heading }) => {
   return (
-    <section className=" px-5 md:px-20 2xl:px-0 py-16 md:py-32   text-black0">
+    <section className=" px-5 md:px-20 py-16 md:py-32   text-black0">
       <h2 className="text-center text-4xl sm:text-4xl md:text-5xl font-medium text-black0 leading-tight mb-[clamp(2rem,4vw,4rem)]">
         {heading}
       </h2>
