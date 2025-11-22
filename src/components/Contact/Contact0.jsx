@@ -25,7 +25,7 @@ export default function Contact0() {
         >
           {/* 4. "Our Team" Text (Ab yeh white div ke andar hai) */}
           <div className="flex items-center gap-3 cursor-pointer group transition-all duration-300 ease-in-out">
-            <span className="text-5xl font-bold text-white md:text-gray-900 tracking-tight">
+            <span className="text-5xl font-bold text-white  md:text-gray-900 tracking-tight">
               Get In Touch
             </span>
             <ArrowUpRight className="w-8 h-8 md:text-blue-300 text-white transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1" />

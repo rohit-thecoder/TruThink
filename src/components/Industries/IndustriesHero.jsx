@@ -7,7 +7,7 @@ import IndustryCta from "../IndustryCta";
 
 const IndustriesHero = ({ info }) => {
   return (
-    <section className="  flex justify-center px-5 py-16 md:pl-5 md:py-32  xl:ml-[clamp(0px,5vw,160px)]  mt-[clamp(0.5rem,5vw,1rem)]">
+    <section className="  flex justify-center px-2 py-16 md:pl-5 md:py-32  xl:ml-[clamp(0px,5vw,160px)]  mt-[clamp(0.5rem,5vw,1rem)]">
       <Image
         src="/pngtree_13534322.png"
         height={2000}
@@ -33,10 +33,10 @@ const IndustriesHero = ({ info }) => {
         </div>
         {/* Image  */}
         <div
-          className="w-full flex-2 h-full grid grid-cols-3 grid-rows-1 md:grid-cols-3 md:grid-rows-3 gap-2 md:gap-4 rounded-2xl overflow-hidden"
+          className="w-full flex-2 h-full grid grid-cols-3 grid-rows-3 md:grid-cols-3 md:grid-rows-3 gap-2 md:gap-4 rounded-2xl overflow-hidden"
         >
           {/* ROW 1 & 2 → BIG IMAGE (col-span-3, row-span-2) */}
-          <div className="relative col-span-3 row-span-2 rounded-xl overflow-hidden hidden md:block">
+          <div className="relative col-span-3 row-span-2 rounded-xl overflow-hidden md:block">
             <Image
               src={info?.bigImage?.src}
               alt={info?.bigImage?.alt}

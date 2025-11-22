@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function About5() {
   return (
-    <section className=" py-20">
+    <section className="px-8 py-20">
       <div className="max-w-7xl mx-auto  md:pl-20 flex flex-col md:flex-row items-start gap-12 md:gap-20">
         {/* Left Side - Text */}
         <div className="md:w-1/2 text-gray-800">

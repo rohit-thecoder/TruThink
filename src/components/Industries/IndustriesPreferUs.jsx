@@ -14,14 +14,14 @@ export default function IndustriesPreferUs({
   ],
 }) {
   return (
-    <section className=" py-36 px-10 my-20 sm:px-8 lg:px-5 bg-[#5ea0ef]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-14 gap-26 items-center">
+    <section className=" py-20 px-5 my-20 sm:px-8 lg:px-5 bg-[#5ea0ef]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-14 gap-5 md:gap-26 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5 ">
           <div className="">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black leading-tight  ">
               Why{" "}
-              <span className="bg-[#f6921e] text-black0 p-2 rounded-xl inline-block -rotate-1">
+              <span className="bg-[#f7c72d] text-black0 p-2 rounded-xl inline-block -rotate-1">
                 Startups
               </span>{" "}
               Prefer Us
