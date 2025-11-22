@@ -1,3 +1,4 @@
+import SubIndustries from '@/components/Industries/SubIndustries';
 import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
@@ -39,6 +40,25 @@ export const jsonLd = {
   },
 };
 
+const IndustriesData = [
+  {
+    title: "Bookkeeping & MIS ",
+    description: `Simple, reliable books that keep your finances investor- and lender-ready at all times.`,
+  },
+  {
+    title: "AP & AR Management",
+    description: `Get control over vendor payments and customer collections so cash flow stays predictable — not chaotic.`,
+  },
+  {
+    title: "Direct & Indirect Taxation ",
+    description: `We turn your numbers into insights with easy-to-read financial reports every month.`,
+  },
+  {
+    title: "Expansion & Growth Planning",
+    description: `Plan your next hires, expansion, or investments with clear, data-backed financial projections.`,
+  },
+];
+
 
 export default function page() {
   return (
@@ -46,12 +66,11 @@ export default function page() {
       <JsonLd data={jsonLd} />
 
       <div>
-        {/* <Service1/> */}
+        <SubIndustries industries={IndustriesData} heading="Our Services" />
 
-        {/* <Hero />
-      <HomeSlider /> */}
         <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
-          Our ALL startup page is currently under construction. We will be live soon{" "}
+          Our ALL startup page is currently under construction. We will be live
+          soon{" "}
         </h1>
       </div>
     </div>

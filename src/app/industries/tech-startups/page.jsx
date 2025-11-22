@@ -111,12 +111,22 @@ const faqs = [
   },
 ];
 
+const specialData = {
+  title: `Why tech startups need specialized accounting and finance services?
+`,
+  description: `Tech startups don’t grow in a straight line — they scale in spikes, pivots, and rapid experiments. That’s why traditional accounting simply doesn’t fit their reality. SaaS metrics, recurring revenue models, deferred revenue, burn rate, customer acquisition costs, and fundraising cycles all require a finance partner who understands how tech companies actually operate.`,
+  description2: `Specialized startup accounting ensures your numbers reflect the real health of your tech business — not just compliance. It helps you track investor-focused metrics like MRR, ARR, CAC, LTV, and churn, maintain cash-flow clarity in fast-growth, high-burn environments, recognize revenue accurately in subscription or usage-based models, plan fundraising with solid data instead of guesswork, and avoid costly mistakes across tax, compliance, and financial operations.
+`,
+  src: `https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg`,
+};
+
 export default function page() {
   return (
     <div>
       <JsonLd data={jsonLd} />
 
       <IndustriesHero info={HeroData}/>
+      <IndustriesSpecial info={specialData}/>
       <SubIndustries industries={IndustriesData} heading="Our Services"/>
       <IndustriesPreferUs/>
       <IndustriesOffer heading="Do you run any Tech Startup"/>
