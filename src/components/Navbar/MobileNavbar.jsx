@@ -163,7 +163,7 @@ export default function MobileNavbar() {
           {/* Contact Button */}
           <li className="w-full px-6 my-6 ">
             <Link
-              href="#"
+              href="/contact"
               className="block text-center bg-[#f6921e] text-white py-2 rounded-full hover:bg-[#e07d1c] transition-colors duration-200"
               onClick={() => setOpen(false)}
             >
