@@ -29,7 +29,7 @@ export default function Home4() {
     <section className=" py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* --- Main Heading --- */}
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-semibold text-gray-800 text-center mb-16">
           The New Wave of Startup Accounting
         </h2>
 

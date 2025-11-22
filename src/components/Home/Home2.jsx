@@ -4,22 +4,21 @@ import Image from "next/image";
 export default function Home2() {
   return (
     <>
-    <Image
-            src="/pngtree_13534322.png"
-            height={2000}
-            width={2000}
-            alt="Grid overlay"
-            className="absolute top-0 left-0 w-full md:w-1/2 h-2/3 md:h-full object-cover md:object-contain  
+      <Image
+        src="/pngtree_13534322.png"
+        height={2000}
+        width={2000}
+        alt="Grid overlay"
+        className="absolute top-0 left-0 w-full md:w-1/2 h-2/3 md:h-full object-cover md:object-contain  
             md:[mask-image:linear-gradient(to_bottom,black_40%,transparent),linear-gradient(to_right,black_30%,transparent)] 
             [mask-composite:intersect] [-webkit-mask-composite:destination-in]
      opacity-30 md:opacity-50"
-          />
-    
+      />
+
       <section
         className=" relative h-full min-h-screen overflow-hidden px-4 sm:px-6 lg:px-8 text-center pt-10 md:pt-30"
         style={{
-          background:
-            "linear-gradient(to bottom, #FFFFFF00, #2563EB33, #1E40AF66)",
+          background: "linear-gradient(to bottom)",
         }}
       >
         {/* --- TEXT CONTENT (completely outside image div) --- */}
@@ -75,18 +74,18 @@ export default function Home2() {
                      border-t-[10px] border-l-[10px] border-r-[10px] border-gray-300 
                      rounded-t-3xl overflow-hidden"
           >
-            <Image
-              src="https://images.pexels.com/photos/3182787/pexels-photo-3182787.jpeg"
-              alt="Professional financial dashboard UI"
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-              className=""
-            />
+            <video
+              src="https://www.pexels.com/download/video/8348912/"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            ></video>
           </div>
         </div>
       </section>
-      <hr className="bg-gray-300 border-0 border-gray-500 h-px" />
+      {/* <hr className="bg-gray-300 border-0 border-gray-500 h-px" /> */}
     </>
   );
 }

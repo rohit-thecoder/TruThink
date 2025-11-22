@@ -50,12 +50,13 @@ export default function Home3() {
     <section className=" md:pt-60 py-30 w-full overflow-hidden">
       {/* --- Top Text Content (Aapke text color changes rakhe gaye hain) --- */}
       <div className="max-w-4xl mx-auto text-center mb-16 px-4">
-        <h2 className="text-4xl md:text-5xl font-semibold text-[#1e1e1e] leading-tight">
+        <h2 className="text-4xl md:text-5xl text-gray-800 font-semibold leading-tnug ">
           Your Finance
         </h2>
-        <h3 className="text-4xl md:text-5xl font-semibold text-[#1e1e1e] leading-tight mt-2">
+        <h3 className="text-4xl md:text-5xl font-semibold text-gray-800 leading-snug mt-2">
           Department as a Service
         </h3>
+
         <p className="mt-6 max-w-3xl mx-auto text-lg">
           We deeply understand the needs and nuances of growing startups and
           small businesses. Since 2016, we've provided hundreds of growing
@@ -70,7 +71,9 @@ export default function Home3() {
       <div>
         <Swiper
           modules={[Autoplay, Pagination]}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSwiper={(swiper) => (
+            console.log(swiper), (swiperRef.current = swiper)
+          )}
           loop={true}
           autoplay={{
             delay: 1000,

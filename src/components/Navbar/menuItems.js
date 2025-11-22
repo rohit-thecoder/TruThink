@@ -1,8 +1,8 @@
 export const menuItems = [
-  {
-    title: "Home",
-    href: "/",
-  },
+  // {
+  //   title: "Home",
+  //   href: "/",
+  // },
   {
     title: "Services",
     dropdown: [
@@ -37,19 +37,19 @@ export const menuItems = [
     dropdown: [
       {
         title: "Tech Startup",
-        description: "Accounting & consulting for tech and SaaS companies.",
+        description: " Smart finance support for SaaS, product, and tech founders.",
         href: "/industries/tech-startups",
       },
       {
         title: "Manufacturing Startups",
         description:
-          "Specialized solutions for factories, logistics, and production-based companies.",
+          "Financial clarity for product-based and ops-heavy businesses",
         href: "/industries/manufacturing-startups",
       },
       {
         title: "All Startups",
         description:
-          "Comprehensive consulting for startups and SMEs across industries — finance, valuation, tax, and compliance made simple",
+          "Simple, structured finance for growing everyday businesses. ",
         href: "/industries/all-startup-smes",
       },
     ],

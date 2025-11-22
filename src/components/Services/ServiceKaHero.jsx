@@ -29,7 +29,9 @@ const ServiceKaHero = ({info}) => {
             {info?.description}
           </p>
 
-         <CtaButton/>
+          <div className="flex justify-center">
+            <CtaButton className="" />
+          </div>
         </div>
         {/* Image  */}
         <div className="relative flex w-full h-full  flex-2 rounded-2xl ">

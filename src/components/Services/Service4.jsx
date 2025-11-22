@@ -10,7 +10,6 @@ export default function Service4() {
         className="relative flex flex-col md:flex-row items-center justify-between max-w-8xl mx-auto py-20  px-8 md:pl-30 gap-16"
         // Note: Maine responsive layout ke liye fixed style (width/height) hata diya hai
       >
-       
         {/* LEFT SECTION */}
         <div className="w-full md:w-1/2 flex flex-3 flex-col justify-center">
           <h2 className="relative z-2 text-4xl md:text-6xl font-medium text-gray-900 mb-6 leading-tight">
@@ -25,7 +24,9 @@ export default function Service4() {
           </p>
 
           {/* BUTTON (Style same hai, bas text badla hai) */}
-          <CtaButton />
+          <div className="">
+            <CtaButton />
+          </div>
         </div>
 
         {/* RIGHT SECTION */}
