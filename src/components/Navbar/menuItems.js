@@ -37,7 +37,8 @@ export const menuItems = [
     dropdown: [
       {
         title: "Tech Startup",
-        description: " Smart finance support for SaaS, product, and tech founders.",
+        description:
+          " Smart finance support for SaaS, product, and tech founders.",
         href: "/industries/tech-startups",
       },
       {
@@ -58,12 +59,6 @@ export const menuItems = [
     title: "Resources",
     dropdown: [
       {
-        title: "Free Pitchdeck Template",
-        description:
-          "Download a free investor-ready pitch deck template for your startup.",
-        href: "/resources/free-pitchdesk-template",
-      },
-      {
         title: "Valuation Calculator",
         description:
           "Use our free calculator to estimate your startup’s valuation instantly.",
@@ -73,6 +68,12 @@ export const menuItems = [
         title: "Burnrate Calculator",
         description: "Calculate your monthly burn rate and cash runway easily.",
         href: "/resources/burn-rate-calculator",
+      },
+      {
+        title: "Blog Section",
+        description:
+          "",
+        href: "/resources/blog-section",
       },
     ],
   },

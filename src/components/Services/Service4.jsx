@@ -24,7 +24,7 @@ export default function Service4() {
           </p>
 
           {/* BUTTON (Style same hai, bas text badla hai) */}
-          <div className="">
+          <div className="w-fit">
             <CtaButton />
           </div>
         </div>

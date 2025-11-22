@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const IndustriesCard = ({ title, description, href = "#" }) => {
   return (
-    <div className="bg-[#5ea0ef] px-7 py-12 flex flex-col  items-start min-h-[300px] relative text-black0 shadow-md rounded-xl md:rounded-2xl w-full text-center hover:shadow-lg transition-shadow duration-300 h-full gap-6 ">
+    <div className="bg-[#5ea0ef] px-7 md:pr-40 py-12 flex flex-col  items-start min-h-[300px] relative text-black0 shadow-md rounded-xl md:rounded-2xl w-full text-center hover:shadow-lg transition-shadow duration-300 h-full gap-6 ">
       <Image
         src="/—Pngtree—grid diary_5623144.png"
         height={500}
@@ -19,7 +19,7 @@ const IndustriesCard = ({ title, description, href = "#" }) => {
       />
       {/* Top Section */}
       <div className="relative">
-        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-white text-start md:min-h-[50px]">
+        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-white text-start md:min-h-[70px]">
           {title}
         </h3>
       </div>

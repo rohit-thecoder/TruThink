@@ -3,14 +3,16 @@ import About2 from '@/components/About/About2';
 import About3 from '@/components/About/About3';
 import About4 from '@/components/About/About4';
 import About5 from '@/components/About/About5';
+import Founders from '@/components/About/Founders';
+import FlippingCardsPage from '@/components/FlippingCard';
 import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
 
 export const metadata = {
-  title: "About Truthink – Startup & SME Financial Experts",
-  description:
-    "Learn about Truthink, our mission, values & expert team serving startups & SMEs.",
+  title: "About Truthink Consulting | Startup Advisors",
+  description: "Know our story, mission, and team behind Truthink Consulting",
+  keywords:"about Truthink Consulting, startup consultants India, SME advisory firm, financial consulting company, business growth advisors",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://truthinkconsulting.in/about" },
   openGraph: {
@@ -45,12 +47,14 @@ export default function page() {
       <JsonLd data={jsonLd} />
 
       <div>
-        {/* <About1/>
-        <About2/>
-        <About3/>
-        <About4/>
-        <About5/>
-        <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
+        <About1 />
+        <About4 />
+        {/* <About2 /> */}
+        <Founders/>
+        {/* <About3 /> */}
+
+        <About5 />
+        {/* <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
           Our AboutPage is currently under construction. We will be live soon{" "}
         </h1> */}
       </div>

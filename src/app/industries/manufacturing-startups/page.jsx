@@ -8,9 +8,10 @@ import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
 export const metadata = {
-  title: "Manufacturing Startups – Financial Consulting – Truthink",
+  title: "Manufacturing Startup Finance & Compliance Experts",
   description:
-    "Financial advisory for manufacturing startups focusing on cost, valuation, and growth strategies.",
+    "We help manufacturing startups manage finance, compliance, and growth with industry-specific advisory and valuation support.",
+    keywords: "manufacturing startup consulting, MSME finance advisor, industrial compliance consultant, process improvement advisory, manufacturing valuation expert",
   robots: { index: true, follow: true },
   alternates: {
     canonical:

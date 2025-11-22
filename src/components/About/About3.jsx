@@ -28,11 +28,11 @@ export default function About3() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-white py-16">
+    <section className="min-h-screen flex items-center justify-center  py-16">
       <div className="w-full max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-12 text-[#36AAB8]">
+        <h2 className="text-4xl font-bold mb-12 text-black0">
           Meet The Founders
-          <div className="w-24 h-[3px] bg-[#36AAB8] mx-auto mt-3 mb-12 rounded-full"></div>
+          <div className="w-24 h-[3px] bg-black mx-auto mt-3 mb-12 rounded-full"></div>
         </h2>
 
         <div className="flex flex-wrap justify-center gap-12">
@@ -41,10 +41,10 @@ export default function About3() {
               key={index}
               onMouseEnter={() => setHovered(index)}
               onMouseLeave={() => setHovered(null)}
-              className="flex flex-col items-center transform transition-all duration-500 hover:-translate-y-3 hover:shadow-xl cursor-pointer bg-white rounded-2xl p-4"
+              className="flex flex-col items-center transform transition-all duration-500 hover:-translate-y-3 hover:shadow-xl cursor-pointer  rounded-2xl p-4"
             >
               {/* Image Section */}
-              <div className="relative w-[260px] aspect-[4/5] bg-gray-200 rounded-xl overflow-hidden shadow-md">
+              <div className="relative w-[260px] aspect-[4/5]  rounded-xl overflow-hidden shadow-md">
                 <Image
                   src={member.image}
                   alt={member.name}

@@ -47,12 +47,23 @@ export default function DesktopNavbar() {
           }`}
         >
           <Link href="/" className="cursor-pointer">
-            <Image
-              alt="Logo"
-              src="/Truthink logo0.png"
-              width={isScrolled ? 120 : 150}
-              height={isScrolled ? 80 : 100}
-            />
+            <div
+              className="cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                if (pathname !== "/") {
+                  setLoading(true);
+                  handleNavigation("/");
+                }
+              }}
+            >
+              <Image
+                alt="Logo"
+                src="/Truthink logo0.png"
+                width={isScrolled ? 120 : 150}
+                height={isScrolled ? 80 : 100}
+              />
+            </div>
           </Link>
 
           {/* Menu */}

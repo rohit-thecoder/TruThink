@@ -8,9 +8,11 @@ import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
 export const metadata = {
-  title: "Tech Startups – Financial Consulting – Truthink",
+  title: "Financial Consulting for Tech Startups | Truthink",
   description:
-    "Tailored financial consulting solutions for technology startups to scale efficiently.",
+    "Expert finance, valuation, and compliance consulting for tech, SaaS, and digital startups driving innovation and growth.",
+  keywords:
+    "tech startup consulting, SaaS finance advisor, startup valuation services, IT startup compliance, CFO services for tech startups, fintech advisory",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://truthinkconsulting.in/industries/tech-startups",

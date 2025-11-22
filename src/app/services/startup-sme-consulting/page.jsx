@@ -8,9 +8,10 @@ import SubServices from '@/components/Services/SubServices';
 import React from 'react'
 
 export const metadata = {
-  title: "Startup & SME Consulting Services – Truthink",
+  title: "Startup & SME Consulting Services | Truthink",
   description:
-    "Expert consulting for startups & SMEs in financial planning, strategy & compliance.",
+    "Comprehensive startup and SME consulting for strategy, finance, and compliance growth.",
+    keyword:"startup advisory services, SME growth consulting, business setup consulting, startup compliance advisor, financial strategy consultant",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://truthinkconsulting.in/services/startup-sme-consulting",

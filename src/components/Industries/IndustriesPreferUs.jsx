@@ -19,9 +19,9 @@ export default function IndustriesPreferUs({
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5 ">
           <div className="">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black0 leading-tight  ">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black leading-tight  ">
               Why{" "}
-              <span className="bg-[#ec3750] text-white p-2 rounded-xl inline-block -rotate-1">
+              <span className="bg-[#f6921e] text-black0 p-2 rounded-xl inline-block -rotate-1">
                 Startups
               </span>{" "}
               Prefer Us

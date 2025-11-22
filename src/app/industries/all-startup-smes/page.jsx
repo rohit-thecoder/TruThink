@@ -8,9 +8,11 @@ import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
 export const metadata = {
-  title: "All Startups & SMEs – Industries – Truthink",
+  title: "Consulting Solutions for All Startups & SMEs",
   description:
-    "Comprehensive financial consulting for all types of startups and SMEs across industries.",
+    "Comprehensive consulting for startups and SMEs across industries — finance, valuation, tax, and compliance made simple",
+  keywords:
+    "startup consulting India, SME advisory services, business valuation consultant, startup finance partner, compliance for SMEs, growth consulting firm",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://truthinkconsulting.in/industries/all-startups-smes",
@@ -71,15 +73,15 @@ const HeroData = {
 `,
   bigImage: {
     src: `https://images.pexels.com/photos/34774341/pexels-photo-34774341.jpeg`,
-    alt: `Tech Big Image`,
+    alt: `All Startup Big Image`,
   },
   smallImage: {
     src: `https://images.pexels.com/photos/8528744/pexels-photo-8528744.jpeg`,
-    alt: `Tech Small Image`,
+    alt: `All Startup Small Image`,
   },
   wideImage: {
     src: `https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg`,
-    alt: `Tech Wide Image`,
+    alt: `All Startup Wide Image`,
   },
 };
 

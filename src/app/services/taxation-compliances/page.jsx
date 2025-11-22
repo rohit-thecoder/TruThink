@@ -9,15 +9,19 @@ import SubServices from '@/components/Services/SubServices';
 import React from 'react'
 
 export const metadata = {
-  title: "Taxation & Compliances – Truthink",
+  title: "Startup Taxation & Compliance Services | Truthink",
   description:
-    "Expert guidance on taxation and regulatory compliance for startups & SMEs to ensure smooth operations.",
+    "End-to-end tax filing, ROC, and startup compliance handled by experts",
+  keywords:
+    "startup income tax filing, company compliance consultant, GST filing, ROC compliance, corporate tax planning",
   openGraph: {
     title: "Taxation & Compliances – Truthink",
     description:
       "Expert guidance on taxation and regulatory compliance for startups & SMEs.",
-      robots: { index: true, follow: true },
-  alternates: { canonical: "https://truthinkconsulting.in/services/taxation-compliances" },
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: "https://truthinkconsulting.in/services/taxation-compliances",
+    },
     url: "https://truthink.com/services/taxation-compliances",
     siteName: "Truthink",
     type: "website",

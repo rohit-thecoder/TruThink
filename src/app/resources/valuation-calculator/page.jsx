@@ -2,9 +2,11 @@ import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
 export const metadata = {
-  title: "Startup Valuation Calculator – Truthink",
+  title: "Basic Startup Valuation Calculator | Free Tool",
   description:
-    "Use our free startup valuation calculator to estimate your business worth accurately and efficiently.",
+    "Use our free calculator to estimate your startup’s valuation instantly.",
+  keywords:
+    "valuation calculator, startup valuation tool, business worth calculator, pre-money valuation, startup funding calculator",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://truthinkconsulting.in/resources/valuation-calculator",

@@ -20,7 +20,7 @@ const teamData = [
 
 export default function About2() {
   return (
-    <section className="w-full max-w-5xl mx-auto py-16 overflow-hidden">
+    <section className="w-full max-w-7xl mx-auto py-16 overflow-hidden">
       {/* Title (About2.jsx se) */}
       <h2 className="text-3xl lg:text-4xl font-bold text-center mb-10 text-gray-800">
         What makes our team different
@@ -44,13 +44,13 @@ export default function About2() {
           <SwiperSlide
             key={index}
             // Tailwind class '!' ke saath Swiper ke styles ko override karti hai
-            className="!w-[80%] sm:!w-[70%]" // <-- Width About2.jsx jaisi
+            className="!w-[90%] sm:!w-[90%]" // <-- Width About2.jsx jaisi
           >
             {/* Yeh 'isActive' prop humein Swiper se milta hai */}
             {({ isActive }) => (
               <div
                 className={`
-                  relative w-full h-80 rounded-2xl overflow-hidden
+                  relative w-full h-130 rounded-2xl overflow-hidden
                   transition-all duration-300 ease-in-out
                   ${
                     isActive

@@ -10,9 +10,10 @@ export const metadata = {
     canonical: "https://truthinkconsulting.in/resources/burn-rate-calculator",
   },
   openGraph: {
-    title: "Startup Burn Rate Calculator – Truthink",
+    title: "Startup Burn Rate Calculator | Truthink",
     description:
-      "Calculate your startup's burn rate quickly and efficiently with our free tool.",
+      "Calculate your monthly burn rate and cash runway easily.",
+      keywords:"burn rate calculator, startup runway tool, cash flow tracker, startup expenses calculator, financial planning for startups",
     url: "https://truthinkconsulting.in/resources/burn-rate-calculator",
     siteName: "Truthink",
     type: "website",

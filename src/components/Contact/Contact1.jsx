@@ -23,7 +23,7 @@ export default function Contact1() {
   return (
     <section className=" bg-white py-16 px-4">
       {/* 1. White container ki padding badha di hai (px-8 py-12 md:py-16) */}
-      <div className="max-w-6xl mx-auto bg-blue-50 rounded-3xl px-8 py-12 md:py-16 shadow-lg">
+      <div className="max-w-6xl mx-auto rounded-3xl px-8 py-12 md:py-16">
         {/* 2. Heading ko responsive bana diya hai (text-3xl sm:text-4xl) */}
         <h2 className="text-center text-3xl sm:text-4xl font-bold mb-12">
           <span className="text-orange-500">Contact</span> &{" "}

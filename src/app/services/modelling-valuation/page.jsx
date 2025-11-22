@@ -8,9 +8,10 @@ import SubServices from '@/components/Services/SubServices';
 import React from 'react'
 
 export const metadata = {
-  title: "Financial Modelling & Valuation – Truthink",
+  title: "Financial Modelling & Business Valuation, Forecasting Expert",
   description:
-    "Accurate business valuation and financial modelling for startups & SMEs to make informed decisions.",
+    "Build investor-ready models and valuations for your startup’s funding and growth.",
+    keywords :"startup valuation services, business valuation consultant, financial modelling expert, investor pitch valuation, startup funding model",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://truthinkconsulting.in/services/modelling-valuation",

@@ -8,9 +8,11 @@ import SubServices from '@/components/Services/SubServices';
 import React from 'react'
 
 export const metadata = {
-  title: "Accounts Payable & Receivable Management – Truthink",
+  title: "Accounts Payable & Receivable Outsourcing | Truthink",
   description:
-    "Efficient AP & AR management solutions for startups & SMEs to optimize cash flow.",
+    "Simplify AP & AR management for better cash flow and financial control.",
+  keywords:
+    "accounts payable outsourcing, accounts receivable management, startup accounting services, AR automation, cash flow consulting",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://truthinkconsulting.in/services/ap-ar-management",

@@ -97,9 +97,10 @@ const lato = Lato({
 
 
 export const metadata = {
-  title: "Truthink – Expert Financial Consulting for Startups & SMEs",
+  title: `Truthink Consulting, Startup & SME Financial Expert`,
   description:
-    "Truthink provides expert financial consulting, valuation, taxation, and management services for startups and SMEs. Helping businesses grow efficiently.",
+    "Truthink Consulting, Startup & SME Financial Expert",
+    keyword: "startup consulting firm, SME consulting, financial advisory for startups, business valuation experts, compliance consultants India",
   icons: {
     icon: "truthink-favicon.png",
   },
