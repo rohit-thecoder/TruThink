@@ -11,7 +11,7 @@ const SubIndustries = ({ industries, heading }) => {
         {heading}
       </h2>
       <p></p>
-      <div className="max-w-8xl mx-auto  grid grid-cols-1 md:grid-cols-4  gap-8 md:gap-6 w-full">
+      <div className="max-w-8xl mx-auto  grid grid-cols-1 md:grid-cols-2  gap-8 md:gap-6 w-full">
         {industries.map((service, index) => (
           <motion.div
             key={index}

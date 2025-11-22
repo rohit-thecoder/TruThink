@@ -19,13 +19,13 @@ const IndustriesCard = ({ title, description, href = "#" }) => {
       />
       {/* Top Section */}
       <div className="relative">
-        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-white text-start md:min-h-[100px]">
+        <h3 className="text-[32px] z-2 sm:text-4xl font-semibold text-white text-start md:min-h-[50px]">
           {title}
         </h3>
       </div>
       {/* Bottom White Section */}
 
-      <p className="relative z-2 self-start text-[18px] text-slate-100 leading-relaxed md:min-h-[200px]  text-start">
+      <p className="relative z-2 self-start text-[18px] text-slate-100 leading-relaxed md:min-h-[80px]  text-start">
         {description}
       </p>
       {/* ✅ Navigation Button */}
