@@ -65,7 +65,9 @@ export default function MobileNavbar() {
       {/* Navbar always on top */}
       <nav className="md:hidden fixed top-0 left-0 w-full z-50">
         <div className="flex justify-between items-center px-6 py-3 bg-white border-b border-gray-200">
+          <Link href="/" >
           <Image alt="Logo" src="/Truthink logo0.png" width={130} height={80} />
+          </Link>
           <button
             onClick={() => setOpen(!open)}
             className="text-3xl text-[#003B70] focus:outline-none"
