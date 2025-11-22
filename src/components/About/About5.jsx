@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function About5() {
   return (
     <section className=" py-20">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start gap-12">
+      <div className="max-w-7xl mx-auto  md:pl-20 flex flex-col md:flex-row items-start gap-12 md:gap-20">
         {/* Left Side - Text */}
         <div className="md:w-1/2 text-gray-800">
           <h2 className="text-[30px] md:text-[40px] font-medium text-black0 mb-6 leading-snug">
@@ -13,7 +13,7 @@ export default function About5() {
             confident.
           </h2>
 
-          <p className="text-lg text-gray-800 mb-3 ">
+          <p className="text-lg text-gray-800 mb-5 ">
             We started with a simple belief — that finance shouldn’t feel
             complicated or intimidating. It should be a partner in your growth
             story. Over time, we’ve built a team that loves turning messy
@@ -21,7 +21,7 @@ export default function About5() {
             into direction.
           </p>
 
-          <p className="text-lg text-gray-800 mb-3 ">
+          <p className="text-lg text-gray-800 mb-5 ">
             We work with founders, business owners, and finance teams who want
             more than just reports — they want meaning behind the numbers. We
             bring structure, discipline, and honesty to every engagement,
@@ -40,7 +40,7 @@ export default function About5() {
         <div className="md:w-1/2 relative">
           <div className="rounded-2xl overflow-hidden">
             <Image
-              src="https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg"
+              src="https://images.pexels.com/photos/8962470/pexels-photo-8962470.jpeg"
               alt="Two persons standing near a window overlooking a cityscape"
               width={500}
               height={400}

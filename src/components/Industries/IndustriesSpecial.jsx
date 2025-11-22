@@ -29,10 +29,10 @@ const IndustriesSpecial = ({ info }) => {
             {info?.title}
           </h2>
           <div className="flex flex-col gap-4"> 
-            <p className="text-[18px] z-2  text-center md:text-start">
+            <p className="text-[18px] z-2  text-center text-gray-800 md:text-start">
               {info?.description}
             </p>
-            <p className="text-[18px] z-2  text-center md:text-start">
+            <p className="text-[18px] z-2 text-gray-800 text-center md:text-start">
               {info?.description2}
             </p>
           </div>
