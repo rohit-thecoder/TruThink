@@ -16,6 +16,7 @@ export default function Contact0() {
           objectFit="cover"
           className="opacity-100"
         />
+        <div className="md:hidden absolute inset-0 bg-black/50"></div>
 
         {/* 3. "Cutout" shape - YEH AB TEXT KA PARENT HAI */}
         {/* Iska background (bg-white) aapke page ke background se match hona chahiye. */}

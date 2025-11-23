@@ -115,9 +115,9 @@ export default function DesktopNavbar() {
                         onMouseEnter={() => setOpenDropdown(i)}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
-                        <h2 className="text-[#C9E5FF] text-[clamp(1rem,2vw,2rem)] mb-4 uppercase">
+                        {/* <h2 className="text-[#C9E5FF] text-[clamp(1rem,2vw,2rem)] mb-4 uppercase">
                           {menu.title}
-                        </h2>
+                        </h2> */}
                         {menu.dropdown.map((item, j) => (
                           <Link
                             key={j}
@@ -138,7 +138,7 @@ export default function DesktopNavbar() {
                                 <h4 className="text-[#C9E5FF] text-[clamp(1.1rem,2vw,1.4rem)]">
                                   {item.title}
                                 </h4>
-                                <p className="text-white text-[clamp(1rem,2vw,1.1rem)]">
+                                <p className="text-white text-[clamp(0.8rem,2vw,1rem)]">
                                   {item.description}
                                 </p>
                               </div>

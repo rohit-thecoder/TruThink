@@ -6,7 +6,7 @@ import { IoMail } from "react-icons/io5";
 const Founders = () => {
   return (
     <section className="py-10 md:py-20 px-5 md:px-20">
-      <div className="max-w-6xl mx-auto px-6 py-16 space-y-20">
+      <div className="max-w-6xl mx-auto px-5 py-16 space-y-20">
         <h2 className="text-4xl font-bold mb-12 text-black0 text-center">
           Meet The Founders
           <div className="w-24 h-[3px] bg-black mx-auto mt-3 mb-12 rounded-full"></div>
@@ -41,7 +41,7 @@ const Founders = () => {
           </div>
 
           {/* Right block */}
-          <p className="leading-relaxed text-gray-700 text-[18px]">
+          <p className="leading-relaxed text-gray-800 text-[18px]">
             A finance professional with 6+ years of experience and a sharp eye
             for both detail and direction, Venkatesh brings a rare mix of tax
             expertise, operational leadership, and startup experience to
@@ -94,7 +94,7 @@ const Founders = () => {
           </div>
 
           {/* Right block */}
-          <p className="leading-relaxed text-gray-700 text-[18px]">
+          <p className="leading-relaxed text-gray-800 text-[18px]">
             Chartered Accountant by profession and a problem-solver by instinct
             with 4+ years of experience, Kanhaiya brings a rare blend of
             big-firm experience and startup agility to Truthink. He began his

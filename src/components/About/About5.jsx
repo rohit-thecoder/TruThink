@@ -8,7 +8,7 @@ export default function About5() {
         {/* Left Side - Text */}
         <div className="md:w-1/2 text-gray-800">
           <h2 className="text-[30px] md:text-[40px] font-medium text-black0 mb-6 leading-snug">
-            At <span className="text-orange-400">TRUTHINK</span>, we help
+            At <span className="text-black0 p-2 rotate-359 inline-block rounded-lg bg-amber-400">TRUTHINK</span> , we help
             businesses think smarter, scale faster, and stay financially
             confident.
           </h2>

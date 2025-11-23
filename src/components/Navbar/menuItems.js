@@ -13,7 +13,7 @@ export const menuItems = [
         href: "/services/startup-sme-consulting",
       },
       {
-        title: "Modelling and Valuation",
+        title: "Modelling & Valuation",
         description:
           "Creating financial models and valuing businesses for investment and growth.",
         href: "/services/modelling-valuation",
@@ -27,7 +27,7 @@ export const menuItems = [
       {
         title: "AP & AR Management",
         description:
-          "Managing taxes and ensuring regulatory compliance for businesses efficiently.",
+          "We make sure your money moves right - who you pay, who pays you, and when.",
         href: "/services/ap-ar-management",
       },
     ],

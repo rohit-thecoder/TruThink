@@ -152,7 +152,7 @@ export default function Contact2() {
                 className={`w-full text-white text-xl font-semibold py-3 rounded-lg transition-all duration-300 cursor-pointer ${
                   loading
                     ? "bg-gray-400 "
-                    : "bg-gray-400 hover:shadow-xl hover:bg-blue-600"
+                    : "bg-gray-400 hover:shadow-xl hover:bg-orange-600"
                 }`}
               >
                 {loading ? "Sending..." : "Submit"}

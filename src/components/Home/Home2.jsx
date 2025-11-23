@@ -18,7 +18,7 @@ export default function Home2() {
       <section
         className=" relative h-full min-h-screen overflow-hidden px-4 sm:px-6 lg:px-8 text-center pt-10 md:pt-30"
         style={{
-          background: "linear-gradient(to bottom)",
+          background: "linear-gradient(to bottom, #ffffff, #ffbc80 )",
         }}
       >
         {/* --- TEXT CONTENT (completely outside image div) --- */}
@@ -85,7 +85,7 @@ export default function Home2() {
           </div>
         </div>
       </section>
-      {/* <hr className="bg-gray-300 border-0 border-gray-500 h-px" /> */}
+      <hr className="bg-gray-300 border-5 border-gray-300 h-px" />
     </>
   );
 }

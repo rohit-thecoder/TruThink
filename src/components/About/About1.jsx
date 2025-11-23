@@ -17,6 +17,8 @@ export default function About1() {
           className="opacity-100"
         />
 
+        <div className="md:hidden absolute inset-0 bg-black/90"></div>
+
         {/* 3. "Cutout" shape - YEH AB TEXT KA PARENT HAI */}
         {/* Iska background (bg-white) aapke page ke background se match hona chahiye. */}
         <div
