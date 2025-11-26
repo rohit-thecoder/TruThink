@@ -122,7 +122,7 @@ const specialData = {
   description: `Manufacturing has more moving parts than most industries — raw materials, WIP, machinery, labor cycles, vendor credit terms, compliance, and long payment cycles. Traditional bookkeeping can’t capture this complexity.`,
   description2: `Specialized manufacturing finance ensures you always know your true production cost, actual margins, working capital needs, and cash conversion cycle. It helps you manage inventory efficiently, improve vendor-payable strategies, stay compliant on GST and statutory filings, and plan capacity or expansion with realistic financial projections. The goal is simple: turn your operations into a predictable, scalable engine.
 `,
-  src: `https://images.pexels.com/photos/4483609/pexels-photo-4483609.jpeg`,
+  src: `https://images.pexels.com/photos/3791130/pexels-photo-3791130.jpeg`,
 };
 
 

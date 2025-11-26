@@ -115,7 +115,7 @@ const specialData = {
   description: `Most small businesses operate on instinct — but growth requires visibility. Without structured accounting, cash flow becomes unpredictable, profitability gets unclear, and taxes turn stressful.`,
   description2: `A strong financial foundation gives you clarity across revenue, expenses, margins, cash flow, compliance, and growth opportunities. It ensures you avoid leaks, plan better, stay compliant, and make decisions with real numbers instead of assumptions. No complexity — just clean, practical finance that supports your business at every stage.
 `,
-  src: `https://images.pexels.com/photos/3758105/pexels-photo-3758105.jpeg`,
+  src: `https://images.pexels.com/photos/8441811/pexels-photo-8441811.jpeg`,
 };
 
 
