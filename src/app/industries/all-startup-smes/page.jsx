@@ -126,8 +126,9 @@ export default function page() {
 
       <div>
         <IndustriesHero info={HeroData} />
-        <IndustriesSpecial info={specialData} />
         <SubIndustries industries={IndustriesData} heading="Our Services" />
+
+        <IndustriesSpecial info={specialData} />
         <IndustriesPreferUs />
         <IndustriesOffer heading="Do you run any Tech Startup" />
         <IndustriesFaq info={faqs} />

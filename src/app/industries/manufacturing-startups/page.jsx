@@ -132,8 +132,8 @@ export default function page() {
       <JsonLd data={jsonLd} />
 
       <IndustriesHero info={HeroData} />
-      <IndustriesSpecial info={specialData} />
       <SubIndustries industries={IndustriesData} heading="Our Services" />
+      <IndustriesSpecial info={specialData} />
       <IndustriesPreferUs />
       <IndustriesOffer heading="Do you run a manufacturing startup?" />
       <IndustriesFaq info={faqs} />

@@ -127,12 +127,12 @@ export default function page() {
     <div>
       <JsonLd data={jsonLd} />
 
-      <IndustriesHero info={HeroData}/>
-      <IndustriesSpecial info={specialData}/>
-      <SubIndustries industries={IndustriesData} heading="Our Services"/>
-      <IndustriesPreferUs/>
-      <IndustriesOffer heading="Do you run any Tech Startup"/>
-      <IndustriesFaq info={faqs}/>
+      <IndustriesHero info={HeroData} />
+      <SubIndustries industries={IndustriesData} heading="Our Services" />
+      <IndustriesSpecial info={specialData} />
+      <IndustriesPreferUs />
+      <IndustriesOffer heading="Do you run any Tech Startup" />
+      <IndustriesFaq info={faqs} />
 
       {/* <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
         Our Tech startup page is currently under construction. We will be live
