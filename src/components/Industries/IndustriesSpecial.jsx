@@ -8,11 +8,11 @@ const IndustriesSpecial = ({ info }) => {
   return (
     
     <section className="py-16 md:py-32">
-      <h2 className="text-black z-2 text-[33px] md:text-[48px] font-medium text-start md:text-center pb-0 px-5 md:px-50 ">
+      <h2 className="text-black z-2 text-[33px] md:text-[48px] font-medium text-start md:text-center pb-5 md:pb-0  px-5 md:px-50 ">
         {info?.title}
       </h2>
       <section className="  flex justify-center px-5  md:pl-5   xl:mr-[clamp(0px,5vw,160px)]  mt-[clamp(0.5rem,5vw,1rem)]">
-        <div className="w-full max-w-7xl   md:h-[60vh] flex flex-col gap-10 md:gap-20 md:flex-row  items-stretch justify-center  md:items-start    rounded-2xl ">
+        <div className="w-full max-w-7xl   md:h-[60vh] flex flex-col gap-10 md:gap-10 md:flex-row  items-stretch justify-center  md:items-start    rounded-2xl ">
           {/* Image  */}
           <div className="relative flex  w-full h-full  flex-2 rounded-2xl justify-end items-center">
             <Image
