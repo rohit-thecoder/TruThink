@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function About5() {
   return (
     <section className="px-8 py-20">
-      <div className="max-w-7xl mx-auto  md:pl-20 flex flex-col md:flex-row items-start gap-12 md:gap-20">
+      <div className="max-w-7xl mx-auto   flex flex-col md:flex-row items-start gap-12 md:gap-20 h-[90vh]">
         {/* Left Side - Text */}
         <div className="md:w-1/2 text-gray-800">
           <h2 className="text-[30px] md:text-[40px] font-medium text-black0 mb-6 leading-snug">
@@ -37,14 +37,13 @@ export default function About5() {
         </div>
 
         {/* Right Side - Image */}
-        <div className="md:w-1/2 relative">
+        <div className="md:w-1/2 relative h-full">
           <div className="rounded-2xl overflow-hidden">
             <Image
               src="https://images.pexels.com/photos/8962470/pexels-photo-8962470.jpeg"
               alt="Two persons standing near a window overlooking a cityscape"
-              width={500}
-              height={400}
-              className="object-cover w-full h-full"
+              fill
+              className="object-cover w-full h-full rounded-2xl"
             />
           </div>
 

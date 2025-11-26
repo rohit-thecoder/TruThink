@@ -15,7 +15,7 @@ export default function IndustriesPreferUs({
 }) {
   return (
     <section className=" py-20 md:py-36 px-5 my-20 sm:px-8 lg:px-5 bg-[#5ea0ef]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-14 gap-5 md:gap-26 items-center">
+      <div className="mx-auto max-w-6xl justify-center grid grid-cols-1 lg:grid-cols-14 gap-5 md:gap-26 items-center">
         {/* --- LEFT TEXT COLUMN --- */}
         <div className="lg:col-span-5 ">
           <div className="">
