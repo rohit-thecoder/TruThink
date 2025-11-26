@@ -31,7 +31,7 @@ const ServiceCard = ({ title, description, href="#" }) => {
       </p>
       {/* ✅ Navigation Button */}
       <Link href="/contact" className="block mt-auto">
-        <button className="group relative z-2 cursor-pointer  mt-auto text-white font-semibold uppercase  rounded-lg transition-all duration-300 flex items-center gap-2 ">
+        <button className="group relative z-2 cursor-pointer  mt-auto text-white font-semibold uppercase  rounded-lg transition-all duration-300 flex items-start text-start gap-2 ">
           {title}
           <FaArrowRightLong className="transition-transform duration-800 text-white ease-in-out group-hover:translate-x-9 " />
         </button>
