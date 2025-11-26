@@ -19,9 +19,9 @@ const IndustriesHero = ({ info }) => {
  opacity-30 md:opacity-50"
       />
 
-      <div className=" w-full flex-2 max-w-7xl   flex flex-col gap-0 md:gap-20 md:flex-row  items-center justify-center  md:items-start    rounded-2xl ">
+      <div className=" w-full flex-2 max-w-7xl h-fit  flex flex-col  md:gap-20 md:flex-row  items-center justify-center  md:items-start    rounded-2xl ">
         {/* Text Content  */}
-        <div className="flex flex-col text-black0 items-center md:items-start w-full flex-3 gap-[clamp(1.5rem,2vw,3.5rem)] py-[clamp(2rem,5vw,10rem)] px-[clamp(1rem,2vw,3rem)]">
+        <div className="flex  flex-col text-black0 items-center md:items-start w-full flex-3 gap-[clamp(1.5rem,2vw,3.5rem)] py-4 md:py-[clamp(2rem,5vw,10rem)] px-[clamp(1rem,2vw,3rem)]">
           <h1 className="text-black0 z-2 text-[36px] md:text-[45px] font-medium text-start">
             {info?.title}
           </h1>
