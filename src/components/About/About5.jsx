@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function About5() {
   return (
     <section className="px-8 py-20">
-      <div className="max-w-7xl mx-auto   flex flex-col md:flex-row items-start gap-12 md:gap-20 h-[90vh]">
+      <div className="max-w-7xl mx-auto   flex flex-col md:flex-row items-start gap-12 md:gap-20 md:h-[90vh]">
         {/* Left Side - Text */}
         <div className="md:w-1/2 text-gray-800">
           <h2 className="text-[30px] md:text-[40px] font-medium text-black0 mb-6 leading-snug">
