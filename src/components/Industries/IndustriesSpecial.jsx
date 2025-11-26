@@ -28,7 +28,7 @@ const IndustriesSpecial = ({ info }) => {
           </div>
 
           {/* Text Content  */}
-          <div className="flex  flex-col text-black0 items-center md:items-start justify-center w-full h-full flex-1 gap-[clamp(1.5rem,2vw,3.5rem)] py-0 md:px-[clamp(1rem,2vw,3rem)] ml-10">
+          <div className="flex  flex-col text-black0 items-center md:items-start justify-center w-full h-full flex-1 gap-[clamp(1.5rem,2vw,3.5rem)] py-0 md:px-[clamp(1rem,2vw,3rem)] md:ml-10">
             {/* <h2 className="text-black0 z-2 text-[33px] md:text-[40px] font-medium text-start">
               {info?.title}
             </h2> */}
