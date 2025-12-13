@@ -4,6 +4,7 @@ import Home3 from '@/components/Home/Home3';
 import Home4 from '@/components/Home/Home4';
 import Home5 from '@/components/Home/Home5';
 import Home6 from '@/components/Home/Home6';
+import HomeDashboard from '@/components/Home/HomeDashboard';
 import HomeSlider from '@/components/Home/HomeSlider';
 import React from 'react'
 
@@ -35,12 +36,14 @@ export default function page() {
   return (
     <div>
       {/* <Service1/> */}
-{/* <Home6/> */}
-      <Home2/>
-      <Home3/>
-      <Home4/>
-      <Home5/>
-      
+      {/* <Home6/> */}
+
+      <Home2 />
+      <HomeDashboard />
+      <Home3 />
+      <Home4 />
+      <Home5 />
+
       {/* <h1 className='py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl '>Our homepage is currently under construction. We will be live soon </h1> */}
     </div>
   );

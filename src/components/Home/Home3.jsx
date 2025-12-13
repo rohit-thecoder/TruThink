@@ -47,28 +47,30 @@ const cardData = [
 export default function Home3() {
   const swiperRef =useRef(null);
   return (
-    <section className=" md:pt-60 py-30 w-full overflow-hidden">
+    <section className="relative md:pt-0 py-20 lg:py-30 w-full overflow-hidden">
       {/* --- Top Text Content (Aapke text color changes rakhe gaye hain) --- */}
-      <div className="max-w-4xl mx-auto text-center mb-16 px-4">
-        <h2 className="text-4xl md:text-5xl text-gray-800 font-semibold leading-tnug ">
-          Your Finance
+      <div className="max-w-5xl mx-auto text-center mb-16 px-4">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl text-center font-bold leading-tight">
+          Your Finanace Department as a Service
         </h2>
-        <h3 className="text-4xl md:text-5xl font-semibold text-gray-800 leading-snug mt-2">
-          Department as a Service
-        </h3>
-
-        <p className="mt-6 max-w-3xl mx-auto text-lg">
+        {/* <p className=" text-md sm:text-xl text-center text-gray-500 pt-4 leading-6 px-10 sm:px-20 md:px-30 lg:px-40">
           We deeply understand the needs and nuances of growing startups and
           small businesses. Since 2016, we've provided hundreds of growing
           companies with a dedicated team of experienced startup accountants and
           CFOs who serve as their complete or supporting in-house accounting &
           finance department. We are your one-stop-shop for all things
           outsourced accounting, finance and tax.
-        </p>
+        </p> */}
       </div>
 
       {/* --- Swiper Carousel --- */}
-      <div>
+      <div className="relative">
+        {/* LEFT WHITE FADE */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-[200px] lg:bg-gradient-to-r from-white to-transparent z-20"></div>
+
+        {/* RIGHT WHITE FADE */}
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-[200px] lg:bg-gradient-to-l from-white to-transparent z-20"></div>
+
         <Swiper
           modules={[Autoplay, Pagination]}
           onSwiper={(swiper) => (
@@ -83,7 +85,7 @@ export default function Home3() {
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
-          className="mySwiper w-full"
+          className="mySwiper w-full relative"
         >
           {/* 2. Ab yeh double array (10 slides) par map ho raha hai */}
           {cardData.map((card) => (
@@ -114,7 +116,7 @@ export default function Home3() {
 
         {/* --- Bottom Button --- */}
         <div className="text-center mt-20">
-          <button className="bg-[#7BBEF8] text-white text-base font-medium px-8 py-3 rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300">
+          <button className="bg-[#7BBEF8] cursor-pointer text-white text-base font-medium px-8 py-3 rounded-full shadow-lg hover:bg-blue-500 transition-colors duration-300">
             Get Started
           </button>
         </div>

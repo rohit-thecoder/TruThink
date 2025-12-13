@@ -3,24 +3,19 @@ import Image from "next/image";
 
 export default function Home2() {
   return (
-    <>
+    <section className="relative min-h-screen bg-cover bg-center overflow-hidden">
       <Image
-        src="/pngtree_13534322.png"
+        src="/pngwing.com.png"
         height={2000}
         width={2000}
         alt="Grid overlay"
-        className="absolute top-0 left-0 w-full md:w-1/2 h-2/3 md:h-full object-cover md:object-contain  
-            md:[mask-image:linear-gradient(to_bottom,black_40%,transparent),linear-gradient(to_right,black_30%,transparent)] 
-            [mask-composite:intersect] [-webkit-mask-composite:destination-in]
-     opacity-30 md:opacity-50"
+        className="absolute top-0  w-full md:w-full md:h-full object-cover md:object-contain  
+            opacity-10 -z-10 scale-120 o "
       />
 
-      <section
-        className=" relative h-full min-h-screen overflow-hidden px-4 sm:px-6 lg:px-8 text-center pt-10 md:pt-30"
-        style={{
-          background: "linear-gradient(to bottom, #ffffff, #ffbc80 )",
-        }}
-      >
+      <div className="absolute bottom-0 left-0 w-full h-[20px] md:h-[100px] lg:h-[200px] bg-gradient-to-b from-transparent to-white z-[5] pointer-events-none"></div>
+
+      <section className=" relative h-full min-h-screen overflow-hidden px-4 sm:px-6 lg:px-8 text-center pt-10 md:pt-30">
         {/* --- TEXT CONTENT (completely outside image div) --- */}
         <div className="max-w-4xl mx-auto my-16 relative z-10">
           {/* Top Tag */}
@@ -42,10 +37,10 @@ export default function Home2() {
 
           <h1
             className="
-    text-[40px] sm:text-5xl md:text-[64px]
-    font-medium
-    text-[#003B70]
-    leading-[1.2] 
+    text-[40px] sm:text-5xl md:text-[95px]
+    font-extrabold
+    text-[#1f1f1f]
+    leading-[1.2] tracking-wide 
     mb-6 relative z-2
   "
           >
@@ -54,7 +49,7 @@ export default function Home2() {
           </h1>
 
           {/* Description */}
-          <p className="text-[#003B70] text-[18px] md:text-lg max-w-2xl mx-auto p-3 leading-relaxed mb-10">
+          <p className="text-[#1f1f1f] text-[18px] md:text-[20px] max-w-2xl mx-auto p-3 leading-relaxed mb-10">
             Clean Books. Strategic Guidance. Industry Specific Expertise. Born
             out of a VC fund, we are the startup accounting firm most founders
             &amp; operators rely on for quality bookkeeping, fractional CFO
@@ -71,21 +66,20 @@ export default function Home2() {
         <div className="mt-10 inset-x-0 bottom-0 max-w-7xl mx-auto z-0">
           <div
             className="relative w-full h-[200px] md:h-[500px] lg:h-[600px]
-                     border-t-[10px] border-l-[10px] border-r-[10px] border-gray-300 
+                    
                      rounded-t-3xl overflow-hidden"
           >
-            <video
-              src="https://www.pexels.com/download/video/8348912/"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            ></video>
+            <div className="absolute bottom-0 left-0 w-full h-[80px] md:h-[100px] lg:h-[200px] bg-gradient-to-b from-transparent to-white"></div>
+
+            <img
+              src="https://lets-viz.com/wp-content/uploads/2023/04/financial-dashboard.jpg"
+              alt="Background Image"
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
       </section>
-      <hr className="bg-gray-300 border-5 border-gray-300 h-px" />
-    </>
+      {/* <hr className="bg-gray-300 h-px" /> */}
+    </section>
   );
 }
