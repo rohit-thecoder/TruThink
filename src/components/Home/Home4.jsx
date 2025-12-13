@@ -25,7 +25,7 @@ const features = [
 
 export default function Home4() {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-15 md:py-30 px-8 sm:px-20 lg:px-50">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-5xl md:text-6xl text-center font-bold leading-tight">
@@ -92,7 +92,7 @@ export default function Home4() {
 
         {/* 3️⃣ CTA ROW */}
         <div className="mt-20 flex justify-center">
-          <button className="px-10 py-4 text-lg font-semibold rounded-full bg-[#F6921E] text-white hover:bg-[#e58218] transition shadow-lg">
+          <button className="cursor-pointer px-10 py-4 text-lg font-semibold rounded-full bg-[#F6921E] text-white hover:bg-[#e58218] transition shadow-lg">
             Get a Proposal
           </button>
         </div>
