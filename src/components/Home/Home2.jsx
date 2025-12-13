@@ -10,8 +10,9 @@ export default function Home2() {
         width={2000}
         alt="Grid overlay"
         className="absolute top-0  w-full md:w-full md:h-full object-cover md:object-contain  
-            opacity-10 -z-10 scale-120 o "
+            opacity-10 -z-10 scale-400 md:scale-120  "
       />
+      
 
       <div className="absolute bottom-0 left-0 w-full h-[20px] md:h-[100px] lg:h-[200px] bg-gradient-to-b from-transparent to-white z-[5] pointer-events-none"></div>
 
