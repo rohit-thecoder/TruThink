@@ -25,7 +25,7 @@ const features = [
 
 export default function Home4() {
   return (
-    <section className="py-15 md:py-30 px-8 sm:px-20 lg:px-50">
+    <section className="py-15 md:py-30 px-4 sm:px-20 lg:px-50">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-5xl md:text-6xl text-center font-bold leading-tight">
