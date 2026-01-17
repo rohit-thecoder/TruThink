@@ -1,4 +1,6 @@
 import JsonLd from '@/components/JsonLd';
+import BurnRateCalculator from '@/components/Resources/BurnRateCalculator';
+import ResourcesFaq from '@/components/Resources/ResourcesFaq';
 import React from 'react'
 
 export const metadata = {
@@ -39,16 +41,42 @@ export const jsonLd = {
     url: "https://truthinkconsulting.in",
   },
 };
+const faqs = [
+  {
+    question: "What is a good burn rate for a startup?",
+    answer:
+      "A good burn rate depends on your startup’s stage and funding status. Ideally, a startup should maintain 12–18 months of runway to operate comfortably without urgent fundraising pressure.",
+  },
+  {
+    question: "What does a negative burn rate mean?",
+    answer:
+      "A negative burn rate means your startup is cash-flow positive. You are generating more cash through revenue than you are spending each month.",
+  },
+  {
+    question: "How often should I calculate my burn rate?",
+    answer:
+      "At minimum, you should calculate burn rate monthly. Regular tracking helps you identify trends early and adjust spending, hiring, or fundraising plans before problems arise.",
+  },
+  {
+    question: "Does burn rate include non-cash expenses like depreciation?",
+    answer:
+      "No. Burn rate focuses strictly on cash movement. Non-cash accounting items such as depreciation or amortization are excluded from burn rate calculations.",
+  },
+  {
+    question: "How can Truthink help reduce my burn rate?",
+    answer:
+      "We analyse your cost structure, identify inefficiencies, automate financial reporting, and design sustainable strategies that help extend runway and improve long-term financial discipline.",
+  },
+];
+
 
 export default function page() {
   return (
     <div>
       <JsonLd data={jsonLd} />
 
-      <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
-        Our Burn rate calculator page is currently under construction. We will be live
-        soon{" "}
-      </h1>
+      <BurnRateCalculator />
+      <ResourcesFaq info={faqs} />
     </div>
   );
 }

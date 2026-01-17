@@ -24,18 +24,40 @@ const ServiceCard = ({ title, description, href="#" }) => {
           {title}
         </h3>
       </div>
-      {/* Bottom White Section */}
+      {/* Middle Section */}
 
       <p className="relative z-2 self-start text-[18px] text-slate-100 leading-relaxed md:min-h-[200px]  text-start">
         {description}
       </p>
       {/* ✅ Navigation Button */}
-      <Link href="/contact" className="block mt-auto">
-        <button className="group relative z-2 cursor-pointer  mt-auto text-white font-semibold uppercase  rounded-lg transition-all duration-300 flex items-start text-start gap-2 ">
+      {/* <Link href="/contact" className="block mt-auto">
+        <button className="group relative z-2 cursor-pointer  mt-auto justify-center  text-white font-semibold uppercase  rounded-lg transition-all duration-300 flex   gap-2 ">
           {title}
-          <FaArrowRightLong className="transition-transform duration-800 text-white ease-in-out group-hover:translate-x-9 " />
+          <FaArrowRightLong className="transition-transform duration-800 text-white ease-in-out group-hover:translate-x-9 self-center" />
         </button>
       </Link>
+       */}
+      <Link href="/contact" className="block mt-auto">
+  <button
+    type="button"
+    className="group relative z-2 mt-auto cursor-pointer
+      flex items-center gap-2 
+      text-white font-semibold uppercase 
+      rounded-lg transition-all duration-300"
+  >
+    <span className="leading-none">
+      {title}
+    </span>
+
+    <FaArrowRightLong
+      className="text-white 
+        transition-transform duration-300 ease-in-out 
+        group-hover:translate-x-3"
+      aria-hidden="true"
+    />
+  </button>
+</Link>
+
     </div>
   );
 };
