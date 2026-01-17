@@ -37,7 +37,7 @@ export default function IndustriesFaq({info= []}) {
                 {/* Question / Clickable Toggle */}
                 <button
                   onClick={() => handleToggle(index)}
-                  className="flex justify-between items-center w-full text-left"
+                  className="cursor-pointer flex justify-between items-center w-full text-left"
                 >
                   <h3 className="text-lg md:text-xl font-medium text-gray-900">
                     {faq.question}
