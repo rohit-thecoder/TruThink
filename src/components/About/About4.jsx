@@ -63,73 +63,76 @@
 
 "use client";
 import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TrendingUp, ShieldCheck, PieChart, Target } from "lucide-react"; // Finance Icons
+import { TrendingUp, ShieldCheck, Target } from "lucide-react";
 
-// Register GSAP Plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About4() {
   const containerRef = useRef(null);
+  const pathname = usePathname();
 
   useEffect(() => {
+
+    // 🔒 INITIAL STATE RESET (IMPORTANT)
+    gsap.set(".about-heading-group", { opacity: 0, y: 50 });
+    gsap.set(".feature-card", { opacity: 0, y: 30 });
+    gsap.set(".content-text", { opacity: 0, y: 30 });
+
     const ctx = gsap.context(() => {
-      
+
       // 1. Heading Reveal
-      gsap.fromTo(
-        ".about-heading-group",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".about-heading-group",
-            start: "top 85%",
-          },
-        }
-      );
+      gsap.to(".about-heading-group", {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".about-heading-group",
+          start: "top 85%",
+        },
+      });
 
-      // 2. Icon Cards Stagger (Right Column)
-      gsap.fromTo(
-        ".feature-card",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.7)", // Thoda pop effect
-          scrollTrigger: {
-            trigger: ".features-grid",
-            start: "top 80%",
-          },
-        }
-      );
+      // 2. Feature Cards
+      gsap.to(".feature-card", {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".features-grid",
+          start: "top 80%",
+        },
+      });
 
-      // 3. Text Paragraphs Fade Up
-      gsap.fromTo(
-        ".content-text",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".right-column",
-            start: "top 75%",
-          },
-        }
-      );
+      // 3. Text Blocks
+      gsap.to(".content-text", {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".right-column",
+          start: "top 75%",
+        },
+      });
 
     }, containerRef);
 
-    return () => ctx.revert();
-  }, []);
+    // 🧠 LET DOM + LAYOUT SETTLE
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh(true);
+    });
+
+    return () => {
+      ctx.revert();
+    };
+
+  }, [pathname]);
 
   return (
     <section ref={containerRef} className="relative py-24 px-6 md:px-20 bg-white overflow-hidden">
