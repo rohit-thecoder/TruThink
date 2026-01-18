@@ -263,7 +263,7 @@ const Founders = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-10 md:py-24 px-5 md:px-20 bg-gray-50/50 overflow-hidden">
+    <section ref={containerRef} className="py-10 md:py-24 px-5 md:px-20  overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-24">
         
         {/* --- HEADER --- */}
