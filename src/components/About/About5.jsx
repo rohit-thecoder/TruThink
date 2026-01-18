@@ -55,12 +55,11 @@
 //   );
 // }
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register GSAP Plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About5() {
@@ -68,51 +67,55 @@ export default function About5() {
   const imageRef = useRef(null);
   const textContainerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Image Reveal Animation (Cinematic Clip-path)
-      gsap.fromTo(
-        imageRef.current,
-        {
-          clipPath: "inset(100% 0 0 0)", // Hidden from bottom
-          scale: 1.1, // Slightly zoomed in initially
-        },
-        {
-          clipPath: "inset(0% 0 0 0)", // Fully visible
-          scale: 1, // Normal scale
-          duration: 1.5,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%", // Starts when section is 70% in view
-          },
-        }
-      );
 
-      // 2. Text Content Stagger Animation
-      // Targeting specific children via class '.anim-text'
-      const textElements = textContainerRef.current.querySelectorAll(".anim-text");
-      
-      gsap.fromTo(
-        textElements,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15, // Delay between each paragraph
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 65%",
-          },
-        }
-      );
+      // --- IMAGE REVEAL ---
+      gsap.from(imageRef.current, {
+        clipPath: "inset(100% 0 0 0)",
+        scale: 1.1,
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 70%",
+          once: true,
+        },
+      });
+
+      // --- TEXT STAGGER ---
+      const textElements =
+        textContainerRef.current.querySelectorAll(".anim-text");
+
+      gsap.from(textElements, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 65%",
+          once: true,
+        },
+      });
+
     }, containerRef);
+
+    // --- IMAGE LOAD SAFETY FIX ---
+    const img = imageRef.current.querySelector("img");
+
+    if (img && !img.complete) {
+      img.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+      });
+    }
+
+    requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => ctx.revert();
   }, []);
-
+  
   return (
     <section
       ref={containerRef}

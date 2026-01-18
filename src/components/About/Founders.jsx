@@ -178,71 +178,69 @@
 // export default Founders
 
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { BsLinkedin } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register Plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Founders = () => {
   const containerRef = useRef(null);
-  
-  // Refs for specific elements to animate
   const headerRef = useRef(null);
   const founder1Ref = useRef(null);
   const founder2Ref = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Header Animation (Fade Up)
-      gsap.fromTo(
-        headerRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
+
+      // --- HEADER ---
+      gsap.from(headerRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      const animateFounder = (ref) => {
+        const card = ref.querySelector(".founder-card");
+        const bio = ref.querySelector(".founder-bio");
+        const img = ref.querySelector("img");
+
+        // Card
+        gsap.from(card, {
+          x: -50,
+          opacity: 0,
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-
-      // Function to animate each founder row
-      const animateFounder = (ref, isReverse = false) => {
-        const timeline = gsap.timeline({
-          scrollTrigger: {
             trigger: ref,
-            start: "top 80%", // Jab element screen ke 80% pe aaye
-            end: "bottom top",
-            toggleActions: "play none none reverse",
+            start: "top 80%",
+            once: true,
           },
         });
 
-        const imageSide = ref.querySelector(".founder-card");
-        const textSide = ref.querySelector(".founder-bio");
+        // Bio
+        gsap.from(bio, {
+          x: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref,
+            start: "top 80%",
+            once: true,
+          },
+        });
 
-        // Profile Card Slide In
-        timeline.fromTo(
-          imageSide,
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
-        )
-        // Bio Text Slide In (Staggered)
-        .fromTo(
-          textSide,
-          { x: 50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
-          "-=0.6" // Start before previous ends
-        );
-
-        // Parallax Effect on Image (Crawling)
-        gsap.to(ref.querySelector("img"), {
+        // Image Parallax
+        gsap.to(img, {
           yPercent: 15,
           ease: "none",
           scrollTrigger: {
@@ -258,6 +256,25 @@ const Founders = () => {
       animateFounder(founder2Ref.current);
 
     }, containerRef);
+
+    // --- IMAGE LOAD FIX ---
+    const images = containerRef.current.querySelectorAll("img");
+    let loaded = 0;
+
+    images.forEach((img) => {
+      if (img.complete) {
+        loaded++;
+      } else {
+        img.addEventListener("load", () => {
+          loaded++;
+          if (loaded === images.length) {
+            ScrollTrigger.refresh();
+          }
+        });
+      }
+    });
+
+    requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => ctx.revert();
   }, []);
