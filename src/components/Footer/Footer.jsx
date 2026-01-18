@@ -147,9 +147,9 @@ export default function Footer() {
                     <MapPin className="w-4 h-4 text-[#F99321]" />
                 </div>
                 <span className="text-[15px] leading-relaxed group-hover:text-gray-200 transition-colors">
-                  Sector 4, City Centre,<br />
-                  Bokaro Steel City,<br />
-                  Jharkhand - 827004
+                  No 6, 27th Main Road, Ejipura,<br />
+                  VGS Layout, Near Navya Elite Apartments,<br />
+                  Bangalore 560047
                 </span>
               </li>
               <li className="flex items-center gap-4 text-gray-400 group">
@@ -178,8 +178,7 @@ export default function Footer() {
              
              {/* Map Container */}
              <div className="w-full h-44 rounded-2xl overflow-hidden border-[3px] border-white/10 shadow-2xl relative group bg-[#1a202c]">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.512684813292!2d86.14856931536257!3d23.66930098462933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4230602672e3d%3A0x1337133713371337!2sSector%204%2C%20City%20Centre%2C%20Bokaro%20Steel%20City!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4852737646233!2d77.62823517531922!3d12.940769787371776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae146a0040a8a5%3A0xb3e4a830e2c3a529!2s6%2C%2027th%20Cross%20Rd%2C%20VGS%20Layout%2C%20Muneshwara%20Swamy%20Layout%2C%20Ashwini%20Layout%2C%20Ejipura%2C%20Bengaluru%2C%20Karnataka%20560047!5e0!3m2!1sen!2sin!4v1768729139866!5m2!1sen!2sin"
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, filter: 'contrast(1.2) saturate(1.3)' }}
