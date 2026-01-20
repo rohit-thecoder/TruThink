@@ -50,10 +50,9 @@ export const jsonLd = {
 const HeroData = {
   title: `Strategic Finance Partner for Ambitious Startups & Growing SMEs`,
   description: `Building a successful business takes more than just a great idea.
-            Whether you’re just validating your business model or scaling to new
-            markets, our experts help you stay investor-ready, compliant, and
+            Whether you’re just validating your business model or scaling to new markets, our experts help you stay investor-ready, compliant, and
             financially confident every step of the way.`,
-  src: "https://images.pexels.com/photos/864994/pexels-photo-864994.jpeg",
+  src: "https://images.pexels.com/photos/7821680/pexels-photo-7821680.jpeg",
 };
 
 
