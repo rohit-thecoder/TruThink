@@ -30,7 +30,7 @@ useLayoutEffect(() => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 85%",
+        
           },
         }
       );
@@ -43,7 +43,7 @@ useLayoutEffect(() => {
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: ".features-grid",
-          start: "top 80%",
+      
           once: true,
         },
       });
@@ -59,7 +59,7 @@ useLayoutEffect(() => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: ".right-column",
-            start: "top 75%",
+            
           },
         }
       );
