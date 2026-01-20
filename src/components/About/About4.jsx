@@ -84,6 +84,7 @@ useLayoutEffect(() => {
 
 
 
+
   return (
     <section ref={containerRef} className="relative py-24 px-6 md:px-20 ">
         {/* Baaki ka JSX same rahega */}
