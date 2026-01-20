@@ -9,16 +9,17 @@ gsap.registerPlugin(ScrollTrigger);
 export default function About4() {
   const containerRef = useRef(null);
 
-  useLayoutEffect(() => {
+useLayoutEffect(() => {
+  if (!containerRef.current) return;
+
+  const initGSAP = () => {
     const ctx = gsap.context(() => {
 
-      // 🔒 SAFETY: ensure elements visible in production
       gsap.set(
         [".about-heading-group", ".feature-card", ".content-text"],
         { opacity: 1 }
       );
 
-      // 1. Heading Reveal
       gsap.fromTo(
         ".about-heading-group",
         { y: 50, opacity: 0 },
@@ -34,24 +35,19 @@ export default function About4() {
         }
       );
 
-      // 2. Feature Cards
-      gsap.from(
-        ".feature-card",
-        {
-          y: 30,
-          opacity: 0, // ✅ FIXED
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: ".features-grid",
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
+      gsap.from(".feature-card", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".features-grid",
+          start: "top 80%",
+          once: true,
+        },
+      });
 
-      // 3. Text Paragraphs
       gsap.fromTo(
         ".content-text",
         { y: 30, opacity: 0 },
@@ -68,15 +64,24 @@ export default function About4() {
         }
       );
 
+      ScrollTrigger.refresh();
     }, containerRef);
 
-    // ✅ REAL FIX: layout settle hone ke baad refresh
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 300);
+    return ctx;
+  };
 
-    return () => ctx.revert();
-  }, []);
+  let ctx;
+  if (document.readyState === "complete") {
+    ctx = initGSAP();
+  } else {
+    window.addEventListener("load", () => {
+      ctx = initGSAP();
+    });
+  }
+
+  return () => ctx && ctx.revert();
+}, []);
+
 
 
   return (
