@@ -1,19 +1,23 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react"; // 1. Change useEffect to useLayoutEffect
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TrendingUp, ShieldCheck, PieChart, Target } from "lucide-react";
+import { TrendingUp, ShieldCheck, Target } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About4() {
   const containerRef = useRef(null);
 
-  // 2. Use useLayoutEffect instead of useEffect
-  // useLayoutEffect DOM update hone ke turant baad sync mein chalta hai, painting se pehle.
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      
+    const ctx = gsap.context(() => {
+
+      // 🔒 SAFETY: ensure elements visible in production
+      gsap.set(
+        [".about-heading-group", ".feature-card", ".content-text"],
+        { opacity: 1 }
+      );
+
       // 1. Heading Reveal
       gsap.fromTo(
         ".about-heading-group",
@@ -30,20 +34,22 @@ export default function About4() {
         }
       );
 
-      // 2. Icon Cards Stagger
-      gsap.from(".feature-card", {
-  y: 30,
-  opacity: 1,
-  duration: 0.8,
-  stagger: 0.15,
-  ease: "back.out(1.7)",
-  scrollTrigger: {
-    trigger: ".features-grid",
-    start: "top 80%",
-    once: true,
-  },
-});
-
+      // 2. Feature Cards
+      gsap.from(
+        ".feature-card",
+        {
+          y: 30,
+          opacity: 0, // ✅ FIXED
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".features-grid",
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
 
       // 3. Text Paragraphs
       gsap.fromTo(
@@ -64,14 +70,14 @@ export default function About4() {
 
     }, containerRef);
 
-    // 3. Force ScrollTrigger Refresh (Important for Next.js Routing)
-    // Thoda sa delay dekar refresh karein taaki layout settle ho jaye
-    requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-    }, 100);
+    // ✅ REAL FIX: layout settle hone ke baad refresh
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 300);
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section ref={containerRef} className="relative py-24 px-6 md:px-20 ">
