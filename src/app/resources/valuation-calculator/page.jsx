@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd';
 import ValuationCalculator from '@/components/Resources/ValuationCalculator';
+import ValuationGuide from '@/components/Resources/ValuationGuide';
 import React from 'react'
 
 export const metadata = {
@@ -46,6 +47,7 @@ export default function page() {
     <div>
       <JsonLd data={jsonLd} />
         <ValuationCalculator />
+        <ValuationGuide />
     </div>
   );
 }

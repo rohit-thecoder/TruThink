@@ -24,28 +24,26 @@ export default function About4() {
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".about-heading-group",
+            trigger: containerRef.current,
             start: "top 85%",
           },
         }
       );
 
       // 2. Icon Cards Stagger
-      gsap.fromTo(
-        ".feature-card",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: ".features-grid",
-            start: "top 80%",
-          },
-        }
-      );
+      gsap.from(".feature-card", {
+  y: 30,
+  opacity: 1,
+  duration: 0.8,
+  stagger: 0.15,
+  ease: "back.out(1.7)",
+  scrollTrigger: {
+    trigger: ".features-grid",
+    start: "top 80%",
+    once: true,
+  },
+});
+
 
       // 3. Text Paragraphs
       gsap.fromTo(
@@ -68,7 +66,7 @@ export default function About4() {
 
     // 3. Force ScrollTrigger Refresh (Important for Next.js Routing)
     // Thoda sa delay dekar refresh karein taaki layout settle ho jaye
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         ScrollTrigger.refresh();
     }, 100);
 
@@ -76,7 +74,7 @@ export default function About4() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-24 px-6 md:px-20 bg-white overflow-hidden">
+    <section ref={containerRef} className="relative py-24 px-6 md:px-20 ">
         {/* Baaki ka JSX same rahega */}
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#8EC5FF1a_1px,transparent_1px),linear-gradient(to_bottom,#8EC5FF1a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8EC5FF]/10 rounded-full blur-[100px] -z-10"></div>
