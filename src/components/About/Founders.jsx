@@ -191,58 +191,55 @@ const Founders = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Clean triggers
       ScrollTrigger.getAll().forEach(t => t.kill());
 
-      // --- 1. INITIAL STATE ---
-      gsap.set(".founder-header", { y: 50, opacity: 0 });
-      gsap.set(".founder-card-1", { x: -50, opacity: 0 });
-      gsap.set(".founder-bio-1", { x: 50, opacity: 0 });
-      gsap.set(".founder-card-2", { x: -50, opacity: 0 });
-      gsap.set(".founder-bio-2", { x: 50, opacity: 0 });
+      // 1. Header Animation
+      gsap.fromTo(".founder-header",
+        { y: 50, opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+            trigger: ".founder-header",
+            start: "top 90%",
+            },
+        }
+      );
 
-      // --- 2. HEADER ANIMATION ---
-      gsap.to(".founder-header", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".founder-header",
-          start: "top 90%",
-        },
-      });
-
-      // --- 3. FOUNDER 1 ANIMATION ---
+      // 2. Founder 1 Animation
       const tl1 = gsap.timeline({
         scrollTrigger: {
           trigger: ".founder-row-1",
           start: "top 80%",
         }
       });
-      tl1.to(".founder-card-1", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" })
-         .to(".founder-bio-1", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6");
+      tl1.fromTo(".founder-card-1", { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 })
+         .fromTo(".founder-bio-1", { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 }, "-=0.6");
 
-      // --- 4. FOUNDER 2 ANIMATION ---
+      // 3. Founder 2 Animation
       const tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".founder-row-2",
           start: "top 80%",
         }
       });
-      tl2.to(".founder-card-2", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" })
-         .to(".founder-bio-2", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6");
+      tl2.fromTo(".founder-card-2", { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 })
+         .fromTo(".founder-bio-2", { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 }, "-=0.6");
 
     }, containerRef);
 
-    // Refresh Logic
-    const timer = setTimeout(() => {
+    // --- AGGRESSIVE REFRESH FIX ---
+    const refreshInterval = setInterval(() => {
         ScrollTrigger.refresh();
-    }, 1000);
+    }, 500);
+
+    setTimeout(() => clearInterval(refreshInterval), 4000);
 
     return () => {
         ctx.revert();
-        clearTimeout(timer);
+        clearInterval(refreshInterval);
     }
   }, []);
 
@@ -261,7 +258,7 @@ const Founders = () => {
         {/* --- FOUNDER 1 --- */}
         <div className="founder-row-1 grid md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-start">
           
-          {/* Left block (Profile Card) */}
+          {/* Left block */}
           <div className="founder-card-1 opacity-0 flex flex-col items-center text-center md:text-left bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="overflow-hidden rounded-xl mb-6 w-full h-64 md:h-64 relative group">
               <img
@@ -287,7 +284,7 @@ const Founders = () => {
             </div>
           </div>
 
-          {/* Right block (Bio) */}
+          {/* Right block */}
           <div className="founder-bio-1 opacity-0 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none shadow-md md:shadow-none border md:border-none border-gray-100">
             <div className="prose prose-lg text-gray-600 leading-relaxed text-[17px] md:text-[18px]">
               <p className="mb-6">
@@ -321,7 +318,7 @@ const Founders = () => {
         {/* --- FOUNDER 2 --- */}
         <div className="founder-row-2 grid md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-start">
           
-          {/* Left block (Profile Card) */}
+          {/* Left block */}
           <div className="founder-card-2 opacity-0 flex flex-col items-center text-center md:text-left bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="overflow-hidden rounded-xl mb-6 w-full h-64 md:h-64 relative group">
               <img
@@ -347,7 +344,7 @@ const Founders = () => {
             </div>
           </div>
 
-          {/* Right block (Bio) */}
+          {/* Right block */}
           <div className="founder-bio-2 opacity-0 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none shadow-md md:shadow-none border md:border-none border-gray-100">
             <div className="prose prose-lg text-gray-600 leading-relaxed text-[17px] md:text-[18px]">
               <p className="mb-6">

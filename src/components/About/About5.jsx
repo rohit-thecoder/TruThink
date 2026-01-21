@@ -67,51 +67,51 @@ export default function About5() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      
-      // Clean triggers
       ScrollTrigger.getAll().forEach(t => t.kill());
 
-      // --- 1. INITIAL STATE ---
-      // Image hidden (Inset 100%)
-      gsap.set(".about5-image-wrapper", { clipPath: "inset(100% 0 0 0)", scale: 1.1 });
-      // Text hidden
-      gsap.set(".about5-anim-text", { y: 40, opacity: 0 });
+      // 1. IMAGE REVEAL
+      gsap.fromTo(".about5-image-wrapper", 
+        { clipPath: "inset(100% 0 0 0)", scale: 1.1 },
+        {
+          clipPath: "inset(0% 0 0 0)",
+          scale: 1,
+          duration: 1.5,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+          },
+        }
+      );
 
-      // --- 2. IMAGE REVEAL ---
-      gsap.to(".about5-image-wrapper", {
-        clipPath: "inset(0% 0 0 0)",
-        scale: 1,
-        duration: 1.5,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%", // Safe trigger
-        },
-      });
-
-      // --- 3. TEXT STAGGER ---
-      gsap.to(".about5-anim-text", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
-        },
-      });
+      // 2. TEXT STAGGER
+      gsap.fromTo(".about5-anim-text", 
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+          },
+        }
+      );
 
     }, containerRef);
 
-    // Refresh Logic
-    const timer = setTimeout(() => {
+    // --- AGGRESSIVE REFRESH FIX ---
+    const refreshInterval = setInterval(() => {
         ScrollTrigger.refresh();
-    }, 1000);
+    }, 500);
+
+    setTimeout(() => clearInterval(refreshInterval), 4000);
 
     return () => {
         ctx.revert();
-        clearTimeout(timer);
+        clearInterval(refreshInterval);
     }
   }, []);
   
@@ -120,7 +120,6 @@ export default function About5() {
       ref={containerRef}
       className="relative px-6 md:px-20 py-24 bg-white overflow-hidden"
     >
-      {/* Decorative Background Orb */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-50 rounded-full blur-3xl -z-10 opacity-60 translate-x-1/3 -translate-y-1/4"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -128,7 +127,6 @@ export default function About5() {
         {/* --- Left Side - Text Content --- */}
         <div className="order-2 lg:order-1 flex flex-col justify-center">
           
-          {/* Heading */}
           <h2 className="about5-anim-text opacity-0 text-4xl md:text-5xl lg:text-[56px] font-semibold text-gray-900 mb-8 leading-[1.15] tracking-tight">
             At{" "}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 font-bold px-1">
@@ -167,7 +165,7 @@ export default function About5() {
 
         {/* --- Right Side - Image --- */}
         <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full">
-          {/* Image Container with Masking for Animation (Class added here) */}
+          {/* Image Container */}
           <div 
             className="about5-image-wrapper relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200"
           >
@@ -178,6 +176,7 @@ export default function About5() {
               priority
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
+              // Add load handler here as well
               onLoadingComplete={() => ScrollTrigger.refresh()}
             />
             

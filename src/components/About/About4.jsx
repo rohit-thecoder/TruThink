@@ -11,62 +11,70 @@ export default function About4() {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      // Clean old triggers
       ScrollTrigger.getAll().forEach(t => t.kill());
 
-      // --- 1. INITIAL STATE (Hide Elements) ---
-      gsap.set(".about4-header", { y: 50, opacity: 0 });
-      gsap.set(".about4-card", { y: 40, opacity: 0 });
-      gsap.set(".about4-text", { y: 30, opacity: 0 });
+      // 1. Header Animation
+      gsap.fromTo(".about4-header", 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".about4-header",
+            start: "top 90%", // Jaldi trigger
+          },
+        }
+      );
 
-      // --- 2. HEADER ANIMATION ---
-      gsap.to(".about4-header", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".about4-header",
-          start: "top 90%", // Thoda jaldi dikhna shuru ho
-        },
-      });
+      // 2. Cards Animation
+      gsap.fromTo(".about4-card", 
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".features-grid",
+            start: "top 85%",
+          },
+        }
+      );
 
-      // --- 3. CARDS ANIMATION ---
-      gsap.to(".about4-card", {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.2, // Ek ke baad ek
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: ".features-grid",
-          start: "top 85%",
-        },
-      });
-
-      // --- 4. TEXT ANIMATION ---
-      gsap.to(".about4-text", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".right-column",
-          start: "top 80%",
-        },
-      });
+      // 3. Text Animation
+      gsap.fromTo(".about4-text", 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".right-column",
+            start: "top 80%",
+          },
+        }
+      );
 
     }, containerRef);
 
-    // --- REFRESH LOGIC ---
-    const timer = setTimeout(() => {
+    // --- AGGRESSIVE REFRESH FIX ---
+    // Ye loop agle 4 second tak har 500ms pe positions update karega
+    // Taaki upar ki images load hone par ye section gayab na ho
+    const refreshInterval = setInterval(() => {
         ScrollTrigger.refresh();
-    }, 1000);
+    }, 500);
+
+    // 4 second baad loop band kar do
+    setTimeout(() => clearInterval(refreshInterval), 4000);
 
     return () => {
         ctx.revert();
-        clearTimeout(timer);
+        clearInterval(refreshInterval);
     };
   }, []);
 
