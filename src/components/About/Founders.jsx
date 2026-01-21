@@ -188,106 +188,70 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Founders = () => {
   const containerRef = useRef(null);
-  const headerRef = useRef(null);
-  const founder1Ref = useRef(null);
-  const founder2Ref = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      // Clean triggers
+      ScrollTrigger.getAll().forEach(t => t.kill());
 
-      // --- HEADER FIX ---
-      gsap.fromTo(headerRef.current, 
-        { y: 50, opacity: 0 },
-        {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 85%",
-            once: true,
-            },
+      // --- 1. INITIAL STATE ---
+      gsap.set(".founder-header", { y: 50, opacity: 0 });
+      gsap.set(".founder-card-1", { x: -50, opacity: 0 });
+      gsap.set(".founder-bio-1", { x: 50, opacity: 0 });
+      gsap.set(".founder-card-2", { x: -50, opacity: 0 });
+      gsap.set(".founder-bio-2", { x: 50, opacity: 0 });
+
+      // --- 2. HEADER ANIMATION ---
+      gsap.to(".founder-header", {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".founder-header",
+          start: "top 90%",
+        },
+      });
+
+      // --- 3. FOUNDER 1 ANIMATION ---
+      const tl1 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".founder-row-1",
+          start: "top 80%",
         }
-      );
+      });
+      tl1.to(".founder-card-1", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" })
+         .to(".founder-bio-1", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
-      const animateFounder = (ref) => {
-        const card = ref.querySelector(".founder-card");
-        const bio = ref.querySelector(".founder-bio");
-        const img = ref.querySelector("img");
-
-        // Card FIX
-        gsap.fromTo(card, 
-            { x: -50, opacity: 0 },
-            {
-                x: 0,
-                opacity: 1,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ref,
-                    start: "top 80%",
-                    once: true,
-                },
-            }
-        );
-
-        // Bio FIX
-        gsap.fromTo(bio, 
-            { x: 50, opacity: 0 },
-            {
-                x: 0,
-                opacity: 1,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ref,
-                    start: "top 80%",
-                    once: true,
-                },
-            }
-        );
-
-        // Image Parallax (ye .to hai, ye thik hai)
-        gsap.to(img, {
-          yPercent: 15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ref,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      };
-
-      animateFounder(founder1Ref.current);
-      animateFounder(founder2Ref.current);
+      // --- 4. FOUNDER 2 ANIMATION ---
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".founder-row-2",
+          start: "top 80%",
+        }
+      });
+      tl2.to(".founder-card-2", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" })
+         .to(".founder-bio-2", { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
     }, containerRef);
 
-    // --- ROBUST IMAGE LOAD FIX ---
-    // Ensure scrollTrigger refreshes even if images load late
-    const interval = setInterval(() => {
+    // Refresh Logic
+    const timer = setTimeout(() => {
         ScrollTrigger.refresh();
-    }, 1000); 
-
-    // Stop refreshing after 4 seconds (enough time for most images)
-    setTimeout(() => clearInterval(interval), 4000);
+    }, 1000);
 
     return () => {
         ctx.revert();
-        clearInterval(interval);
+        clearTimeout(timer);
     }
   }, []);
 
   return (
-    // JSX same as your original
     <section ref={containerRef} className="py-10 md:py-24 px-5 md:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-24">
         
         {/* --- HEADER --- */}
-        <div ref={headerRef}>
+        <div className="founder-header opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-gray-900 text-center tracking-tight">
             Meet The Founders
             <div className="w-24 h-[4px] bg-gradient-to-r from-blue-400 to-orange-400 mx-auto mt-4 mb-12 rounded-full"></div>
@@ -295,17 +259,16 @@ const Founders = () => {
         </div>
 
         {/* --- FOUNDER 1 --- */}
-        <div ref={founder1Ref} className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-start">
+        <div className="founder-row-1 grid md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-start">
           
           {/* Left block (Profile Card) */}
-          <div className="founder-card flex flex-col items-center text-center md:text-left bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+          <div className="founder-card-1 opacity-0 flex flex-col items-center text-center md:text-left bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="overflow-hidden rounded-xl mb-6 w-full h-64 md:h-64 relative group">
               <img
                 src="https://images.pexels.com/photos/30767572/pexels-photo-30767572.jpeg"
                 alt="Venkatesh R"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform"
               />
-              {/* Overlay on Hover */}
               <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
@@ -315,24 +278,17 @@ const Founders = () => {
             <p className="text-sm font-medium text-blue-600 uppercase tracking-widest mb-6">Co-founder</p>
 
             <div className="flex gap-4 w-full justify-center md:justify-start">
-              <a
-                href="https://www.linkedin.com/in/venkatesh-r-1136b2189"
-                target="_blank"
-                rel="noreferrer"
-                className="text-gray-400 hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-300"
-              >
+              <a href="https://www.linkedin.com/in/venkatesh-r-1136b2189" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-300">
                 <BsLinkedin className='w-7 h-7'/>
               </a>
-
-              <a href="mailto:venkatesh@truthinkconsulting.in"
-                 className="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
+              <a href="mailto:venkatesh@truthinkconsulting.in" className="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
                 <IoMail className='w-8 h-8'/>
               </a>
             </div>
           </div>
 
           {/* Right block (Bio) */}
-          <div className="founder-bio bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none shadow-md md:shadow-none border md:border-none border-gray-100">
+          <div className="founder-bio-1 opacity-0 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none shadow-md md:shadow-none border md:border-none border-gray-100">
             <div className="prose prose-lg text-gray-600 leading-relaxed text-[17px] md:text-[18px]">
               <p className="mb-6">
                 A finance professional with <span className="text-gray-900 font-semibold">6+ years of experience</span> and a sharp eye
@@ -363,10 +319,10 @@ const Founders = () => {
         </div>
 
         {/* --- FOUNDER 2 --- */}
-        <div ref={founder2Ref} className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-start">
+        <div className="founder-row-2 grid md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-start">
           
           {/* Left block (Profile Card) */}
-          <div className="founder-card flex flex-col items-center text-center md:text-left bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+          <div className="founder-card-2 opacity-0 flex flex-col items-center text-center md:text-left bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="overflow-hidden rounded-xl mb-6 w-full h-64 md:h-64 relative group">
               <img
                 src="https://media.licdn.com/dms/image/v2/D4D03AQGKyrsYmks-9A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1694544745556?e=1765411200&v=beta&t=-N6D0W5diqFC3FLxIZwdLIMq_-VF7E14PA42yNIFzK4"
@@ -382,20 +338,17 @@ const Founders = () => {
             <p className="text-sm font-medium text-blue-600 uppercase tracking-widest mb-6">Co-founder</p>
 
             <div className="flex gap-4 w-full justify-center md:justify-start">
-              <a href="https://www.linkedin.com/in/kbharti95" target="_blank" rel="noreferrer"
-                 className="text-gray-400 hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-300">
+              <a href="https://www.linkedin.com/in/kbharti95" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-300">
                 <BsLinkedin className="w-7 h-7" />
               </a>
-
-              <a href="mailto:kanhaiya@truthinkconsulting.in"
-                 className="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
+              <a href="mailto:kanhaiya@truthinkconsulting.in" className="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
                 <IoMail className="w-8 h-8" />
               </a>
             </div>
           </div>
 
           {/* Right block (Bio) */}
-          <div className="founder-bio bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none shadow-md md:shadow-none border md:border-none border-gray-100">
+          <div className="founder-bio-2 opacity-0 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none shadow-md md:shadow-none border md:border-none border-gray-100">
             <div className="prose prose-lg text-gray-600 leading-relaxed text-[17px] md:text-[18px]">
               <p className="mb-6">
                 Chartered Accountant by profession and a problem-solver by instinct
