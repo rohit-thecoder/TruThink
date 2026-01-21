@@ -195,51 +195,60 @@ const Founders = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
-      // --- HEADER ---
-      gsap.from(headerRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 85%",
-          once: true,
-        },
-      });
+      // --- HEADER FIX ---
+      gsap.fromTo(headerRef.current, 
+        { y: 50, opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            once: true,
+            },
+        }
+      );
 
       const animateFounder = (ref) => {
         const card = ref.querySelector(".founder-card");
         const bio = ref.querySelector(".founder-bio");
         const img = ref.querySelector("img");
 
-        // Card
-        gsap.from(card, {
-          x: -50,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ref,
-            start: "top 80%",
-            once: true,
-          },
-        });
+        // Card FIX
+        gsap.fromTo(card, 
+            { x: -50, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ref,
+                    start: "top 80%",
+                    once: true,
+                },
+            }
+        );
 
-        // Bio
-        gsap.from(bio, {
-          x: 50,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ref,
-            start: "top 80%",
-            once: true,
-          },
-        });
+        // Bio FIX
+        gsap.fromTo(bio, 
+            { x: 50, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ref,
+                    start: "top 80%",
+                    once: true,
+                },
+            }
+        );
 
-        // Image Parallax
+        // Image Parallax (ye .to hai, ye thik hai)
         gsap.to(img, {
           yPercent: 15,
           ease: "none",
@@ -257,30 +266,24 @@ const Founders = () => {
 
     }, containerRef);
 
-    // --- IMAGE LOAD FIX ---
-    const images = containerRef.current.querySelectorAll("img");
-    let loaded = 0;
+    // --- ROBUST IMAGE LOAD FIX ---
+    // Ensure scrollTrigger refreshes even if images load late
+    const interval = setInterval(() => {
+        ScrollTrigger.refresh();
+    }, 1000); 
 
-    images.forEach((img) => {
-      if (img.complete) {
-        loaded++;
-      } else {
-        img.addEventListener("load", () => {
-          loaded++;
-          if (loaded === images.length) {
-            ScrollTrigger.refresh();
-          }
-        });
-      }
-    });
+    // Stop refreshing after 4 seconds (enough time for most images)
+    setTimeout(() => clearInterval(interval), 4000);
 
-    requestAnimationFrame(() => ScrollTrigger.refresh());
-
-    return () => ctx.revert();
+    return () => {
+        ctx.revert();
+        clearInterval(interval);
+    }
   }, []);
 
   return (
-    <section ref={containerRef} className="py-10 md:py-24 px-5 md:px-20  overflow-hidden">
+    // JSX same as your original
+    <section ref={containerRef} className="py-10 md:py-24 px-5 md:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-24">
         
         {/* --- HEADER --- */}

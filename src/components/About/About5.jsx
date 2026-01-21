@@ -70,58 +70,61 @@ export default function About5() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
-      // --- IMAGE REVEAL ---
-      gsap.from(imageRef.current, {
-        clipPath: "inset(100% 0 0 0)",
-        scale: 1.1,
-        duration: 1.5,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-          once: true,
-        },
-      });
+      // --- IMAGE REVEAL FIX ---
+      gsap.fromTo(imageRef.current, 
+        { clipPath: "inset(100% 0 0 0)", scale: 1.1 }, // Start
+        {
+            clipPath: "inset(0% 0 0 0)",
+            scale: 1,
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+            once: true,
+            },
+        }
+      );
 
-      // --- TEXT STAGGER ---
-      const textElements =
-        textContainerRef.current.querySelectorAll(".anim-text");
+      // --- TEXT STAGGER FIX ---
+      const textElements = textContainerRef.current.querySelectorAll(".anim-text");
 
-      gsap.from(textElements, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 65%",
-          once: true,
-        },
-      });
+      gsap.fromTo(textElements, 
+        { y: 50, opacity: 0 }, // Start
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 65%",
+            once: true,
+            },
+        }
+      );
 
     }, containerRef);
 
-    // --- IMAGE LOAD SAFETY FIX ---
-    const img = imageRef.current.querySelector("img");
-
-    if (img && !img.complete) {
-      img.addEventListener("load", () => {
+    // Refresh hook
+    const timer = setTimeout(() => {
         ScrollTrigger.refresh();
-      });
+    }, 500);
+
+    return () => {
+        ctx.revert();
+        clearTimeout(timer);
     }
-
-    requestAnimationFrame(() => ScrollTrigger.refresh());
-
-    return () => ctx.revert();
   }, []);
   
   return (
+    // JSX same as original
     <section
       ref={containerRef}
       className="relative px-6 md:px-20 py-24 bg-white overflow-hidden"
     >
-      {/* Decorative Background Orb (Subtle Premium Feel) */}
+      {/* Decorative Background Orb */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-50 rounded-full blur-3xl -z-10 opacity-60 translate-x-1/3 -translate-y-1/4"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">

@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react"; // 1. Change useEffect to useLayoutEffect
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TrendingUp, ShieldCheck, PieChart, Target } from "lucide-react";
@@ -9,18 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 export default function About4() {
   const containerRef = useRef(null);
 
-  // 2. Use useLayoutEffect instead of useEffect
-  // useLayoutEffect DOM update hone ke turant baad sync mein chalta hai, painting se pehle.
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       
-      // 1. Heading Reveal
+      // FIX 1: Use fromTo instead of from
       gsap.fromTo(
         ".about-heading-group",
-        { y: 50, opacity: 0 },
+        { y: 50, opacity: 0 }, // Start state
         {
           y: 0,
-          opacity: 1,
+          opacity: 1, // End state
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
@@ -30,22 +28,25 @@ export default function About4() {
         }
       );
 
-      // 2. Icon Cards Stagger
-      gsap.from(".feature-card", {
-  y: 30,
-  opacity: 1,
-  duration: 0.8,
-  stagger: 0.15,
-  ease: "back.out(1.7)",
-  scrollTrigger: {
-    trigger: ".features-grid",
-    start: "top 80%",
-    once: true,
-  },
-});
+      // FIX 2: Use fromTo for cards
+      gsap.fromTo(
+        ".feature-card",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".features-grid",
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
 
-
-      // 3. Text Paragraphs
+      // FIX 3: Use fromTo for text
       gsap.fromTo(
         ".content-text",
         { y: 30, opacity: 0 },
@@ -61,21 +62,23 @@ export default function About4() {
           },
         }
       );
-
     }, containerRef);
 
-    // 3. Force ScrollTrigger Refresh (Important for Next.js Routing)
-    // Thoda sa delay dekar refresh karein taaki layout settle ho jaye
-    requestAnimationFrame(() => {
+    // Refresh ScrollTrigger after a slight delay to account for layout shifts
+    const timer = setTimeout(() => {
         ScrollTrigger.refresh();
-    }, 100);
+    }, 500);
 
-    return () => ctx.revert();
+    return () => {
+        ctx.revert();
+        clearTimeout(timer);
+    };
   }, []);
 
   return (
     <section ref={containerRef} className="relative py-24 px-6 md:px-20 ">
-        {/* Baaki ka JSX same rahega */}
+        {/* ... baaki content same rakhein ... */}
+        {/* Sirf logic update karna tha, JSX same rahega */}
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#8EC5FF1a_1px,transparent_1px),linear-gradient(to_bottom,#8EC5FF1a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8EC5FF]/10 rounded-full blur-[100px] -z-10"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#F99321]/5 rounded-full blur-[100px] -z-10"></div>
