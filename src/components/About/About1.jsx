@@ -184,7 +184,7 @@ export default function About1() {
             <Image
               ref={imageRef}
               src="https://images.pexels.com/photos/3184424/pexels-photo-3184424.jpeg"
-              alt="Our Team Background"
+              alt="Our Team Background Image"
               fill
               className="bg-image object-cover opacity-100 will-change-transform"
               priority 
@@ -215,7 +215,7 @@ export default function About1() {
               </span>
               {/* Main Heading */}
               <span className="content-reveal text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-none group-hover/btn:text-[#F99321] transition-colors duration-300">
-                Our Team
+                Our Team 
               </span>
             </div>
 
