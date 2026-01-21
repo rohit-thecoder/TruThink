@@ -183,7 +183,6 @@ import {
   Send, Loader2, CheckCircle2, PhoneCall, ArrowUpRight 
 } from "lucide-react";
 
-// Register GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact2() {
@@ -193,69 +192,89 @@ export default function Contact2() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
-  // --- ANIMATION LOGIC ---
+  // --- FINAL & MOST ROBUST GSAP IMPLEMENTATION ---
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      
-      // Safety: Purane triggers kill karein
-      ScrollTrigger.getAll().forEach(t => t.kill());
+    
+    // Function to run animations
+    const initAnimations = () => {
+        const ctx = gsap.context(() => {
+            
+            // Kill old triggers to avoid duplicates on refresh
+            ScrollTrigger.getAll().forEach(t => t.kill());
 
-      // 1. Header Animation
-      gsap.fromTo(
-        ".contact-header-anim",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".contact-header-anim",
-            // FIX: Trigger point ko 'top 95%' kiya taaki thoda sa bhi dikhte hi start ho jaye
-            start: "top 95%", 
-            toggleActions: "play none none none", // Sirf play kare, reverse na kare
-          },
-        }
-      );
+            // 1. Header
+            gsap.fromTo(".contact-header > *",
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: ".contact-header",
+                        start: "top 90%", // Thoda aur jaldi start karo
+                    }
+                }
+            );
 
-      // 2. Image & Form Animation
-      gsap.fromTo(
-        [".contact-card-anim"], 
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.3, // Image pehle, fir form
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 90%", // Jaldi trigger karein
-            toggleActions: "play none none none",
-          },
-        }
-      );
+            // 2. Image Card
+            gsap.fromTo(".contact-image-card",
+                { x: -50, opacity: 0, rotate: -2 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    rotate: 0,
+                    duration: 1.2,
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 80%", // Safe trigger point
+                    }
+                }
+            );
 
-    }, containerRef);
+            // 3. Form Card
+            gsap.fromTo(".contact-form-card",
+                { x: 50, opacity: 0, y: 20 },
+                {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 80%",
+                    }
+                }
+            );
 
-    // --- SAFETY FALLBACK (The Main Fix) ---
-    // Agar kisi wajah se animation atak gayi, toh 2.5 second baad
-    // jabardasti sab kuch visible kar do.
-    const safetyTimer = setTimeout(() => {
-        // Check karein agar opacity 0 hai toh 1 karein
-        gsap.to([".contact-header-anim", ".contact-card-anim"], {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            overwrite: "auto" // Animation override kar dega
-        });
+        }, containerRef);
+        return ctx;
+    };
+
+    // Initialize immediately
+    let ctx = initAnimations();
+
+    // --- FORCE REFRESH HANDLER ---
+    // Ye code ensure karega ki jab browser puri tarah load ho jaye (saari images sahit),
+    // tab ScrollTrigger dobara calculate kare.
+    const handleLoad = () => {
         ScrollTrigger.refresh();
-    }, 2500);
+    };
+
+    window.addEventListener("load", handleLoad);
+    
+    // Fallback: Agar load event miss ho jaye (Single Page App navigation mein)
+    const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 1500);
 
     return () => {
         ctx.revert();
-        clearTimeout(safetyTimer);
+        window.removeEventListener("load", handleLoad);
+        clearTimeout(timer);
     };
   }, []);
 
@@ -281,7 +300,7 @@ export default function Contact2() {
       });
   };
 
-  // Input Component
+  // Input Component (Same as before)
   const InputField = ({ label, name, type, placeholder, Icon, required = false }) => (
     <div className="space-y-2 group/field relative">
         <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 flex items-center gap-1">
@@ -300,17 +319,14 @@ export default function Contact2() {
 
   return (
     <section ref={containerRef} className="relative py-24 px-6 md:px-12 lg:px-20 overflow-hidden min-h-screen flex items-center">
-      
-      {/* Backgrounds (Fixed) */}
       <div className="fixed inset-0 bg-white -z-20"></div>
       <div className="fixed inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_90%)]"></div>
       <div className="fixed top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full bg-[#8EC5FF]/20 blur-[100px] mix-blend-multiply -z-10 animate-pulse"></div>
       <div className="fixed bottom-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full bg-[#F99321]/15 blur-[100px] mix-blend-multiply -z-10"></div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        
-        {/* HEADING (Added class 'contact-header-anim' for targeting) */}
-        <div className="text-center md:text-left mb-16 contact-header-anim opacity-0">
+        {/* HEADING */}
+        <div className="text-center md:text-left mb-16 contact-header">
            <div className="flex justify-center md:justify-start"> 
              <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/80 border border-[#8EC5FF]/30 text-[#0066cc] text-xs font-bold tracking-[0.15em] uppercase mb-6 shadow-sm backdrop-blur-md">
                <MessageSquare size={14} /> Contact Us
@@ -329,12 +345,11 @@ export default function Contact2() {
 
         {/* CONTENT */}
         <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16">
-          
-          {/* LEFT: IMAGE CARD (Added class 'contact-card-anim' for targeting) */}
-          <div className="w-full lg:w-[45%] flex flex-col justify-between contact-card-anim opacity-0">
-            <div className="relative w-full h-[450px] lg:h-full min-h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200/50 border border-white/80 group origin-bottom-left">
-              <Image src="https://images.pexels.com/photos/14760650/pexels-photo-14760650.jpeg" alt="Contact Truthink Team" fill className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" priority 
-                onLoadingComplete={() => ScrollTrigger.refresh()} // Image load hone par refresh
+          <div className="w-full lg:w-[45%] flex flex-col justify-between">
+            <div className="contact-image-card relative w-full h-[450px] lg:h-full min-h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200/50 border border-white/80 group origin-bottom-left">
+              <Image src="https://images.pexels.com/photos/14760650/pexels-photo-14760650.jpeg" alt="Contact Truthink Team" fill className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" priority
+                // IMPORTANT: Refresh when THIS image loads too
+                onLoadingComplete={() => ScrollTrigger.refresh()}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl text-white shadow-lg">
@@ -347,9 +362,8 @@ export default function Contact2() {
             </div>
           </div>
 
-          {/* RIGHT: FORM CARD (Added class 'contact-card-anim' for targeting) */}
-          <div className="w-full lg:w-[55%] contact-card-anim opacity-0">
-            <div className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-12 border border-white/60 shadow-[0_20px_40px_rgb(0,0,0,0.04)] relative overflow-hidden">
+          <div className="w-full lg:w-[55%]">
+            <div className="contact-form-card bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-12 border border-white/60 shadow-[0_20px_40px_rgb(0,0,0,0.04)] relative overflow-hidden">
                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#F99321]/0 via-[#F99321] to-[#8EC5FF]"></div>
                <form ref={formRef} onSubmit={sendEmail} className="space-y-7 relative z-10">
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
