@@ -173,20 +173,20 @@
 // }
 
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useLayoutEffect } from "react"; // 1. useLayoutEffect import kiya
 import Image from "next/image";
 import emailjs from "emailjs-com";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   User, Mail, Building2, Briefcase, Globe, MessageSquare, 
-  Send, Loader2, CheckCircle2, PhoneCall 
+  Send, Loader2, CheckCircle2, PhoneCall, ArrowUpRight 
 } from "lucide-react";
 
 // Register Plugin
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ContactPremium() {
+export default function Contact2() {
   const containerRef = useRef(null);
   const formRef = useRef(null);
   const buttonRef = useRef(null);
@@ -194,8 +194,10 @@ export default function ContactPremium() {
   const [sent, setSent] = useState(false);
 
   // --- GSAP ANIMATIONS ---
-  useEffect(() => {
+  // 2. useEffect ki jagah useLayoutEffect use kiya (SSR ke liye better)
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      
       // 1. Header Reveal
       gsap.fromTo(
         ".contact-header > *",
@@ -208,7 +210,8 @@ export default function ContactPremium() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".contact-header",
-            start: "top 85%",
+            start: "top 85%", // Thoda jaldi trigger hoga
+            toggleActions: "play none none reverse", // Ensure it plays
           },
         }
       );
@@ -222,7 +225,7 @@ export default function ContactPremium() {
           opacity: 1,
           rotate: 0,
           duration: 1.2,
-          delay: 0.2,
+          // delay hataya taaki user ko wait na karna pade agar wo jaldi scroll kare
           ease: "power4.out",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -240,7 +243,6 @@ export default function ContactPremium() {
           y: 0,
           opacity: 1,
           duration: 1.2,
-          delay: 0.3,
           ease: "power4.out",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -250,7 +252,17 @@ export default function ContactPremium() {
       );
     }, containerRef);
 
-    return () => ctx.revert();
+    // 3. THE MAGIC FIX: Force Refresh
+    // Ye code ensure karega ki agar upar wale component (Contact0) ki image late load hui
+    // toh bhi is section ki animation sahi time pe chalegi.
+    const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 1000); // 1 second delay to allow layout to settle
+
+    return () => {
+        ctx.revert();
+        clearTimeout(timer);
+    };
   }, []);
 
   const sendEmail = (e) => {
@@ -323,10 +335,10 @@ export default function ContactPremium() {
       {/* ================= BACKGROUND SYSTEM ================= */}
       <div className="fixed inset-0 bg-white -z-20"></div>
       
-      {/* 1. Grid Pattern (High Opacity Top -> Low Opacity Bottom) */}
+      {/* 1. Grid Pattern */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_90%)]"></div>
 
-      {/* 2. Glowing Circle Dots (Orbs) */}
+      {/* 2. Glowing Circle Dots */}
       <div className="fixed top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full bg-[#8EC5FF]/20 blur-[100px] mix-blend-multiply -z-10 animate-pulse"></div>
       <div className="fixed bottom-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full bg-[#F99321]/15 blur-[100px] mix-blend-multiply -z-10"></div>
 
@@ -335,13 +347,15 @@ export default function ContactPremium() {
         
         {/* --- HEADING --- */}
         <div className="text-center md:text-left mb-16 contact-header">
-           <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/80 border border-[#8EC5FF]/30 text-[#0066cc] text-xs font-bold tracking-[0.15em] uppercase mb-6 shadow-sm backdrop-blur-md">
-              <MessageSquare size={14} /> Contact Us
-           </span>
+           <div className="flex justify-center md:justify-start"> 
+             <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/80 border border-[#8EC5FF]/30 text-[#0066cc] text-xs font-bold tracking-[0.15em] uppercase mb-6 shadow-sm backdrop-blur-md">
+               <MessageSquare size={14} /> Contact Us
+             </span>
+           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight">
             Let’s start a <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F99321] to-[#d97706]">meaningful conversation.</span>
           </h2>
-          <p className="text-gray-600 text-lg md:text-xl max-w-2xl leading-relaxed font-medium">
+          <p className="text-gray-600 text-lg md:text-xl max-w-2xl leading-relaxed font-medium mx-auto md:mx-0">
             Ready to scale? Schedule a direct intro call{" "}
             <a href="tel:+916205693251" className="inline-flex items-center gap-1 text-[#0066cc] font-bold hover:text-[#F99321] transition-colors underline decoration-2 underline-offset-4 group">
               HERE <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -381,94 +395,92 @@ export default function ContactPremium() {
 
           {/* RIGHT: PREMIUM FORM CARD */}
           <div className="w-full lg:w-[55%]">
-            {/* Added backdrop-blur-xl to form card to interact nicely with the background grid */}
             <div className="contact-form-card bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-12 border border-white/60 shadow-[0_20px_40px_rgb(0,0,0,0.04)] relative overflow-hidden">
                
                {/* Top Decorative Gradient Line */}
                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#F99321]/0 via-[#F99321] to-[#8EC5FF]"></div>
 
                <form ref={formRef} onSubmit={sendEmail} className="space-y-7 relative z-10">
-                  
-                  {/* Row 1 */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <InputField label="First Name" name="first_name" type="text" placeholder="John" Icon={User} required />
-                    <InputField label="Email Address" name="email" type="email" placeholder="john@company.com" Icon={Mail} required />
-                  </div>
+                 
+                 {/* Row 1 */}
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                   <InputField label="First Name" name="first_name" type="text" placeholder="John" Icon={User} required />
+                   <InputField label="Email Address" name="email" type="email" placeholder="john@company.com" Icon={Mail} required />
+                 </div>
 
-                  {/* Row 2 */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 {/* Row 2 */}
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                      <InputField label="Company Name" name="company" type="text" placeholder="Truthink Inc." Icon={Building2} />
                      <InputField label="Industry Sector" name="industry" type="text" placeholder="Fintech, SaaS..." Icon={Briefcase} />
-                  </div>
+                 </div>
 
-                  {/* Source Field */}
-                  <InputField label="How did you find us?" name="source" type="text" placeholder="LinkedIn, Referral..." Icon={Globe} />
+                 {/* Source Field */}
+                 <InputField label="How did you find us?" name="source" type="text" placeholder="LinkedIn, Referral..." Icon={Globe} />
 
-                  {/* Message Textarea */}
-                  <div className="space-y-2 group/field relative">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 flex items-center gap-1">
-                        Message <span className="text-[#F99321]">*</span>
-                    </label>
-                    <div className="relative">
-                        <div className="absolute left-4 top-5 text-gray-400 transition-colors duration-300 group-focus-within/field:text-[#8EC5FF]">
-                            <MessageSquare size={20} strokeWidth={1.5} />
-                        </div>
-                        <textarea
-                          name="message"
-                          rows="4"
-                          required
-                          placeholder="Tell us about your project challenges..."
-                          className="w-full bg-white/60 backdrop-blur-sm border border-gray-200 rounded-xl pl-12 pr-5 py-4 text-gray-900 font-medium focus:outline-none focus:bg-white focus:border-[#8EC5FF] focus:ring-4 focus:ring-[#8EC5FF]/10 transition-all duration-300 placeholder:text-gray-400 shadow-sm resize-none"
-                        ></textarea>
-                    </div>
-                  </div>
-
-                  {/* Submit Button with GSAP Interaction */}
-                  <div className="pt-4">
-                      <button
-                        ref={buttonRef}
-                        type="submit"
-                        disabled={loading || sent}
-                        className={`cursor-pointer w-full relative overflow-hidden group bg-[#111827] text-white text-lg font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-xl shadow-gray-900/10 ${
-                          loading || sent ? "cursor-not-allowed opacity-90" : ""
-                        }`}
-                      >
-                        <span className="relative z-10 flex items-center justify-center gap-3">
-                            {loading ? (
-                                <>
-                                    <Loader2 size={24} className="animate-spin text-[#8EC5FF]" />
-                                    Sending Request...
-                                </>
-                            ) : sent ? (
-                                <>
-                                    <CheckCircle2 size={24} className="text-green-400" />
-                                    Message Sent!
-                                </>
-                            ) : (
-                                <>
-                                    Send Message
-                                    <Send size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
-                                </>
-                            )}
-                        </span>
-                        
-                        {/* Button Hover Gradient Slide */}
-                        {!loading && !sent && (
-                             <div className="absolute inset-0 bg-gradient-to-r from-[#F99321] to-[#d97706] translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out"></div>
-                        )}
-                      </button>
-                  </div>
-
-                  {/* Premium Success Message Card */}
-                  {sent && (
-                    <div className="absolute inset-0 z-20 bg-white/95 backdrop-blur-md rounded-[2.5rem] flex flex-col items-center justify-center p-8 text-center animate-fade-in-up">
-                       <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 shadow-sm ring-8 ring-green-50/30">
-                          <CheckCircle2 size={40} className="text-green-500" strokeWidth={1.5} />
+                 {/* Message Textarea */}
+                 <div className="space-y-2 group/field relative">
+                   <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 flex items-center gap-1">
+                       Message <span className="text-[#F99321]">*</span>
+                   </label>
+                   <div className="relative">
+                       <div className="absolute left-4 top-5 text-gray-400 transition-colors duration-300 group-focus-within/field:text-[#8EC5FF]">
+                           <MessageSquare size={20} strokeWidth={1.5} />
                        </div>
-                       <h3 className="text-2xl font-bold text-gray-900 mb-2">Received!</h3>
-                       <p className="text-gray-600 font-medium max-w-xs">Thanks for reaching out. Our team will get back to you within 24 hours.</p>
-                    </div>
-                  )}
+                       <textarea
+                         name="message"
+                         rows="4"
+                         required
+                         placeholder="Tell us about your project challenges..."
+                         className="w-full bg-white/60 backdrop-blur-sm border border-gray-200 rounded-xl pl-12 pr-5 py-4 text-gray-900 font-medium focus:outline-none focus:bg-white focus:border-[#8EC5FF] focus:ring-4 focus:ring-[#8EC5FF]/10 transition-all duration-300 placeholder:text-gray-400 shadow-sm resize-none"
+                       ></textarea>
+                   </div>
+                 </div>
+
+                 {/* Submit Button */}
+                 <div className="pt-4">
+                     <button
+                       ref={buttonRef}
+                       type="submit"
+                       disabled={loading || sent}
+                       className={`cursor-pointer w-full relative overflow-hidden group bg-[#111827] text-white text-lg font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-xl shadow-gray-900/10 ${
+                         loading || sent ? "cursor-not-allowed opacity-90" : ""
+                       }`}
+                     >
+                       <span className="relative z-10 flex items-center justify-center gap-3">
+                           {loading ? (
+                               <>
+                                   <Loader2 size={24} className="animate-spin text-[#8EC5FF]" />
+                                   Sending Request...
+                               </>
+                           ) : sent ? (
+                               <>
+                                   <CheckCircle2 size={24} className="text-green-400" />
+                                   Message Sent!
+                               </>
+                           ) : (
+                               <>
+                                   Send Message
+                                   <Send size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                               </>
+                           )}
+                       </span>
+                       
+                       {!loading && !sent && (
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#F99321] to-[#d97706] translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out"></div>
+                       )}
+                     </button>
+                 </div>
+
+                 {/* Success Overlay */}
+                 {sent && (
+                   <div className="absolute inset-0 z-20 bg-white/95 backdrop-blur-md rounded-[2.5rem] flex flex-col items-center justify-center p-8 text-center animate-fade-in-up">
+                      <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 shadow-sm ring-8 ring-green-50/30">
+                        <CheckCircle2 size={40} className="text-green-500" strokeWidth={1.5} />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">Received!</h3>
+                      <p className="text-gray-600 font-medium max-w-xs">Thanks for reaching out. Our team will get back to you within 24 hours.</p>
+                   </div>
+                 )}
                </form>
             </div>
           </div>
@@ -478,8 +490,3 @@ export default function ContactPremium() {
     </section>
   );
 }
-
-// Simple Arrow Component for Link
-const ArrowUpRight = ({ size = 24, className = "" }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-);
