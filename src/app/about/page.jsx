@@ -4,7 +4,9 @@ import About3 from '@/components/About/About3';
 import About4 from '@/components/About/About4';
 import About5 from '@/components/About/About5';
 import Founders from '@/components/About/Founders';
+import Contact0 from '@/components/Contact/Contact0';
 import FlippingCardsPage from '@/components/FlippingCard';
+import Footer from '@/components/Footer/Footer';
 import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
@@ -49,6 +51,7 @@ export default function page() {
       <div>
         <About1 />
         <About4 />
+        
         {/* <About2 /> */}
         <Founders/>
         {/* <About3 /> */}
