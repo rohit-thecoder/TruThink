@@ -67,67 +67,46 @@ export default function About5() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      // 1. Image Reveal (Using from)
+      gsap.from(".about5-image-wrapper", {
+        clipPath: "inset(100% 0 0 0)",
+        scale: 1.1,
+        autoAlpha: 1, // Ensure visible when playing
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+      });
 
-      // 1. IMAGE REVEAL
-      gsap.fromTo(".about5-image-wrapper", 
-        { clipPath: "inset(100% 0 0 0)", scale: 1.1 },
-        {
-          clipPath: "inset(0% 0 0 0)",
-          scale: 1,
-          duration: 1.5,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
-          },
-        }
-      );
-
-      // 2. TEXT STAGGER
-      gsap.fromTo(".about5-anim-text", 
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 75%",
-          },
-        }
-      );
-
+      // 2. Text Stagger (Using from)
+      gsap.from(".about5-anim-text", {
+        y: 40,
+        autoAlpha: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%",
+        },
+      });
     }, containerRef);
 
-    // --- AGGRESSIVE REFRESH FIX ---
-    const refreshInterval = setInterval(() => {
-        ScrollTrigger.refresh();
-    }, 500);
-
-    setTimeout(() => clearInterval(refreshInterval), 4000);
-
-    return () => {
-        ctx.revert();
-        clearInterval(refreshInterval);
-    }
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 1000);
+    return () => { ctx.revert(); clearTimeout(timer); }
   }, []);
   
   return (
-    <section
-      ref={containerRef}
-      className="relative px-6 md:px-20 py-24 bg-white overflow-hidden"
-    >
+    <section ref={containerRef} className="relative px-6 md:px-20 py-24 bg-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-50 rounded-full blur-3xl -z-10 opacity-60 translate-x-1/3 -translate-y-1/4"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
-        {/* --- Left Side - Text Content --- */}
+        {/* Left Side (Text) - Added 'invisible' to JSX */}
         <div className="order-2 lg:order-1 flex flex-col justify-center">
-          
-          <h2 className="about5-anim-text opacity-0 text-4xl md:text-5xl lg:text-[56px] font-semibold text-gray-900 mb-8 leading-[1.15] tracking-tight">
+          <h2 className="about5-anim-text invisible text-4xl md:text-5xl lg:text-[56px] font-semibold text-gray-900 mb-8 leading-[1.15] tracking-tight">
             At{" "}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 font-bold px-1">
               TRUTHINK
@@ -135,54 +114,34 @@ export default function About5() {
             </span>
             , we help businesses think smarter, scale faster, and stay financially confident.
           </h2>
-
-          <div className="about5-anim-text opacity-0 w-20 h-[2px] bg-gray-200 mb-8"></div>
-
-          <p className="about5-anim-text opacity-0 text-lg md:text-xl text-gray-600 mb-8 leading-relaxed font-medium">
-            We started with a simple belief — that finance shouldn’t feel
-            complicated or intimidating. It should be a partner in your growth
-            story. Over time, we’ve built a team that loves turning messy
-            spreadsheets into clarity, numbers into insights, and uncertainty
-            into direction.
+          <div className="about5-anim-text invisible w-20 h-[2px] bg-gray-200 mb-8"></div>
+          <p className="about5-anim-text invisible text-lg md:text-xl text-gray-600 mb-8 leading-relaxed font-medium">
+            We started with a simple belief...
           </p>
-
-          <p className="about5-anim-text opacity-0 text-lg text-gray-600 mb-8 leading-relaxed">
-            We work with founders, business owners, and finance teams who want
-            more than just reports — they want meaning behind the numbers. We
-            bring structure, discipline, and honesty to every engagement,
-            helping you make decisions with confidence and focus on what truly
-            matters — building your business.
+          <p className="about5-anim-text invisible text-lg text-gray-600 mb-8 leading-relaxed">
+            We work with founders...
           </p>
-
-          <div className="about5-anim-text opacity-0 pl-6 border-l-4 border-amber-400">
+          <div className="about5-anim-text invisible pl-6 border-l-4 border-amber-400">
             <p className="text-lg text-gray-800 font-medium italic">
-              "Every company’s journey is different — and so is ours with you.
-              Whether you’re just starting up or scaling across markets, we walk
-              beside you with a mix of strategy, empathy, and precision."
+              "Every company’s journey is different..."
             </p>
           </div>
         </div>
 
-        {/* --- Right Side - Image --- */}
+        {/* Right Side (Image) */}
         <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full">
-          {/* Image Container */}
-          <div 
-            className="about5-image-wrapper relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200"
-          >
+          <div className="about5-image-wrapper relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200">
             <Image
               src="https://images.pexels.com/photos/8962470/pexels-photo-8962470.jpeg"
-              alt="Professional team discussing strategy"
+              alt="Professional team"
               fill
               priority
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
-              // Add load handler here as well
-              onLoadingComplete={() => ScrollTrigger.refresh()}
+              onLoadingComplete={() => ScrollTrigger.refresh()} // REFRESH ON LOAD
             />
-            
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-multiply pointer-events-none"></div>
           </div>
-          
           <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 -z-10"></div>
         </div>
 
