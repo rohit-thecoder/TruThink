@@ -64,84 +64,137 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function About5() {
   const containerRef = useRef(null);
+  const imageRef = useRef(null);
+  const textContainerRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Image Reveal (Using from)
-      gsap.from(".about5-image-wrapper", {
-        clipPath: "inset(100% 0 0 0)",
-        scale: 1.1,
-        autoAlpha: 1, // Ensure visible when playing
-        duration: 1.5,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-      });
 
-      // 2. Text Stagger (Using from)
-      gsap.from(".about5-anim-text", {
-        y: 40,
-        autoAlpha: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
-        },
-      });
+      // --- IMAGE REVEAL FIX ---
+      gsap.fromTo(imageRef.current, 
+        { clipPath: "inset(100% 0 0 0)", scale: 1.1 }, // Start
+        {
+            clipPath: "inset(0% 0 0 0)",
+            scale: 1,
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+            once: true,
+            },
+        }
+      );
+
+      // --- TEXT STAGGER FIX ---
+      const textElements = textContainerRef.current.querySelectorAll(".anim-text");
+
+      gsap.fromTo(textElements, 
+        { y: 50, opacity: 0 }, // Start
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 65%",
+            once: true,
+            },
+        }
+      );
+
     }, containerRef);
 
-    const timer = setTimeout(() => ScrollTrigger.refresh(), 1000);
-    return () => { ctx.revert(); clearTimeout(timer); }
+    // Refresh hook
+    const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+        ctx.revert();
+        clearTimeout(timer);
+    }
   }, []);
   
   return (
-    <section ref={containerRef} className="relative px-6 md:px-20 py-24 bg-white overflow-hidden">
+    // JSX same as original
+    <section
+      ref={containerRef}
+      className="relative px-6 md:px-20 py-24 bg-white overflow-hidden"
+    >
+      {/* Decorative Background Orb */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-50 rounded-full blur-3xl -z-10 opacity-60 translate-x-1/3 -translate-y-1/4"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
-        {/* Left Side (Text) - Added 'invisible' to JSX */}
-        <div className="order-2 lg:order-1 flex flex-col justify-center">
-          <h2 className="about5-anim-text invisible text-4xl md:text-5xl lg:text-[56px] font-semibold text-gray-900 mb-8 leading-[1.15] tracking-tight">
+        {/* --- Left Side - Text Content --- */}
+        <div ref={textContainerRef} className="order-2 lg:order-1 flex flex-col justify-center">
+          
+          {/* Heading */}
+          <h2 className="anim-text text-4xl md:text-5xl lg:text-[56px] font-semibold text-gray-900 mb-8 leading-[1.15] tracking-tight">
             At{" "}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 font-bold px-1">
               TRUTHINK
+              {/* Subtle Underline highlight */}
               <span className="absolute bottom-1 left-0 w-full h-[3px] bg-amber-100 -z-10 rounded-sm"></span>
             </span>
             , we help businesses think smarter, scale faster, and stay financially confident.
           </h2>
-          <div className="about5-anim-text invisible w-20 h-[2px] bg-gray-200 mb-8"></div>
-          <p className="about5-anim-text invisible text-lg md:text-xl text-gray-600 mb-8 leading-relaxed font-medium">
-            We started with a simple belief...
+
+          {/* Divider Line */}
+          <div className="anim-text w-20 h-[2px] bg-gray-200 mb-8"></div>
+
+          {/* Paragraph 1 */}
+          <p className="anim-text text-lg md:text-xl text-gray-600 mb-8 leading-relaxed font-medium">
+            We started with a simple belief — that finance shouldn’t feel
+            complicated or intimidating. It should be a partner in your growth
+            story. Over time, we’ve built a team that loves turning messy
+            spreadsheets into clarity, numbers into insights, and uncertainty
+            into direction.
           </p>
-          <p className="about5-anim-text invisible text-lg text-gray-600 mb-8 leading-relaxed">
-            We work with founders...
+
+          {/* Paragraph 2 */}
+          <p className="anim-text text-lg text-gray-600 mb-8 leading-relaxed">
+            We work with founders, business owners, and finance teams who want
+            more than just reports — they want meaning behind the numbers. We
+            bring structure, discipline, and honesty to every engagement,
+            helping you make decisions with confidence and focus on what truly
+            matters — building your business.
           </p>
-          <div className="about5-anim-text invisible pl-6 border-l-4 border-amber-400">
+
+          {/* Paragraph 3 (Highlighted) */}
+          <div className="anim-text pl-6 border-l-4 border-amber-400">
             <p className="text-lg text-gray-800 font-medium italic">
-              "Every company’s journey is different..."
+              "Every company’s journey is different — and so is ours with you.
+              Whether you’re just starting up or scaling across markets, we walk
+              beside you with a mix of strategy, empathy, and precision."
             </p>
           </div>
         </div>
 
-        {/* Right Side (Image) */}
+        {/* --- Right Side - Image --- */}
         <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full">
-          <div className="about5-image-wrapper relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200">
+          {/* Image Container with Masking for Animation */}
+          <div 
+            ref={imageRef} 
+            className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200"
+          >
             <Image
               src="https://images.pexels.com/photos/8962470/pexels-photo-8962470.jpeg"
-              alt="Professional team"
+              alt="Professional team discussing strategy"
               fill
               priority
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
-              onLoadingComplete={() => ScrollTrigger.refresh()} // REFRESH ON LOAD
             />
+            
+            {/* Gradient Overlay for Text Readability/Aesthetics */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-multiply pointer-events-none"></div>
           </div>
+          
+          {/* Decorative Pattern behind image */}
           <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 -z-10"></div>
         </div>
 
