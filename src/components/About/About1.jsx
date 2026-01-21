@@ -119,54 +119,7 @@ export default function About1() {
   const imageRef = useRef(null);
   const textRef = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
 
-      // Step A: Container Reveal
-      tl.fromTo(
-        containerRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
-      )
-      // Step B: Image Zoom Out
-      .fromTo(
-        ".bg-image", 
-        { scale: 1.25 }, 
-        { scale: 1, duration: 1.8, ease: "expo.out" }, 
-        "<" 
-      )
-      // Step C: White Box Entry
-      .fromTo(
-        textRef.current,
-        { y: "100%" },
-        { y: "0%", duration: 1, ease: "power4.out" },
-        "-=1.2"
-      )
-      // Step D: Content Stagger
-      .fromTo(
-        ".content-reveal",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-        "-=0.5"
-      );
-
-      // Parallax Effect
-      gsap.to(".bg-image", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top", 
-          end: "bottom top", 
-          scrub: true, 
-        },
-      });
-
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div 
