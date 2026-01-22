@@ -43,23 +43,54 @@ export const jsonLd = {
 };
 
 
-export default function page() {
+export default function Page() {
+  
+  useEffect(() => {
+    // 1. Register Plugin Globally
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. FORCE REFRESH AFTER LOAD
+    // Production par images dheere load hoti hain, isliye double refresh zaroori hai
+    const handleRefresh = () => {
+      ScrollTrigger.refresh();
+    };
+
+    // Window load event listener
+    window.addEventListener("load", handleRefresh);
+
+    // Backup timer (agar load event miss ho jaye)
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000); // 1 second delay
+    
+    // Backup timer 2 (for slow networks)
+    const timer2 = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 3000); 
+
+    return () => {
+      window.removeEventListener("load", handleRefresh);
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
+  }, []);
+
+  const jsonLdData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Truthink",
+    description: "Learn about Truthink, our mission, values & expert team serving startups & SMEs.",
+    url: "https://truthinkconsulting.in/about",
+  };
+
   return (
     <div>
-      <JsonLd data={jsonLd} />
-
-      <div>
+      <JsonLd data={jsonLdData} />
+      <div className="overflow-hidden"> {/* Added overflow-hidden to prevent horizontal scroll issues */}
         <About1 />
         <About4 />
-        
-        {/* <About2 /> */}
         <Founders/>
-        {/* <About3 /> */}
-
         <About5 />
-        {/* <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">
-          Our AboutPage is currently under construction. We will be live soon{" "}
-        </h1> */}
       </div>
     </div>
   );

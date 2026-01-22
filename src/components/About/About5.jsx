@@ -55,7 +55,7 @@
 //   );
 // }
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -67,7 +67,7 @@ export default function About5() {
   const imageRef = useRef(null);
   const textContainerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
       // --- IMAGE REVEAL FIX ---

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TrendingUp, ShieldCheck, PieChart, Target } from "lucide-react";
@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function About4() {
   const containerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       
       // FIX 1: Use fromTo instead of from
