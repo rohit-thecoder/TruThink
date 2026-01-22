@@ -96,27 +96,19 @@
 //   );
 // }
 
-import React from 'react';
-import AboutContent from '@/components/About/AboutContent'; // Step 1 wala file import karo
+import AboutContent from '@/components/About/AboutContent'; // Upar wala naya component
 
-// --- METADATA (Server Side Only) ---
+// --- METADATA (Ye Server par hi rahega, isliye build pass hogi) ---
 export const metadata = {
   title: "About Truthink Consulting | Startup Advisors",
   description: "Know our story, mission, and team behind Truthink Consulting",
-  keywords:"about Truthink Consulting, startup consultants India, SME advisory firm, financial consulting company, business growth advisors",
-  robots: { index: true, follow: true },
   alternates: { canonical: "https://truthinkconsulting.in/about" },
   openGraph: {
     title: "About Truthink – Startup & SME Financial Experts",
-    description: "Learn about Truthink, our mission, values & expert team serving startups & SMEs.",
+    description: "Learn about Truthink, our mission, values & expert team.",
     url: "https://truthinkconsulting.in/about",
     siteName: "Truthink",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Truthink – Startup & SME Financial Experts",
-    description: "Learn about Truthink, our mission, values & expert team serving startups & SMEs.",
   },
 };
 
@@ -124,13 +116,13 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Truthink",
-  description: "Learn about Truthink, our mission, values & expert team serving startups & SMEs.",
+  description: "Learn about Truthink, our mission, values & expert team.",
   url: "https://truthinkconsulting.in/about",
 };
 
 export default function Page() {
   return (
-    // Hum sara data Client component ko pass kar rahe hain
+    // Hum data ko Client Component mein bhej rahe hain
     <AboutContent jsonLdData={jsonLd} />
   );
 }
