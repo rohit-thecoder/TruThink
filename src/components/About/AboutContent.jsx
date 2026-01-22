@@ -37,7 +37,7 @@ export default function AboutContent({ jsonLdData }) {
       <JsonLd data={jsonLdData} />
       
       {/* Components */}
-      <About1 />
+      {/* <About1 /> */}
       <About4 />
       <Founders />
       <About5 />
