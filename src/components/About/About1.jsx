@@ -174,10 +174,10 @@ export default function About1() {
     // 1. Parent container
     <div 
       ref={containerRef} 
-      className="relative w-full max-w-[1400px] mx-auto md:py-24 md:px-10 lg:px-20 pt-32 opacity-0" 
+      className="relative w-full max-w-[1400px] mx-auto md:py-34 md:px-10 lg:px-20 pt-32 opacity-0" 
     > 
       {/* 2. Main wrapper (Rounded High-End Look) */}
-      <div className="relative w-full h-[60vh] min-h-[500px] md:h-[650px] overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-200 group">
+      <div className="relative w-full h-[60vh] min-h-[500px] md:h-[550px] overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-200 group">
         
         {/* Background Image Wrapper */}
         <div className="w-full h-full relative overflow-hidden">

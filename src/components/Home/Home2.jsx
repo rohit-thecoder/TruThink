@@ -220,7 +220,8 @@ export default function Home2() {
 
           {/* 4. CTA Button */}
           <div className="hero-element">
-            <button className="group relative px-10 py-4 bg-[#1f1f1f] text-white rounded-full text-lg font-semibold shadow-xl shadow-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+            <a href="/contact"></a>
+            <button  className="group cursor-pointer relative px-10 py-4 bg-[#1f1f1f] text-white rounded-full text-lg font-semibold shadow-xl shadow-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
               <span className="relative z-10 flex items-center gap-2">
                 Get Started
               </span>

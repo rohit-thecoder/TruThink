@@ -60,10 +60,10 @@ export default function Contact0() {
     <div 
       ref={containerRef} 
       // Tailwind ki opacity-0 hata kar style use kiya hai taaki FOUC na ho
-      className="relative w-full max-w-[1400px] mx-auto md:py-24 md:px-10 lg:px-20 pt-32"
+      className="relative w-full max-w-[1400px] mx-auto md:py-34 md:px-10 lg:px-20 pt-32"
       style={{ opacity: 0 }} // Initial hidden strictly via inline style
     > 
-      <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-200 group">
+      <div className="relative w-full h-[500px] md:h-[550px] overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-200 group">
         
         <div className="w-full h-full relative overflow-hidden">
             <Image

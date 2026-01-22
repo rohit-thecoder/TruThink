@@ -1,46 +1,72 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { 
   ArrowRight, Coins, History, 
   CheckCircle2, Lightbulb, Scale, Sparkles 
 } from "lucide-react";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function ValuationGuide() {
-  const containerRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. Definition Cards Reveal (Up & Fade)
-      gsap.fromTo(".guide-card", 
-        { y: 50, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out", scrollTrigger: { trigger: ".guide-cards-grid", start: "top 80%" } }
-      );
+  // --- ANIMATION VARIANTS ---
 
-      // 2. Methods List Stagger
-      gsap.fromTo(".method-item", 
-        { x: -20, opacity: 0 }, 
-        { x: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: "power2.out", scrollTrigger: { trigger: ".methods-wrapper", start: "top 75%" } }
-      );
+  // 1. Definition Cards (Staggered Up & Fade)
+  const cardsContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
 
-      // 3. CTA Scale Reveal
-      gsap.fromTo(".truthink-cta", 
-        { scale: 0.95, opacity: 0, y: 30 }, 
-        { scale: 1, opacity: 1, y: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".truthink-cta", start: "top 85%" } }
-      );
+  const cardItemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { duration: 1, ease: "easeOut" } 
+    }
+  };
 
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
+  // 2. Methods List (Staggered Slide Right)
+  const methodsContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const methodItemVariants = {
+    hidden: { x: -20, opacity: 0 },
+    visible: { 
+      x: 0, 
+      opacity: 1, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    }
+  };
+
+  // 3. CTA Reveal (Scale Up with Expo Ease)
+  const ctaVariants = {
+    hidden: { scale: 0.95, opacity: 0, y: 30 },
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 1.2, 
+        ease: [0.16, 1, 0.3, 1] // Custom bezier for "expo.out" feel
+      } 
+    }
+  };
 
   return (
-    <section ref={containerRef} className="relative py-24 md:py-36 px-5 md:px-12 lg:px-20 overflow-hidden font-sans">
+    <section className="relative py-24 md:py-36 px-5 md:px-12 lg:px-20 overflow-hidden font-sans">
       
       {/* ================= BACKGROUND SYSTEM ================= */}
       
@@ -49,7 +75,7 @@ export default function ValuationGuide() {
          <div className="absolute inset-0 bg-[linear-gradient(to_right,#64748b12_1px,transparent_1px),linear-gradient(to_bottom,#64748b12_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       </div>
 
-      {/* 2. Circle Dots with High-to-Low Opacity Mask */}
+      {/* 2. Circle Dots */}
       <div className="absolute inset-0 pointer-events-none -z-20">
          <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1.5px,transparent_1.5px)] [background-size:24px_24px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0)_90%)] opacity-30"></div>
       </div>
@@ -62,10 +88,16 @@ export default function ValuationGuide() {
       <div className="max-w-7xl mx-auto space-y-32">
 
         {/* ================= SECTION 1: DEFINITIONS (Cards) ================= */}
-        <div className="guide-cards-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <motion.div 
+          className="guide-cards-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={cardsContainerVariants}
+        >
             
             {/* CARD 1: PRE-MONEY */}
-            <div className="guide-card group relative bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(34,113,184,0.15)] transition-all duration-500 hover:-translate-y-2">
+            <motion.div variants={cardItemVariants} className="guide-card group relative bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(34,113,184,0.15)] transition-all duration-500 hover:-translate-y-2">
                 {/* Hover Glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -89,10 +121,10 @@ export default function ValuationGuide() {
                         <p className="text-[#0f172a] font-medium italic text-lg leading-snug">“What is my startup worth just before the investor signs the cheque?”</p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* CARD 2: POST-MONEY */}
-            <div className="guide-card group relative bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(249,147,33,0.15)] transition-all duration-500 hover:-translate-y-2">
+            <motion.div variants={cardItemVariants} className="guide-card group relative bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(249,147,33,0.15)] transition-all duration-500 hover:-translate-y-2">
                 {/* Hover Glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -116,8 +148,8 @@ export default function ValuationGuide() {
                         <p className="text-[#0f172a] font-medium italic text-lg leading-snug">“What is my ownership slice worth after the deal closes?”</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
 
         {/* ================= SECTION 2: STRATEGY & METHODS ================= */}
         <div className="methods-wrapper grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -147,7 +179,13 @@ export default function ValuationGuide() {
 
             {/* Right: Premium Methods Grid */}
             <div className="lg:col-span-7">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <motion.div 
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={methodsContainerVariants}
+                >
                     {[
                         "Discounted Cash Flow (DCF)",
                         "Venture Capital Method",
@@ -158,19 +196,29 @@ export default function ValuationGuide() {
                         "Risk Factor Summation",
                         "First Chicago Method"
                     ].map((method, i) => (
-                        <div key={i} className="method-item group flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-2xl shadow-sm hover:border-[#2271B8]/40 hover:shadow-lg hover:shadow-blue-900/5 transition-all duration-300">
+                        <motion.div 
+                          key={i} 
+                          variants={methodItemVariants}
+                          className="method-item group flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-2xl shadow-sm hover:border-[#2271B8]/40 hover:shadow-lg hover:shadow-blue-900/5 transition-all duration-300"
+                        >
                             <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#2271B8] transition-colors duration-300">
                                 <CheckCircle2 size={16} className="text-slate-400 group-hover:text-white transition-colors" />
                             </div>
                             <span className="font-semibold text-slate-700 group-hover:text-[#0f172a] transition-colors">{method}</span>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </div>
 
         {/* ================= SECTION 3: CTA (The Finale) ================= */}
-        <div className="truthink-cta relative rounded-[3rem] bg-[#0f172a] overflow-hidden p-10 md:p-20 text-center shadow-2xl shadow-blue-900/20">
+        <motion.div 
+          className="truthink-cta relative rounded-[3rem] bg-[#0f172a] overflow-hidden p-10 md:p-20 text-center shadow-2xl shadow-blue-900/20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={ctaVariants}
+        >
             
             {/* Dark Background Effects */}
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
@@ -203,7 +251,7 @@ export default function ValuationGuide() {
                     </Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

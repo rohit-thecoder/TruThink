@@ -261,7 +261,7 @@ export default function DesktopNavbar() {
                   <Link
                     href={menu.href}
                     onClick={(e) => { e.preventDefault(); handleNavigation(menu.href); }}
-                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300
+                    className={`relative px-4 py-2 rounded-lg text-md font-medium transition-all duration-300
                       ${pathname === menu.href 
                         ? "text-[#f6921e] bg-orange-50" 
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
@@ -271,7 +271,7 @@ export default function DesktopNavbar() {
                   </Link>
                 ) : (
                   <button
-                    className={`relative flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer
+                    className={`relative flex items-center gap-1 px-4 py-2 rounded-lg text-md font-medium transition-all duration-300 cursor-pointer
                       ${openDropdown === i || pathname.startsWith(menu.href)
                         ? "text-[#2271B8] bg-blue-50" 
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
