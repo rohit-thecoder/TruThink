@@ -101,19 +101,13 @@
 // }
 
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   CheckCircle2, TrendingUp, Zap, BarChart3, Users, 
   ShieldCheck, ArrowRight, LayoutDashboard 
 } from "lucide-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // Data with icons and specific images for each feature
 const FEATURES_DATA = [
@@ -156,8 +150,6 @@ const FEATURES_DATA = [
 
 export default function IndustriesPreferUs() {
   const [activeFeature, setActiveFeature] = useState(0);
-  const containerRef = useRef(null);
-  const sectionRef = useRef(null);
 
   // Auto-rotate features every 5 seconds if user hasn't clicked
   useEffect(() => {
@@ -167,41 +159,64 @@ export default function IndustriesPreferUs() {
     return () => clearInterval(interval);
   }, []);
 
-  // GSAP Entrance Animation
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        }
-      });
+  // --- ANIMATION VARIANTS ---
 
-      tl.fromTo(".prefer-title", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 });
-      tl.fromTo(".prefer-text", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "-=0.6");
-      tl.fromTo(".prefer-list-item", 
-        { x: -20, opacity: 0 }, 
-        { x: 0, opacity: 1, duration: 0.6, stagger: 0.1 }, 
-        "-=0.4"
-      );
-      tl.fromTo(".prefer-card", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.5)" }, "-=0.6");
+  // 1. Main Container Stagger (Controls the sequence)
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15, // Delay between each element appearing
+        delayChildren: 0.2
+      }
+    }
+  };
 
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  // 2. Text Slide Up
+  const fadeInUpVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    }
+  };
+
+  // 3. List Item Slide In (From Left)
+  const listItemVariants = {
+    hidden: { x: -20, opacity: 0 },
+    visible: { 
+      x: 0, 
+      opacity: 1, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    }
+  };
+
+  // 4. Card Pop (Bounce effect)
+  const cardVariants = {
+    hidden: { scale: 0.9, opacity: 0 },
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      transition: { 
+        duration: 0.8, 
+        type: "spring", 
+        bounce: 0.4 // Mimics GSAP back.out
+      } 
+    }
+  };
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-36 px-5 md:px-10 lg:px-20 bg-slate-50 overflow-hidden">
+    <section className="relative py-24 md:py-36 px-5 md:px-10 lg:px-20 bg-slate-50 overflow-hidden">
       
       {/* ================= BACKGROUND SYSTEM ================= */}
       
-      {/* 1. Technical Grid (Slate Color) */}
+      {/* 1. Technical Grid */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a0a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a0a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)]"></div>
       </div>
 
-      {/* 2. Floating Background Icons (Decoration) */}
+      {/* 2. Floating Background Icons */}
       <div className="absolute top-20 right-10 text-slate-200/50 rotate-12 pointer-events-none">
           <ShieldCheck size={180} strokeWidth={0.5} />
       </div>
@@ -211,25 +226,31 @@ export default function IndustriesPreferUs() {
 
 
       {/* ================= MAIN GRID ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <motion.div 
+        className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Triggers when 30% visible
+        variants={containerVariants}
+      >
         
         {/* --- LEFT: TEXT & LIST --- */}
         <div className="lg:col-span-5 space-y-10">
           
           {/* Header */}
           <div className="space-y-6">
-            <h2 className="prefer-title text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#0f172a] leading-[1.1] tracking-tight">
+            <motion.h2 variants={fadeInUpVariants} className="prefer-title text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#0f172a] leading-[1.1] tracking-tight">
               Why{" "}
               <span className="relative inline-block px-4 py-1 mx-1">
-                 <span className="absolute inset-0 bg-[#F99321] -skew-x-6 rounded-lg transform rotate-[-2deg]"></span>
-                 <span className="relative z-10 text-white">Startups</span>
+                  <span className="absolute inset-0 bg-[#F99321] -skew-x-6 rounded-lg transform rotate-[-2deg]"></span>
+                  <span className="relative z-10 text-white">Startups</span>
               </span>
               <br /> Prefer Us
-            </h2>
+            </motion.h2>
             
-            <p className="prefer-text text-lg text-slate-600 leading-relaxed font-medium">
+            <motion.p variants={fadeInUpVariants} className="prefer-text text-lg text-slate-600 leading-relaxed font-medium">
               We are your long-term growth partner. Backed by an expert team that handles limited clients, offering high-touch service that feels truly in-house.
-            </p>
+            </motion.p>
           </div>
 
           {/* Interactive Feature List */}
@@ -237,9 +258,10 @@ export default function IndustriesPreferUs() {
             {FEATURES_DATA.map((feature, index) => {
               const isActive = activeFeature === index;
               return (
-                <div 
+                <motion.div 
                     key={index} 
-                    className="prefer-list-item group cursor-pointer relative"
+                    variants={listItemVariants}
+                    className="group cursor-pointer relative"
                     onClick={() => setActiveFeature(index)}
                 >
                     {/* Active Indicator Line */}
@@ -255,7 +277,7 @@ export default function IndustriesPreferUs() {
                             {feature.name}
                         </span>
                     </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -264,7 +286,10 @@ export default function IndustriesPreferUs() {
 
         {/* --- RIGHT: DYNAMIC CARD --- */}
         <div className="lg:col-span-7 h-full flex items-center">
-             <div className="prefer-card relative w-full bg-white rounded-[2.5rem] p-3 shadow-2xl shadow-blue-900/10 border border-slate-100 overflow-hidden">
+             <motion.div 
+                variants={cardVariants}
+                className="prefer-card relative w-full bg-white rounded-[2.5rem] p-3 shadow-2xl shadow-blue-900/10 border border-slate-100 overflow-hidden"
+             >
                 
                 {/* Dynamic Content Area */}
                 <div className="relative w-full h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden bg-slate-900">
@@ -321,10 +346,10 @@ export default function IndustriesPreferUs() {
                     </div>
 
                 </div>
-             </div>
+             </motion.div>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
