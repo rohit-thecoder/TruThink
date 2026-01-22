@@ -1,7 +1,7 @@
 import JsonLd from '@/components/JsonLd';
 import Service4 from '@/components/Services/Service4';
 import Service5 from '@/components/Services/Service5';
-import Service6 from '@/components/Services/Service6';
+import Service6 from '@/components/Services/service6';
 
 import ServiceFaqs1 from '@/components/Services/ServiceFaqs1';
 import ServiceKaHero from '@/components/Services/ServiceKaHero';
