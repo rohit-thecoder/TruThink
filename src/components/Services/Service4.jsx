@@ -50,105 +50,103 @@
 // }
 
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CheckCircle2, TrendingUp, Layers, Wallet, ArrowUpRight } from "lucide-react";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { CheckCircle2, TrendingUp, Layers } from "lucide-react";
 import CtaButton from "../CtaButton";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function Service4() {
-  const containerRef = useRef(null);
-  const imageContainerRef = useRef(null);
+  
+  // --- 3D TILT LOGIC (Framer Motion Way) ---
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 0. INITIAL STATES
-      gsap.set(".s4-content", { y: 40, opacity: 0 });
-      gsap.set(".s4-visual-layer", { opacity: 0, scale: 0.9, y: 30 });
-      gsap.set(".s4-bg-icon", { opacity: 0, rotation: -20 });
+  // Smooth spring animation for tilt (replaces GSAP ease)
+  const springConfig = { damping: 20, stiffness: 100 };
+  const rotateX = useSpring(useTransform(y, [-100, 100], [5, -5]), springConfig); // Reverse Y for natural tilt
+  const rotateY = useSpring(useTransform(x, [-100, 100], [-5, 5]), springConfig);
 
-      // 1. Text Content Animation
-      gsap.to(".s4-content", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
-        },
-      });
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    // Calculate mouse position relative to center
+    const mouseX = e.clientX - rect.left - width / 2;
+    const mouseY = e.clientY - rect.top - height / 2;
 
-      // 2. Visual Layers Reveal (Staggered Stacking)
-      gsap.to(".s4-visual-layer", {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        },
-      });
+    x.set(mouseX);
+    y.set(mouseY);
+  };
 
-      // 3. Background Icons Float
-      gsap.to(".s4-bg-icon", {
-        opacity: 1,
-        rotation: 0,
-        duration: 1.5,
-        ease: "back.out(1.7)",
-      });
+  const handleMouseLeave = () => {
+    // Reset to center on leave
+    x.set(0);
+    y.set(0);
+  };
 
-    }, containerRef);
+  // --- SCROLL ANIMATION VARIANTS ---
 
-    // 4. MOUSE MOVE 3D PARALLAX EFFECT (The Premium Touch)
-    const handleMouseMove = (e) => {
-      if (!imageContainerRef.current) return;
-      const { left, top, width, height } = imageContainerRef.current.getBoundingClientRect();
-      const x = (e.clientX - left - width / 2) / 30; // Reduced sensitivity for classier feel
-      const y = (e.clientY - top - height / 2) / 30;
+  // 1. Text Content Stagger
+  const textContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  };
 
-      gsap.to(".s4-tilt-target", {
-        rotationY: x,
-        rotationX: -y,
-        ease: "power1.out",
-        duration: 0.8,
-        transformPerspective: 1200,
-        transformOrigin: "center center"
-      });
-    };
+  const textItemVariants = {
+    hidden: { y: 40, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" }
+    }
+  };
 
-    const section = containerRef.current;
-    section.addEventListener("mousemove", handleMouseMove);
+  // 2. Visual Layer Stagger
+  const visualContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    }
+  };
 
-    return () => {
-      ctx.revert();
-      section.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  const visualLayerVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 30 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } // Expo ease equivalent
+    }
+  };
+
+  // 3. Icon Pop
+  const iconVariants = {
+    hidden: { opacity: 0, rotate: -20 },
+    visible: { 
+      opacity: 1, 
+      rotate: 0,
+      transition: { duration: 1.5, type: "spring", bounce: 0.5 }
+    }
+  };
 
   return (
-    <section ref={containerRef} className="relative py-24 md:py-40 overflow-hidden bg-white">
+    <section className="relative py-24 md:py-40 overflow-hidden bg-white">
       
       {/* ================= BACKGROUND SYSTEM ================= */}
       
-      {/* 1. High Quality Noise Texture (For Tangible Feel) */}
+      {/* 1. High Quality Noise Texture */}
       <div className="absolute inset-0 opacity-[0.4] pointer-events-none z-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
 
-      {/* 2. Technical Grid (Slate Color for visibility) */}
+      {/* 2. Technical Grid */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#64748b1a_1px,transparent_1px),linear-gradient(to_bottom,#64748b1a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)]"></div>
       </div>
 
-      {/* 3. Ambient Orbs (Subtle Glows) */}
+      {/* 3. Ambient Orbs */}
       <div className="absolute top-1/3 left-[-10%] w-[600px] h-[600px] bg-blue-50/80 rounded-full blur-[120px] -z-10 mix-blend-multiply"></div>
       <div className="absolute bottom-0 right-[-10%] w-[700px] h-[700px] bg-orange-50/60 rounded-full blur-[120px] -z-10 mix-blend-multiply"></div>
 
@@ -158,16 +156,22 @@ export default function Service4() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-28">
           
           {/* --- LEFT SECTION: TEXT --- */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-9">
+          <motion.div 
+            className="w-full lg:w-1/2 flex flex-col justify-center space-y-9"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={textContainerVariants}
+          >
             
             {/* Tag */}
-            <div className="s4-content inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-blue-100 rounded-full shadow-sm w-fit">
+            <motion.div variants={textItemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-blue-100 rounded-full shadow-sm w-fit">
                <Layers size={14} className="text-[#2271B8]" />
                <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Growth Partners</span>
-            </div>
+            </motion.div>
 
             {/* Heading */}
-            <h2 className="s4-content text-4xl md:text-5xl lg:text-[54px] font-extrabold text-[#0f172a] leading-[1.05] tracking-tight">
+            <motion.h2 variants={textItemVariants} className="text-4xl md:text-5xl lg:text-[54px] font-extrabold text-[#0f172a] leading-[1.05] tracking-tight">
               Scalable. Hands-on. <br />
               <span className="relative inline-block mt-2">
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#2271B8] to-[#003B70]">
@@ -178,17 +182,17 @@ export default function Service4() {
                     <path d="M0 5 Q 50 12 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 </svg>
               </span>
-            </h2>
+            </motion.h2>
 
             {/* Description */}
-            <p className="s4-content text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+            <motion.p variants={textItemVariants} className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
               We don't just balance the books; we engineer your financial infrastructure. 
               From <span className="text-[#0f172a] font-semibold underline decoration-[#F99321]/30 decoration-2 underline-offset-2">seed stage to exit</span>, 
               we provide the operational backbone you need to scale without breaking.
-            </p>
+            </motion.p>
 
             {/* Premium Checklist (Pill Style) */}
-            <div className="s4-content flex flex-wrap gap-3 pt-2">
+            <motion.div variants={textItemVariants} className="flex flex-wrap gap-3 pt-2">
                 {[
                     "Strategic CFO",
                     "R&D Tax Credits",
@@ -200,54 +204,69 @@ export default function Service4() {
                         <span className="text-sm font-semibold text-gray-700">{item}</span>
                     </div>
                 ))}
-            </div>
+            </motion.div>
 
             {/* Button */}
-            <div className="s4-content pt-6 w-fit">
+            <motion.div variants={textItemVariants} className="pt-6 w-fit">
               <CtaButton />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* --- RIGHT SECTION: 3D INTERACTIVE VISUAL --- */}
-          <div className="hidden lg:flex w-full lg:w-1/2 justify-center lg:justify-end perspective-1000">
+          <motion.div 
+            className="hidden lg:flex w-full lg:w-1/2 justify-center lg:justify-end perspective-1000"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={visualContainerVariants}
+          >
              
-             {/* 3D Container */}
-             <div ref={imageContainerRef} className="s4-tilt-target relative w-full max-w-[580px] aspect-[4/3] group">
-                
-                {/* Layer 1: Abstract Backdrop (Decorative Pattern) */}
-                <div className="s4-visual-layer absolute top-[-30px] right-[-30px] w-full h-full bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-40 -z-20 border border-gray-200 rounded-[2.5rem]"></div>
-                
-                {/* Layer 2: Main Image with Glass Border */}
-                <div className="s4-visual-layer relative h-full w-full rounded-[2rem] overflow-hidden border-[8px] border-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] bg-gray-100 z-10">
-                  <Image
-                    src="https://images.pexels.com/photos/8145261/pexels-photo-8145261.jpeg" // Professional meeting image
-                    alt="Strategic Meeting"
-                    fill
-                    className="object-cover scale-105 group-hover:scale-110 transition-transform duration-[1.5s]"
-                  />
-                  {/* Cinematic Inner Shadow */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/60 via-[#0f172a]/10 to-transparent pointer-events-none"></div>
-                  
-                  {/* Text Overlay on Image */}
-                  <div className="absolute bottom-8 left-8 text-white z-20">
+             {/* 3D Container with Mouse Events */}
+             <motion.div 
+                className="relative w-full max-w-[580px] aspect-[4/3] group"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: "preserve-3d" // Essential for 3D effect
+                }}
+             >
+               
+               {/* Layer 1: Abstract Backdrop */}
+               <motion.div variants={visualLayerVariants} className="absolute top-[-30px] right-[-30px] w-full h-full bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-40 -z-20 border border-gray-200 rounded-[2.5rem] transform-gpu translate-z-[-20px]"></motion.div>
+               
+               {/* Layer 2: Main Image with Glass Border */}
+               <motion.div variants={visualLayerVariants} className="relative h-full w-full rounded-[2rem] overflow-hidden border-[8px] border-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] bg-gray-100 z-10 transform-gpu translate-z-[10px]">
+                 <Image
+                   src="https://images.pexels.com/photos/8145261/pexels-photo-8145261.jpeg" // Professional meeting image
+                   alt="Strategic Meeting"
+                   fill
+                   className="object-cover scale-105 group-hover:scale-110 transition-transform duration-[1.5s]"
+                 />
+                 {/* Cinematic Inner Shadow */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/60 via-[#0f172a]/10 to-transparent pointer-events-none"></div>
+                 
+                 {/* Text Overlay on Image */}
+                 <div className="absolute bottom-8 left-8 text-white z-20">
                      <div className="flex items-center gap-2 mb-2">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                         <p className="text-xs font-bold uppercase tracking-widest opacity-90">Live Metrics</p>
                      </div>
                      <p className="text-3xl font-bold tracking-tight">Precision & Growth</p>
-                  </div>
-                </div>
+                 </div>
+               </motion.div>
 
-                {/* Layer 3: THE REPLACEMENT CARD (Floating Glass) */}
-                
+               {/* Layer 3: Floating Decoration Icon */}
+               <motion.div 
+                  variants={iconVariants}
+                  className="absolute -top-8 -right-8 bg-[#F99321] text-white p-4 rounded-2xl shadow-lg shadow-orange-500/30 z-30 transform-gpu translate-z-[30px]"
+               >
+                   <TrendingUp size={28} />
+               </motion.div>
 
-                {/* Layer 4: Floating Decoration Icon */}
-                <div className="s4-bg-icon absolute -top-8 -right-8 bg-[#F99321] text-white p-4 rounded-2xl shadow-lg shadow-orange-500/30 z-30 animate-float-delayed">
-                    <TrendingUp size={28} />
-                </div>
-
-             </div>
-          </div>
+             </motion.div>
+          </motion.div>
 
         </div>
       </div>

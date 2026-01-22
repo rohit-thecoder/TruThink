@@ -55,86 +55,101 @@
 // export default ServiceKaHero
 
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import gsap from "gsap";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import CtaButton from "../CtaButton";
 
 const ServiceKaHero = ({ info }) => {
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
   const fullText = info?.description || "We provide top-tier consulting solutions designed to scale your operations and optimize financial performance with precision.";
   
+  // --- TYPEWRITER LOGIC (Framer Motion Style) ---
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const displayText = useTransform(rounded, (latest) => fullText.slice(0, latest));
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    // Animate the count from 0 to text length over 6 seconds (adjusted for readability)
+    const controls = animate(count, fullText.length, {
+      type: "tween",
+      duration: 6, 
+      ease: "linear",
+      delay: 1.5 // Wait for other animations to start
+    });
+    return controls.stop;
+  }, [fullText]);
 
-      // 1. Initial Set to prevent FOUC (Flash of Unstyled Content)
-      gsap.set(".hero-bg-layer", { opacity: 0, scale: 1.1 });
-      gsap.set(".hero-content-item", { y: 40, opacity: 0 });
-      gsap.set(".hero-image-wrapper", { x: 60, opacity: 0, scale: 0.95, rotationY: 5 });
-      
 
-      // 2. Background Elements Fade In
-      tl.to(".hero-bg-layer", 
-        { opacity: 1, scale: 1, duration: 2, ease: "power2.out" }
-      );
+  // --- ANIMATION VARIANTS ---
 
-      // 3. Text Content Stagger (Up & Fade)
-      tl.to(".hero-content-item", 
-        { y: 0, opacity: 1, duration: 1, stagger: 0.15 }, 
-        "-=1.5" // Start overlap with background
-      );
-      // 4. Image Reveal (Slide & Fade from Right with slight rotation reset)
-      tl.to(".hero-image-wrapper", 
-        { x: 0, opacity: 1, scale: 1, rotationY: 0, duration: 1.5, ease: "expo.out" }, 
-        "-=1"
-      );
-      // 3. TYPEWRITER EFFECT (The Magic Part ✨)
-      tl.to({}, {
-        duration: 8, // Adjust speed of typing here
-        ease: "none",
-        onUpdate: function() {
-          // Calculate how many characters to show based on progress
-          const progress = this.progress();
-          const charCount = Math.floor(progress * fullText.length);
-          if (textRef.current) {
-            textRef.current.innerText = fullText.substring(0, charCount);
-          }
-        },
-        onComplete: () => {
-           // Optional: Remove cursor or keep blinking
-           gsap.to(".type-cursor", { opacity: 0, duration: 0.5 });
-        }
-      }, "-=0.5"); // Starts slightly before title finishes
+  // 1. Background Elements (Fade In & Scale)
+  const bgVariants = {
+    hidden: { opacity: 0, scale: 1.1 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 2, ease: "easeOut" }
+    }
+  };
 
-      
+  // 2. Text Items (Slide Up)
+  const contentContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.5 // Start after background settles a bit
+      }
+    }
+  };
 
-    }, containerRef);
+  const contentItemVariants = {
+    hidden: { y: 40, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" }
+    }
+  };
 
-    return () => ctx.revert();
-  }, []);
+  // 3. Image Reveal (Slide from right, Scale, Rotate)
+  const imageVariants = {
+    hidden: { x: 60, opacity: 0, scale: 0.95, rotateY: 5 },
+    visible: { 
+      x: 0, 
+      opacity: 1, 
+      scale: 1, 
+      rotateY: 0,
+      transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.8 } // Custom ease "expo.out" equivalent
+    }
+  };
 
   return (
     <section 
-      ref={containerRef} 
-      className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden pt-36 pb-20 px-6 md:px-12 lg:px-20 "
+      className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden pt-36 pb-20 px-6 md:px-12 lg:px-20"
     >
       
       {/* ================= BACKGROUND SYSTEM ================= */}
       
-      {/* 1. Grid Pattern (Slate Gray for visibility on off-white) */}
-      <div className="hero-bg-layer absolute inset-0 pointer-events-none -z-20">
+      {/* 1. Grid Pattern */}
+      <motion.div 
+        className="hero-bg-layer absolute inset-0 pointer-events-none -z-20"
+        initial="hidden" animate="visible" variants={bgVariants}
+      >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#64748b1a_1px,transparent_1px),linear-gradient(to_bottom,#64748b1a_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_85%)]"></div>
-      </div>
+      </motion.div>
 
       {/* 2. Premium Glowing Orbs */}
-      {/* Blue Orb (Top Left) */}
-      <div className="hero-bg-layer absolute top-[-15%] left-[-10%] w-[700px] h-[700px] bg-[#3b82f6]/10 rounded-full blur-[120px] -z-15 mix-blend-multiply will-change-transform"></div>
-      {/* Orange Orb (Bottom Right) */}
-      <div className="hero-bg-layer absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#f97318]/15 rounded-full blur-[100px] -z-15 mix-blend-multiply will-change-transform"></div>
-       
+      <motion.div 
+        className="hero-bg-layer absolute top-[-15%] left-[-10%] w-[700px] h-[700px] bg-[#3b82f6]/10 rounded-full blur-[120px] -z-15 mix-blend-multiply will-change-transform"
+        initial="hidden" animate="visible" variants={bgVariants}
+      ></motion.div>
+      
+      <motion.div 
+        className="hero-bg-layer absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#f97318]/15 rounded-full blur-[100px] -z-15 mix-blend-multiply will-change-transform"
+        initial="hidden" animate="visible" variants={bgVariants}
+      ></motion.div>
+        
       {/* Optional Subtle Noise Texture */}
       <div className="absolute inset-0 -z-10 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
 
@@ -143,36 +158,52 @@ const ServiceKaHero = ({ info }) => {
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24">
         
         {/* --- LEFT: TEXT CONTENT --- */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+        <motion.div 
+          className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8"
+          initial="hidden"
+          animate="visible"
+          variants={contentContainerVariants}
+        >
           
           {/* Badge */}
-          <div className="hero-content-item inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-blue-100 rounded-full shadow-sm">
-             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-             <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">Premium Services</span>
-          </div>
+          <motion.div variants={contentItemVariants} className="hero-content-item inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-blue-100 rounded-full shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+              <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">Premium Services</span>
+          </motion.div>
 
           {/* Heading */}
-          <h1 className="hero-content-item text-4xl md:text-5xl lg:text-[56px] font-extrabold text-[#0f172a] leading-[1.1] tracking-tight">
+          <motion.h1 variants={contentItemVariants} className="hero-content-item text-4xl md:text-5xl lg:text-[56px] font-extrabold text-[#0f172a] leading-[1.1] tracking-tight">
             {info?.title || "Elevate Your Business Strategy"}
-          </h1>
+          </motion.h1>
 
-          {/* Description */}
-          <div className="min-h-[80px]  relative">
+          {/* Description (Typewriter) */}
+          <motion.div variants={contentItemVariants} className="min-h-[80px] relative">
             <p className="text-lg text-gray-600 leading-relaxed font-medium inline">
-              <span ref={textRef}></span>
+              {/* Typewriter Text */}
+              <motion.span>{displayText}</motion.span>
+              
               {/* Blinking Cursor */}
-              <span className="type-cursor inline-block w-[3px] h-[1.2em] bg-[#F99321] ml-1 align-middle animate-pulse"></span>
+              <motion.span 
+                className="type-cursor inline-block w-[3px] h-[1.2em] bg-[#F99321] ml-1 align-middle"
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+              ></motion.span>
             </p>
-          </div>
+          </motion.div>
 
           {/* CTA Button */}
-          <div className="hero-content-item pt-4">
+          <motion.div variants={contentItemVariants} className="hero-content-item pt-4">
             <CtaButton />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* --- RIGHT: HERO IMAGE --- */}
-        <div className="hero-image-wrapper w-full lg:w-1/2 relative perspective-1000">
+        <motion.div 
+          className="hero-image-wrapper w-full lg:w-1/2 relative perspective-1000"
+          initial="hidden"
+          animate="visible"
+          variants={imageVariants}
+        >
           <div className="relative rounded-[32px] overflow-hidden border-[6px] border-white shadow-2xl shadow-blue-900/10 aspect-[4/3] group bg-white">
             {/* Image */}
             <Image
@@ -190,7 +221,7 @@ const ServiceKaHero = ({ info }) => {
           {/* Decorative Float Element Behind Image */}
           <div className="hero-bg-layer absolute -bottom-8 -right-8 w-32 h-32 border-2 border-orange-200/50 rounded-full opacity-60 -z-10 animate-spin-slow pointer-events-none"></div>
            <div className="hero-bg-layer absolute -top-8 -left-8 w-20 h-20 bg-blue-100/50 rounded-full blur-xl -z-10 pointer-events-none"></div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

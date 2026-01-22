@@ -43,87 +43,89 @@
 // export default SubServices
 
 "use client";
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
+import { motion } from "framer-motion";
 import ServiceCard from "./ServiceCard";
 import CtaButton from "../CtaButton";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 const SubServices = ({ services, heading }) => {
-  const sectionRef = useRef(null);
+  // Animation Variants (Logic same as your GSAP settings)
+  
+  // 1. Heading Animation
+  const headingVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 1, ease: "easeOut" }
+    }
+  };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 0. SET INITIAL STATES (Prevents Flash of Unstyled Content)
-      gsap.set(".sub-heading", { y: 50, opacity: 0 });
-      gsap.set(".service-card-item", { y: 60, opacity: 0, scale: 0.95 });
-      gsap.set(".cta-wrapper", { y: 30, opacity: 0 });
+  // 2. Container Variant (Controls the Stagger effect for cards)
+  const gridContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15, // Delay between each card
+        delayChildren: 0.1     // Slight delay before starting
+      }
+    }
+  };
 
-      // 1. Heading Animation
-      gsap.to(".sub-heading", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
+  // 3. Card Item Variant
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" } // mimics power2.out
+    }
+  };
 
-      // 2. Staggered Card Entry
-      gsap.to(".service-card-item", {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".services-grid",
-          start: "top 85%",
-        },
-      });
-      
-      // 3. CTA Button Reveal
-      gsap.to(".cta-wrapper", {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.2, // Small delay so it appears after cards start
-        scrollTrigger: { 
-            trigger: ".services-grid", 
-            start: "bottom 95%" 
-        } 
-      });
-
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  // 4. CTA Button Variant
+  const ctaVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 1, delay: 0.2 }
+    }
+  };
 
   return (
-    <section ref={sectionRef} className=" relative px-5 2xl:px-0 py-20 md:py-32 xl:mx-[clamp(0px,5vw,160px)] text-black0 overflow-hidden">
+    <section className="relative px-5 2xl:px-0 py-20 md:py-32 xl:mx-[clamp(0px,5vw,160px)] text-black0 overflow-hidden">
       
       {/* Background Decor (Subtle Glow) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[500px] bg-blue-50/40 blur-[120px] -z-10 rounded-full pointer-events-none"></div>
 
-      <div className="mb-[clamp(3rem,5vw,5rem)] text-center flex flex-col items-center">
-  <h2 className="sub-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#0f172a] leading-tight tracking-tight">
-    {heading}
-  </h2>
-  {/* Gradient Accent Line */}
-  <div className="mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#F99321] via-[#8EC5FF] to-[#F99321] opacity-80"></div>
-</div>
+      {/* Heading Section */}
+      <motion.div 
+        className="mb-[clamp(3rem,5vw,5rem)] text-center flex flex-col items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }} // Triggers when 50% is visible (simulates top 80%)
+        variants={headingVariants}
+      >
+        <h2 className="sub-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#0f172a] leading-tight tracking-tight">
+          {heading}
+        </h2>
+        {/* Gradient Accent Line */}
+        <div className="mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#F99321] via-[#8EC5FF] to-[#F99321] opacity-80"></div>
+      </motion.div>
       
-      <div className="services-grid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full relative z-10">
+      {/* Services Grid with Staggered Animation */}
+      <motion.div 
+        className="services-grid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full relative z-10"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }} // Triggers slightly earlier for smooth entry
+        variants={gridContainerVariants}
+      >
         {services.map((service, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={cardVariants}
             className="service-card-item group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-[2rem] border border-gray-100 bg-white p-1 shadow-sm hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 hover:-translate-y-2"
           >
             {/* ================= PREMIUM BACKGROUND LAYERS ================= */}
@@ -156,13 +158,20 @@ const SubServices = ({ services, heading }) => {
             
             {/* Bottom Accent Line */}
             <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-[#F99321] to-[#8EC5FF] transition-all duration-500 ease-out group-hover:w-full"></div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="cta-wrapper flex justify-center mt-16 md:mt-24">
+      {/* CTA Button Animation */}
+      <motion.div 
+        className="cta-wrapper flex justify-center mt-16 md:mt-24"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={ctaVariants}
+      >
         <CtaButton />
-      </div>
+      </motion.div>
     </section>
   );
 };
