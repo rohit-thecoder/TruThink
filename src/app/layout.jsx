@@ -6,6 +6,8 @@ import JsonLd from "@/components/JsonLd";
 import localFont from 'next/font/local';
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import GsapGlobalFix from "@/components/GsapGlobalFix";
+
 
 import DesktopNavbar from "@/components/Navbar/DesktopNavbar";
 import MobileNavbar from "@/components/Navbar/MobileNavbar";
@@ -153,13 +155,17 @@ export default function RootLayout({ children }) {
       <JsonLd data={jsonLd} />
 
       <body className={`font sans ${lato.variable} antialiased `}>
-        <DesktopNavbar/>
-        <MobileNavbar/>
 
-        {children}
+  <DesktopNavbar />
+  <MobileNavbar />
 
-        <Footer />
-      </body>
+  {/* 🔥 GSAP Production Fix */}
+  <GsapGlobalFix />
+
+  {children}
+
+  <Footer />
+</body>
     </html>
   );
 }

@@ -178,7 +178,7 @@
 // export default Founders
 
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { BsLinkedin } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";
 import gsap from "gsap";
@@ -192,7 +192,7 @@ const Founders = () => {
   const founder1Ref = useRef(null);
   const founder2Ref = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
 
       // --- HEADER FIX ---
