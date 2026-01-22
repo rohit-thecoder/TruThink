@@ -188,6 +188,11 @@ export default function About1() {
               fill
               className="bg-image object-cover opacity-100 will-change-transform"
               priority 
+              onLoadingComplete={() => {
+    import("gsap/ScrollTrigger").then((st) => {
+        st.ScrollTrigger.refresh();
+    });
+  }}
             />
             {/* Gradient Overlay for Depth */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
