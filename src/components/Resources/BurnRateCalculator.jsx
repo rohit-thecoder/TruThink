@@ -142,7 +142,7 @@ export default function BurnRateCalculator() {
         {/* --- HEADER --- */}
         <div className="text-center calc-header mb-16 relative z-10">
            <span className="inline-block py-1 px-4 rounded-full bg-white border border-[#8EC5FF]/40 text-[#0066cc] text-xs font-bold tracking-[0.2em] uppercase mb-5 shadow-sm">
-              Financial Tools
+              FREE STARTUP TOOL.
            </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight mb-4 leading-tight">
             Startup <span className="text-[#F99321] underline decoration-4 decoration-[#8EC5FF]/30 underline-offset-4">Burn Rate</span> Calculator

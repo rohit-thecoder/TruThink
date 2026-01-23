@@ -131,7 +131,7 @@ export default function page() {
       <SubIndustries industries={IndustriesData} heading="Our Services" />
       <IndustriesSpecial info={specialData} />
       <IndustriesPreferUs />
-      <IndustriesOffer heading="Do you run any Tech Startup" />
+      <IndustriesOffer />
       <IndustriesFaq info={faqs} />
 
       {/* <h1 className="py-50 md:py-80 px-5 md:px-100 flex justify-center text-center text-3xl md:text-5xl ">

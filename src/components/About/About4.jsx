@@ -104,7 +104,7 @@ export default function About4() {
                     variants={textVariants}
                 >
                     <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium">
-                        Founded in 2024, <span className="text-[#005bb5] font-bold">Truthink</span> brings together over a decade of experience
+                        Founded in 2024, <span className="text-[#005bb5] font-bold">Truthink</span> brings together over a decade of cummative experience
                         from Big 4 consulting and hands-on work with early-stage startups.
                     </p>
                 </motion.div>

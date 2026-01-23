@@ -118,7 +118,7 @@ export default function ValuationGuide() {
                             <Lightbulb size={16} className="text-[#2271B8] fill-[#2271B8]" />
                             <p className="text-xs font-bold text-[#2271B8] uppercase tracking-widest">In Simple Terms</p>
                         </div>
-                        <p className="text-[#0f172a] font-medium italic text-lg leading-snug">“What is my startup worth just before the investor signs the cheque?”</p>
+                        <p className="text-[#0f172a] font-medium italic text-lg leading-snug">“What is my startup worth immediately after the deal closes?”</p>
                     </div>
                 </div>
             </motion.div>

@@ -127,14 +127,14 @@ const FEATURES_DATA = [
   },
   { 
     id: 2, 
-    name: "Proactive AR Tracking", 
+    name: "Quick Turn-Around-Time", 
     desc: "Never chase an invoice again. Our automated systems ensure healthy cash flow.",
     icon: <BarChart3 size={20} />,
     image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   { 
     id: 3, 
-    name: "Real-time Dashboards", 
+    name: "In-house Experience", 
     desc: "Live financial health checks at your fingertips. Make decisions on data, not guesses.",
     icon: <LayoutDashboard size={20} />,
     image: "https://images.pexels.com/photos/186522/pexels-photo-186522.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -336,7 +336,6 @@ export default function IndustriesPreferUs() {
                                 </p>
                                 
                                 <button className="flex items-center gap-3 text-white font-bold group">
-                                    <span className="border-b border-transparent group-hover:border-[#F99321] transition-colors">Learn how it works</span>
                                     <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#F99321] transition-colors">
                                         <ArrowRight size={14} />
                                     </div>

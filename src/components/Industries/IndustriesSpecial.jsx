@@ -176,7 +176,7 @@ const IndustriesSpecial = ({ info }) => {
           className="mb-12 md:mb-16 text-start md:text-center"
         >
           <h2 className="text-3xl md:text-5xl lg:text-[54px] font-extrabold leading-[1.15] tracking-tight pb-2">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0f172a] via-[#2271B8] to-[#004a94]">
+            <span className="text-transparent bg-clip-text bg-[#0f172a]">
               {info?.title || "Specialized Industry Focus"}
             </span>
           </h2>
@@ -253,22 +253,22 @@ const IndustriesSpecial = ({ info }) => {
                 
                 <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-[#2271B8]/40 hover:shadow-md transition-all duration-300">
                     <div className="p-1.5 bg-blue-50 rounded-lg text-[#2271B8]"><Target size={16} /></div>
-                    <span className="text-sm font-bold text-gray-700">Precision Focus</span>
+                    <span className="text-sm font-bold text-gray-700">Startup-Native</span>
                 </div>
                 
                 <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-[#F99321]/40 hover:shadow-md transition-all duration-300">
                     <div className="p-1.5 bg-orange-50 rounded-lg text-[#F99321]"><ShieldCheck size={16} /></div>
-                    <span className="text-sm font-bold text-gray-700">Risk Control</span>
+                    <span className="text-sm font-bold text-gray-700">Metric-Driven</span>
                 </div>
                 
                 <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-green-500/40 hover:shadow-md transition-all duration-300">
                     <div className="p-1.5 bg-green-50 rounded-lg text-green-600"><Layers size={16} /></div>
-                    <span className="text-sm font-bold text-gray-700">Full Integration</span>
+                    <span className="text-sm font-bold text-gray-700">Investor Aware</span>
                 </div>
                 
                 <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-purple-500/40 hover:shadow-md transition-all duration-300">
                     <div className="p-1.5 bg-purple-50 rounded-lg text-purple-600"><Sparkles size={16} /></div>
-                    <span className="text-sm font-bold text-gray-700">Innovation</span>
+                    <span className="text-sm font-bold text-gray-700">Growth-Ready</span>
                 </div>
 
             </motion.div>

@@ -28,12 +28,12 @@ export default function IndustriesOffer({heading}) {
 
         {/* Subheading (Slightly lighter font as in image) */}
         <h3 className="relative z-2 text-4xl md:text-5xl text-gray-800 leading-tight mt-2">
-          {heading}
+         <span className="font-bold text-5xl text-blue-600">30 days</span> free book-keeping services for startups and MSMEs.
         </h3>
 
         {/* Button */}
         <div className="flex justify-center mt-12 md:mt-14">
-          <IndustriesOfferCta text="Let's Discuss in Details"/>
+          <IndustriesOfferCta text="Let's Discuss in Detail"/>
         </div>
       </div>
     </section>

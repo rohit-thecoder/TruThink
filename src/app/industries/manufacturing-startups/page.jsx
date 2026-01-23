@@ -135,7 +135,7 @@ export default function page() {
       <SubIndustries industries={IndustriesData} heading="Our Services" />
       <IndustriesSpecial info={specialData} />
       <IndustriesPreferUs />
-      <IndustriesOffer heading="Do you run a manufacturing startup?" />
+      <IndustriesOffer/>
       <IndustriesFaq info={faqs} />
     </div>
   );

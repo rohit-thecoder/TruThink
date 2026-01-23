@@ -130,7 +130,7 @@ export default function page() {
 
         <IndustriesSpecial info={specialData} />
         <IndustriesPreferUs />
-        <IndustriesOffer heading="Do you run any Tech Startup" />
+        <IndustriesOffer />
         <IndustriesFaq info={faqs} />
       </div>
     </div>

@@ -215,9 +215,7 @@ export default function About1() {
             
             <div className="flex flex-col">
               {/* Eyebrow Text */}
-              <span className="content-reveal text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-2">
-                The Creators
-              </span>
+              
               {/* Main Heading */}
               <span className="content-reveal text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-none group-hover/btn:text-[#F99321] transition-colors duration-300">
                 Our Team 

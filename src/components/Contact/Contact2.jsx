@@ -321,7 +321,7 @@ export default function Contact2() {
           </h2>
           <p className="text-gray-600 text-lg md:text-xl max-w-2xl leading-relaxed font-medium mx-auto md:mx-0">
             Ready to scale? Schedule a direct intro call{" "}
-            <a href="tel:+916205693251" className="inline-flex items-center gap-1 text-[#0066cc] font-bold hover:text-[#F99321] transition-colors underline decoration-2 underline-offset-4 group">
+            <a href="tel:+919901234680" className="inline-flex items-center gap-1 text-[#0066cc] font-bold hover:text-[#F99321] transition-colors underline decoration-2 underline-offset-4 group">
               HERE <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a> or fill out the details below.
           </p>
@@ -353,11 +353,11 @@ export default function Contact2() {
                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#F99321]/0 via-[#F99321] to-[#8EC5FF]"></div>
                <form ref={formRef} onSubmit={sendEmail} className="space-y-7 relative z-10">
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   <InputField label="First Name" name="first_name" type="text" placeholder="John" Icon={User} required />
-                   <InputField label="Email Address" name="email" type="email" placeholder="john@company.com" Icon={Mail} required />
+                   <InputField label="First Name" name="first_name" type="text" placeholder="Adtiya" Icon={User} required />
+                   <InputField label="Email Address" name="email" type="email" placeholder="aditya@xyz.com" Icon={Mail} required />
                  </div>
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <InputField label="Company Name" name="company" type="text" placeholder="Truthink Inc." Icon={Building2} />
+                     <InputField label="Company Name" name="company" type="text" placeholder="Truthink Pvt Ltd." Icon={Building2} />
                      <InputField label="Industry Sector" name="industry" type="text" placeholder="Fintech, SaaS..." Icon={Briefcase} />
                  </div>
                  <InputField label="How did you find us?" name="source" type="text" placeholder="LinkedIn, Referral..." Icon={Globe} />
