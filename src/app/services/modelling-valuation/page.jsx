@@ -56,18 +56,16 @@ const HeroData = {
 
 const servicesData = [
   {
-    title: "Financial Modeling & Projections",
-    description: `A good model tells your story in numbers. We design dynamic financial models that capture revenue, cost, and growth assumptions — ideal for fundraising, budgeting, and investor discussions. Our models help you visualize outcomes and plan for every “what-if” scenario.
-`,
+    title: "Financial Modeling & Valuations",
+    description: `We create financial models and valuations that tell your story, with clear assumptions and defensible outcomes—ready for investors, decisions and legal requriements.`
   },
   {
-    title: "Cap Table Management Services",
-    description: `Your cap table isn’t just a spreadsheet — it’s your company’s ownership DNA. We help you structure, maintain, and manage your capitalization table with accuracy and compliance. From tracking shareholding changes to simulating dilution and funding rounds, we ensure every stakeholder’s equity is clearly defined and investor-ready.`,
+    title: "CapTable Management Services",
+    description: `Your cap table is your company’s ownership DNA. We structure and manage it with accuracy and compliance—tracking shareholding, simulating dilution, and keeping you investor-ready.`,
   },
   {
-    title: "Valuation Services",
-    description: `Every founder wonders — “What’s my company really worth?” We help you find that with clarity. Whether you’re pre-revenue or scaling fast, our valuations make sense — not just on paper, but in real investor conversations.
-Using trusted methods like the income approach and market comparables, we arrive at a value that’s fair, defensible, and true to your story.
+    title: "Merger & Acquisition Services",
+    description: `High-stakes deals need clarity and control. We provide transaction support through due diligence and deal structuring—helping you assess risk, validate numbers, and close with confidence.
 
 `,
   },

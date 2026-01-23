@@ -2,24 +2,24 @@ import Image from "next/image";
 
 const features = [
   {
-    title: "One-Stop-Shop",
+    title: "Value-based Pricing",
     description:
-      "You'll never need to work with another startup accounting firm again. We handle everything from bookkeeping to CFO to tax and more.",
+      "We price our services based on the value we create, not hours billed. You pay for outcomes that move your business forward.",
   },
   {
-    title: "Fair and Transparent Pricing",
+    title: "Deliver Insights driving decisions",
     description:
-      "Startups need fair, predictable pricing for outsourced accounting & CFO to survive and grow.",
+      "We go beyond reports to deliver insights you can act on. Every number tells a story that supports smarter, faster decisions.",
   },
   {
-    title: "In-House Feel",
+    title: "Not a cost center anymore",
     description:
-      "We replicate the feeling of working with an in-house team. We communicate regularly and act as an extension of your team.",
+      "Your finance function becomes a growth enabler, not an expense. We help unlock savings, efficiency, and strategic clarity",
   },
   {
-    title: "Long-Term Partner",
+    title: "Like your In-house team",
     description:
-      "We scale with you from a few founders to hundreds of millions in revenue.",
+      "We work as an extension of your internal team. Proactive, accountable, and aligned with your business goals.",
   },
 ];
 
@@ -29,7 +29,7 @@ export default function Home4() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-5xl md:text-6xl text-center font-bold leading-tight">
-          The New Wave of Startup Accounting
+          Services That Compliments The Current Startups Needs.
         </h2>
 
         {/* 1️⃣ IMAGE ROW */}
@@ -56,9 +56,7 @@ export default function Home4() {
               Built for founders who want clarity, control, and confident
               growth.
             </p>
-            <p className="text-white/80 text-sm sm:text-base mt-2">
-              Accounting, finance, and CFO support designed for modern startups.
-            </p>
+            
           </div>
         </div>
 

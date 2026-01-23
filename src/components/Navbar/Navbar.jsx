@@ -41,7 +41,7 @@ const menuItems = [
     title: "Industries",
     dropdown: [
       {
-        title: "Tech Startup",
+        title: "Tech Startups",
         description: "Accounting & consulting for tech and SaaS companies.",
         href: "/industries/tech-startups",
       },

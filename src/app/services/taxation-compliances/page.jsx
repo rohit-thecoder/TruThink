@@ -59,18 +59,17 @@ const HeroData = {
 const servicesData = [
   {
     title: "Direct & Indirect Tax Management",
-    description: `Taxes don’t have to be stressful. We manage your complete tax lifecycle — from accurate filings and reconciliations to advance tax planning. Whether it’s Income Tax, GST, or TDS, we ensure compliance while optimizing your tax outflow through smart structuring and planning.
+    description: `Taxes don’t have to be stressful. We handle your filings, reconciliations, and planning—Income Tax, GST, or TDS—ensuring compliance while optimizing your tax outflow.
 `,
   },
   {
     title: "Regulatory & Statutory Compliance",
-    description: `Missed filings or incorrect documentation can lead to penalties and unwanted scrutiny. Our experts keep your business aligned with Companies Act, FEMA, and other regulatory requirements — ensuring every return, report, and resolution is filed right and on time.
+    description: `Missed filings invite penalties. Our experts keep your business compliant with Companies Act, FEMA, and other regulations—filing every return, report, and resolution on time.
 `,
   },
   {
-    title: "Assessment, Representation & Advisory",
-    description: `Facing a notice or audit? We represent you before tax authorities with confidence and clarity. From responding to queries to defending your position, we take care of the process end-to-end while you stay focused on operations.
-`,
+    title: "Assessment, Representation",
+    description: `Facing a notice or audit? We handle responses and defend your position before tax authorities, letting you focus on operations.`
   },
 ];
 

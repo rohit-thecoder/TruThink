@@ -8,7 +8,7 @@ import JsonLd from '@/components/JsonLd';
 import React from 'react'
 
 export const metadata = {
-  title: "Financial Consulting for Tech Startups | Truthink",
+  title: "Financial Consulting for startups and MSMEs",
   description:
     "Expert finance, valuation, and compliance consulting for tech, SaaS, and digital startups driving innovation and growth.",
   keywords:

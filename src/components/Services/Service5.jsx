@@ -21,14 +21,14 @@ export default function Service5({features}) {
           </div>
           <p className="mt-6 text-lg sm:text-lg text-[#0f172a] leading-relaxed">
             Simple: Our track record and talent. We are your long-term startup
-            accounting partner, backed by a Indian-based team that handles only
+            accounting advisior, backed by a Indian-based team that handles only
             a few clients at a time. That means you get high-touch service, deep
             understanding of your business, and a partner that feels truly
             in-house.
           </p>
 
           <p className="mt-4 text-lg sm:text-lg text-[#0f172a] leading-relaxed">
-            Here are a few key reasons why hundreds of startups trust us.
+            Here are a few key reasons why startups and MSMEs should trust us.
           </p>
         </div>
 

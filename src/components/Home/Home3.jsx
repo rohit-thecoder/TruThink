@@ -291,9 +291,9 @@ export default function Home3() {
         </div>
 
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-gray-900">
-          Your Finance Department <br className="hidden md:block" />
+          Our Services <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
-            as a Service
+            Offerings
           </span>
         </h2>
         
@@ -357,21 +357,7 @@ export default function Home3() {
         </Swiper>
 
         {/* --- Bottom Button --- */}
-        <div className="text-center mt-12 relative z-30">
-          <button className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-200 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600">
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-900"></span>
-            <span className="relative">Get Started Now</span>
-            <svg
-              className="w-5 h-5 ml-2 -mr-1 transition-transform duration-200 group-hover:translate-x-1"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
-        </div>
+        
       </div>
 
       {/* --- Global Styles --- */}

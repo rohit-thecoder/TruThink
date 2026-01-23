@@ -59,16 +59,16 @@ const HeroData = {
 const servicesData = [
   {
     title: "Launch and Build",
-    description: `Starting up is messy — we help you build the company, bit by bit. From setting up the right team and basic processes to handling the essential registration and compliance tasks, we take care of the little but important things. So you can focus on product and customers while the company runs smoothly behind the scenes.
+    description: `Starting up is messy — we help you build the company, step by step. From team setup and core processes to registrations and compliance, we handle the critical details so you can focus on product and customers.
 `,
   },
   {
     title: "Finance Stack Consulting",
-    description: `Our finance tools should talk to each other, not create chaos. We help you pick and set up the right tech stack — accounting, billing, payroll, dashboards — all integrated and startup-ready. Get clean, automated numbers every month without manual struggle.`,
+    description: `Your finance tools should work together, not create chaos. We set up an integrated, startup-ready tech stack for accounting, billing, payroll, and dashboards—so you get clean, automated numbers without manual effort.`,
   },
   {
     title: "Fractional CFO",
-    description: `You don’t need a full-time CFO yet — but you do need strategic finance direction. We step in part-time to help you plan runway, manage cash, and prepare for investors. It’s like having a finance co-founder who’s got your back on every big decision.
+    description: `You may not need a full-time CFO yet, but you do need strategic finance. We step in part-time to manage cash, plan runway, and prep you for investors—like a finance co-founder for key decisions.
 `,
   },
 ];

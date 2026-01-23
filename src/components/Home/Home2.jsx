@@ -1,65 +1,94 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// if (typeof window !== "undefined") {
+//   gsap.registerPlugin(ScrollTrigger);
+// }
 
 export default function Home2() {
   const containerRef = useRef(null);
   const videoContainerRef = useRef(null);
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. Initial Set (Hidden State)
-      gsap.set(".hero-element", { y: 40, opacity: 0 });
-      gsap.set(videoContainerRef.current, {
-        rotateX: 20, // Tilted forward
-        y: 80,
-        opacity: 0,
-        scale: 0.9,
-        transformPerspective: 1200,
-        transformOrigin: "center top"
-      });
+// useEffect(() => {
+//   requestIdleCallback(() => {
+//     const ctx = gsap.context(() => {
+//       gsap.set(".hero-element", { y: 30, opacity: 0 });
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+//       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-      // 2. Text Reveal Sequence
-      tl.to(".hero-element", {
+//       tl.to(".hero-element", {
+//         y: 0,
+//         opacity: 1,
+//         duration: 0.8,
+//         stagger: 0.12,
+//       });
+
+//       tl.to(videoContainerRef.current, {
+//         y: 0,
+//         opacity: 1,
+//         scale: 1,
+//         rotateX: 0,
+//         duration: 1.4,
+//         ease: "power3.out",
+//       }, "-=0.6");
+//     }, containerRef);
+
+//     return () => ctx.revert();
+//   });
+// }, []);
+
+useLayoutEffect(() => {
+  const isMobile = window.innerWidth < 768;
+
+  const ctx = gsap.context(() => {
+    gsap.to(".hero-element", {
+      y: 0,
+      opacity: 1,
+      duration: isMobile ? 0.4 : 0.8,
+      stagger: isMobile ? 0.08 : 0.12,
+      ease: "power2.out",
+    });
+
+    if (!isMobile && videoContainerRef.current) {
+      gsap.to(videoContainerRef.current, {
         y: 0,
         opacity: 1,
+        scale: 1,
         duration: 1,
-        stagger: 0.15,
+        ease: "power3.out",
       });
+    }
+  }, containerRef);
 
-      // 3. Video "Rise & Tilt" Animation (Cinematic Effect)
-      tl.to(
-        videoContainerRef.current,
-        {
-          rotateX: 0, // Straighten up
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.8,
-          ease: "expo.out",
-        },
-        "-=0.8" // Start slightly before text finishes
-      );
+  return () => ctx.revert();
+}, []);
 
-      // Force Video Play (Reliability Check)
-      if (videoRef.current) {
-        videoRef.current.play().catch((error) => {
-            console.log("Auto-play prevented by browser:", error);
-        });
+
+
+
+
+  useLayoutEffect(() => {
+  const video = videoRef.current;
+  if (!video) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
       }
+    },
+    { threshold: 0.4 }
+  );
 
-    }, containerRef);
+  observer.observe(video);
+  return () => observer.disconnect();
+}, []);
 
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
@@ -72,7 +101,7 @@ export default function Home2() {
       <div className="absolute inset-0 -z-20 pointer-events-none h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_80%)]"></div>
 
       {/* 2. Premium Finance Icons Layer (Closer & Higher Opacity) */}
-      <div className="absolute inset-0 -z-15 pointer-events-none overflow-hidden select-none">
+      <div aria-hidden className="will-change-transform absolute inset-0 -z-15 pointer-events-none overflow-hidden select-none">
         
         {/* ========= LEFT SIDE ICONS ========= */}
         <svg className="absolute top-[8%] left-[12%] w-28 h-28 text-[#0066cc] opacity-[0.10] rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
@@ -124,14 +153,14 @@ export default function Home2() {
       </div>
 
       {/* 3. Premium Brand Glows */}
-      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#8EC5FF]/20 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse"></div>
+      <div className="hidden md:block absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#8EC5FF]/20 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse"></div>
       <div className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-[#F99321]/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
         
         {/* --- HERO TEXT CONTENT --- */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-4xl mx-auto mb-16 hero-element">
           
           {/* 1. Badge / Tag */}
           <div className="hero-element flex justify-center mb-8">
@@ -141,7 +170,7 @@ export default function Home2() {
                 NEW
               </span>
               <span className="text-gray-600 text-sm font-medium tracking-wide">
-                Smarter Money Management
+                Smart Finance Management
               </span>
             </div>
           </div>
@@ -208,7 +237,7 @@ export default function Home2() {
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
                          </div>
                          <div className="text-left">
-                            <h3 className="text-base font-bold text-slate-800 tracking-tight group-hover:text-gray-900 transition-colors">Bookkeeping</h3>
+                            <h3 className="text-base font-bold text-slate-800 tracking-tight transition-colors group-hover:text-[#0066cc]">Accounting</h3>
                             <p className="text-xs text-slate-500 font-medium mt-0.5">Real-time accuracy</p>
                          </div>
                       </div>
@@ -220,19 +249,20 @@ export default function Home2() {
 
           {/* 4. CTA Button */}
           <div className="hero-element">
-            <a href="/contact"></a>
-            <button  className="group cursor-pointer relative px-10 py-4 bg-[#1f1f1f] text-white rounded-full text-lg font-semibold shadow-xl shadow-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+            <a href="/contact">
+            <button className="group relative px-10 py-4 cursor-pointer bg-[#1f1f1f] text-white rounded-full text-lg font-semibold shadow-xl shadow-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
               <span className="relative z-10 flex items-center gap-2">
                 Get Started
               </span>
               {/* Hover Gradient Slide */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#F99321] to-[#d97706] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
             </button>
+            </a>
           </div>
         </div>
 
         {/* --- VIDEO DASHBOARD CONTAINER --- */}
-        <div className="w-full relative perspective-1000 px-2 md:px-0">
+        <div className="w-full relative  px-2 md:px-0">
           <div
             ref={videoContainerRef}
             className="relative w-full max-w-6xl mx-auto rounded-xl md:rounded-2xl border-[4px] md:border-[8px] border-white bg-white shadow-2xl shadow-[#003B70]/10 overflow-hidden z-20"
@@ -250,21 +280,17 @@ export default function Home2() {
 
             {/* 2. Video Player */}
             <div className="relative aspect-video bg-gray-100">
-              <video
-                ref={videoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-                poster="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
-              >
-                <source src="https://videos.pexels.com/video-files/7565439/7565439-uhd_2560_1440_30fps.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              <div className="absolute inset-0 bg-[#003B70]/5 pointer-events-none"></div>
-            </div>
+  <img
+    src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+    alt="Dashboard Preview"
+    className="w-full h-full object-cover"
+    loading="eager"
+    draggable={false}
+  />
+
+  <div className="absolute inset-0 bg-[#003B70]/5 pointer-events-none"></div>
+</div>
+
           </div>
           
           {/* 3. Glow Behind Video */}

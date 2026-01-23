@@ -280,6 +280,14 @@ export default function Footer() {
       transition: { duration: 1, delay: 0.8 } 
     }
   };
+  const exploreLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "services/startup-sme-consulting" },
+  { label: "Industries", href: "/industries/tech-startups" },
+  { label: "Valuation Calc", href: "/resources/valuation-calculator" },
+  { label: "Free Burn Rate Calculator", href: "/resources/burn-rate-calculator" },
+];
+
 
   return (
     <footer className="relative bg-[#0f172a] text-white pt-24 pb-8 overflow-hidden font-sans">
@@ -304,24 +312,32 @@ export default function Footer() {
           
           {/* COLUMN 1: BRAND IDENTITY */}
           <motion.div variants={itemFadeUpVariants} className="footer-col lg:col-span-4 space-y-8">
-            <Link href="/" className="inline-block group">
-              <h2 className="text-3xl font-extrabold tracking-tight text-white flex items-center gap-1">
+            {/* <Link href="/" className=""> */}
+              {/* <h2 className="text-3xl font-extrabold tracking-tight text-white flex items-center gap-1">
                 TRUTHINK<div className="w-2 h-2 rounded-full bg-[#F99321] mt-3 group-hover:scale-125 transition-transform duration-300"></div>
-              </h2>
-            </Link>
+              </h2> */}
+              {/* <img src="/Logo without Background.png" alt="" className=""/>
+            </Link> */}
+            <Link href="/" className="flex items-center">
+  <img
+    src="/Logo without Background.png"
+    alt="Truthink Logo"
+    className="h-30 w-auto object-contain"
+  />
+</Link>
+
             <p className="text-gray-400 leading-relaxed text-[15px] pr-4 font-medium max-w-sm">
-              Empowering businesses with financial precision and strategic clarity. We turn complex numbers into your competitive advantage.
+              Simplify Finance, Amplify Success
             </p>
             
             <div className="flex items-center gap-3 pt-2">
               {[
-                { Icon: Linkedin, href: "#" }, 
-                { Icon: Twitter, href: "#" }, 
-                { Icon: Instagram, href: "#" }, 
-                { Icon: Facebook, href: "#" }
+                { Icon: Linkedin, href: "https://www.linkedin.com/company/truthink-consulting/" },  
+                { Icon: Instagram, href: "https://www.instagram.com/truthink_consulting/" }, 
               ].map((item, idx) => (
                 <a 
                   key={idx} 
+                  target="_blank"
                   href={item.href} 
                   className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#F99321] hover:border-[#F99321] hover:-translate-y-1 transition-all duration-300 group shadow-lg shadow-black/20"
                 >
@@ -332,19 +348,32 @@ export default function Footer() {
           </motion.div>
 
           {/* COLUMN 2: QUICK LINKS */}
-          <motion.div variants={itemFadeUpVariants} className="footer-col lg:col-span-2 space-y-8">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#8EC5FF]">Explore</h3>
-            <ul className="space-y-4">
-              {['About Us', 'Services', 'Our Team', 'Valuation Tool', 'Burn Rate Calc'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-3 group text-[15px] font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F99321] scale-0 group-hover:scale-100 transition-transform duration-300"></span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">{item}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          <motion.div
+  variants={itemFadeUpVariants}
+  className="footer-col lg:col-span-2 space-y-8"
+>
+  <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#8EC5FF]">
+    Explore
+  </h3>
+
+  <ul className="space-y-4">
+    {exploreLinks.map((item) => (
+      <li key={item.label}>
+        <Link
+          href={item.href}
+          className=" text-gray-400 hover:text-white transition-colors flex items-center gap-3 group text-[15px] font-medium"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[#F99321] scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+
+          <span className="group-hover:translate-x-1 transition-transform duration-300">
+            {item.label}
+          </span>
+        </Link>
+      </li>
+    ))}
+  </ul>
+</motion.div>
+
 
           {/* COLUMN 3: CONTACT INFO & WHATSAPP */}
           <motion.div variants={itemFadeUpVariants} className="footer-col lg:col-span-3 space-y-8">
@@ -364,8 +393,8 @@ export default function Footer() {
                 <div className="w-9 h-9 rounded-xl bg-[#1e293b] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#F99321]/50 transition-colors">
                     <Mail className="w-4 h-4 text-[#F99321]" />
                 </div>
-                <a href="mailto:hello@truthink.in" className="text-[15px] font-medium hover:text-white transition-colors">
-                  hello@truthink.in
+                <a href="mailto:hello@truthinkconsulting.in" className="text-[15px] font-medium hover:text-white transition-colors">
+                  hello@truthinkconsulting.in
                 </a>
               </li>
               <li className="flex items-center gap-4 text-gray-400 group">
@@ -373,7 +402,7 @@ export default function Footer() {
                     <Phone className="w-4 h-4 text-[#F99321]" />
                 </div>
                 <a href="tel:+916205693251" className="text-[15px] font-medium hover:text-white transition-colors">
-                  +91 62056 93251
+                  +91 99012 34680
                 </a>
               </li>
             </ul>
@@ -381,7 +410,7 @@ export default function Footer() {
             {/* ✅ WHATSAPP BUTTON ADDED HERE */}
             <div className="pt-2">
                 <a 
-                    href="https://wa.me/916205693251" 
+                    href="#91 99012 34680" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-green-500/20 group transform hover:-translate-y-1"
@@ -418,7 +447,7 @@ export default function Footer() {
              </div>
              
              <a 
-               href="https://www.google.com/maps/search/Sector+4,+City+Centre,+Bokaro+Steel+City,+Jharkhand+-+827004" 
+               href="https://www.google.com/maps/place/6,+27th+Cross+Rd,+VGS+Layout,+Muneshwara+Swamy+Layout,+Ashwini+Layout,+Ejipura,+Bengaluru,+Karnataka+560047/@12.940055,77.6255661,15.92z/data=!4m6!3m5!1s0x3bae146a0040a8a5:0xb3e4a830e2c3a529!8m2!3d12.9407698!4d77.6308101!16s%2Fg%2F11wb1s038p?entry=ttu&g_ep=EgoyMDI2MDEyMC4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" 
                className="inline-flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-[#F99321] transition-colors uppercase tracking-wider group"
              >
@@ -446,12 +475,11 @@ export default function Footer() {
             variants={bottomVariants}
         >
           <p className="text-gray-500 text-sm font-medium">
-            © {new Date().getFullYear()} Truthink Consulting. All rights reserved.
+            © {new Date().getFullYear()} Truthink Consulting Pvt Ltd. All right reserved.
           </p>
           
           <div className="flex items-center gap-2 text-gray-600 text-sm font-medium">
-             <span className="w-3.5 h-3.5 rounded-full bg-green-500 animate-pulse"></span>
-             <span>System Operational</span>
+             
           </div>
         </motion.div>
 

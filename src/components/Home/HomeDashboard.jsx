@@ -82,8 +82,8 @@ const HomeDashboard = () => {
       {/* ================= BACKGROUND ATMOSPHERE ================= */}
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Mesh Gradient */}
-        <div className="bg-element absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-indigo-200/30 rounded-full blur-[120px] mix-blend-multiply" />
-        <div className="bg-element absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-blue-200/30 rounded-full blur-[120px] mix-blend-multiply" />
+        <div className="bg-element absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-200/30 rounded-full blur-[120px] mix-blend-multiply" />
+        <div className="bg-element absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-white-200/30 rounded-full blur-[120px] mix-blend-multiply" />
         {/* Noise Texture for realism */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       </div>
@@ -94,15 +94,7 @@ const HomeDashboard = () => {
         <div className="flex flex-col items-center justify-center text-center mb-20 space-y-8">
           
           {/* Animated Badge */}
-          <div className="hero-text-reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-[0_2px_10px_rgb(0,0,0,0.03)]">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500"></span>
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
-              Live Financial Intelligence
-            </span>
-          </div>
+          
 
           {/* Headline */}
           <h1 className="max-w-4xl mx-auto">

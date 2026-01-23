@@ -194,10 +194,9 @@ export default function Service4() {
             {/* Premium Checklist (Pill Style) */}
             <motion.div variants={textItemVariants} className="flex flex-wrap gap-3 pt-2">
                 {[
-                    "Strategic CFO",
-                    "R&D Tax Credits",
-                    "Due Diligence Ready",
-                    "Cash Flow Mgmt"
+                    "Outcome-Oriented",
+                    "Scaleable",
+                    "Execution-focused"
                 ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg group hover:border-[#F99321]/30 hover:bg-orange-50/30 transition-colors">
                         <CheckCircle2 size={16} className="text-green-500 group-hover:scale-110 transition-transform" />
